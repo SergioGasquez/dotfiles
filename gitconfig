@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+        name = Sergio Gasquez
+        email = sergio.gasquez@gmail.com
+[core]
+        editor = code
+[alias]
+    a = add --all
+    b = branch
+    c = checkout
+    d = diff
+    e = edit
+    f = fetch
+    cm = commit -m
+    s = status
+    od = checkout develop
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    st = stash
+    sta = stash apply
+    stc = stash clear
+    stp = stash pop
+
+[init]
+        defaultBranch = main
