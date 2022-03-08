@@ -9,10 +9,12 @@
     a = add --all
     b = branch
     c = checkout
+    cl = clone
     d = diff
     e = edit
     f = fetch
     cm = commit -m
+    l = pull
     s = status
     od = checkout develop
     glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
