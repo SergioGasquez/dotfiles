@@ -41,6 +41,7 @@ alias c="code ."
 
 # Rust
 alias cb='cargo build'
+alias cesp='cargo espflash'
 
 # Starship
 starship init fish | source
