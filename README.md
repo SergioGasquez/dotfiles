@@ -1,4 +1,5 @@
 # Dotfiles
+Repository storing the dotfiles for my Arch Linux enviroment.
 ## Makefile
 ### Targets
 * `shell`: Configures Fish
