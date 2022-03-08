@@ -9,3 +9,4 @@
 * `network`: Configures Google DNS
 * `install-packages`: Installs all the packages
 * `remove-packages`: Removes unnecesary packages installed with gnome
+* `espressif`: Installs Espressif Rusts dependencies

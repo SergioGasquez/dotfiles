@@ -14,7 +14,7 @@ help:
 	@ echo -e "  install-packages    	  Installs all the packages"
 	@ echo -e "  remove-packages    	  Removes unnecesary packages installed with gnome"
 	@ echo -e "  network			      Configures Google DNS"
-
+	@ echo -e "  espressif			      Installs Espressif Rusts dependencies"
 
 .PHONY: shell
 shell:
@@ -54,3 +54,12 @@ gnome:
 .PHONY: network
 network:
 	@ ln -sf $(DOTFILES)/resolved.conf /etc/resolved.conf
+
+.PHONY: espressif
+espressif:
+	@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	# Espressif Rust Dependencies
+	@ cargo install cargo-generate cargo-espflash espmonitor cargo-espmonitor bindgen ldproxy cargo-pio
+	@ rustup update
+	@ rustup install nightly
+	@ sudo usermod -a -G uucp $USER
