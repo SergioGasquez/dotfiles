@@ -40,13 +40,15 @@ alias gre='git rebase --edit-todo'
 alias grc='git rebase --continue'
 
 # Editor
-alias c="code ."
+alias vs="code ."
 
 # Rust
 alias cb='cargo build'
 alias ccl='cargo clean'
 alias cesp='cargo espflash'
 alias cf='cargo fmt'
+alias cdoc='cargo doc --open'
+alias c='cargo'
 
 # Starship
 starship init fish | source
