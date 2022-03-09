@@ -7,6 +7,9 @@ alias df="duf"
 alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop"
 
 # File Navigation
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias cddoc="cd ~/Documents"
 alias cdesp="cd ~/Documents/Espressif"
 alias cdesprs="cd ~/Documents/Espressif/trees/esp-rs"
@@ -41,7 +44,9 @@ alias c="code ."
 
 # Rust
 alias cb='cargo build'
+alias ccl='cargo clean'
 alias cesp='cargo espflash'
+alias cf='cargo fmt'
 
 # Starship
 starship init fish | source
