@@ -5,7 +5,7 @@ alias ls="exa"
 alias df="duf"
 # yay
 alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop"
-
+alias ya='yay -S --noconfirm --nodiffmenu'
 # File Navigation
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -38,7 +38,8 @@ alias gsu='git submodule update --init --recursive'
 alias gr='git rebase -i'
 alias gre='git rebase --edit-todo'
 alias grc='git rebase --continue'
-
+alias gsw='git switch'
+alias gswb='git switch -c'
 # Editor
 alias vs="code ."
 
