@@ -12,7 +12,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cddoc="cd ~/Documents"
 alias cdesp="cd ~/Documents/Espressif"
-alias cdesprs="cd ~/Documents/Espressif/trees/esp-rs"
+alias cdespdev="cd ~/Documents/Espressif/dev"
 
 # Git
 alias ga='git add'
@@ -42,7 +42,6 @@ alias gsw='git switch'
 alias gswb='git switch -c'
 # Editor
 alias vs="code ."
-
 # Rust
 alias cb='cargo build'
 alias ccl='cargo clean'
@@ -50,6 +49,14 @@ alias cesp='cargo espflash'
 alias cf='cargo fmt'
 alias cdoc='cargo doc --open'
 alias c='cargo'
+# Docker
+alias ds='systemctl start docker'
+alias dp='docker system prune -a'
+# Esp
+alias cg='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
+alias cei='cargo espflash save-image --release'
+alias cef='cargo espflash --release --monitor'
+
 
 # Starship
 starship init fish | source
