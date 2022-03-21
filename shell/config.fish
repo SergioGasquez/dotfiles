@@ -3,9 +3,6 @@
 alias cat="bat"
 alias ls="exa"
 alias df="duf"
-# yay
-alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop"
-alias ya='yay -S --noconfirm --nodiffmenu'
 # File Navigation
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -57,6 +54,9 @@ alias cg='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
 alias cei='cargo espflash save-image --release'
 alias cef='cargo espflash --release --monitor'
 
+
+# Brew
+eval (/opt/homebrew/bin/brew shellenv)
 
 # Starship
 starship init fish | source
