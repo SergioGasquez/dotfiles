@@ -42,7 +42,7 @@ git:
 
 .PHONY: install-packages
 install-packages:
-	@ yay --needed --noconfirm -S - < packages
+	@ yay --needed -S - < packages
 
 .PHONY: remove-packages
 remove-packages:
@@ -64,3 +64,4 @@ espressif:
 	@ rustup update
 	@ rustup install nightly
 	@ sudo usermod -a -G uucp $USER
+
