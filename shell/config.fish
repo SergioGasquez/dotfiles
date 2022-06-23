@@ -64,9 +64,10 @@ function idf44
     export IDF_TOOLS_INSTALL_CMD=$IDF_PATH/install.sh
     export PIP_USER="no"
     export LIBCLANG_PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-14.0.0-20220415-x86_64-unknown-linux-gnu/lib/"
-    set PATH $PATH "/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-14.0.0-20220415-x86_64-unknown-linux-gnu/bin/"
+    set PATH $PATH "/home/sergio/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch3-8.4.0/xtensa-esp32-elf/bin/"
     set PATH $PATH "/home/sergio/.espressif/tools/xtensa-esp32s2-elf/esp-2021r2-patch3-8.4.0/xtensa-esp32s2-elf/bin/"
     set PATH $PATH "/home/sergio/.espressif/tools/xtensa-esp32s3-elf/esp-2021r2-patch3-8.4.0/xtensa-esp32s3-elf/bin/"
+    set PATH $PATH "/home/sergio/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch3-8.4.0/riscv32-esp-elf/bin/"
     set PATH $PATH "$IDF_PATH/components/esptool_py/esptool"
     set PATH $PATH "$IDF_PATH/components/espcoredump"
     set PATH $PATH "$IDF_PATH/components/partition_table"
