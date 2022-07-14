@@ -26,7 +26,7 @@ shell:
 	@ ln -sf $(DOTFILES)/shell/fish_greeting.fish $(HOME)/.config/fish/functions/fish_greeting.fish
 
 .PHONY: rust
-shell:
+rust:
 	@ touch $(HOME)/.cargo/config.toml
 	@ ln -sf $(DOTFILES)/rust/config.toml $(HOME)/.cargo/config.toml
 
