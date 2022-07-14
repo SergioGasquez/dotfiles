@@ -3,6 +3,7 @@ Repository storing the dotfiles for my Arch Linux enviroment.
 ## Makefile
 ### Targets
 * `shell`: Configures Fish
+* `rust`: Configures Rust aliases
 * `code`: Configures VsCode settings and keybindings
 * `terminal`: Configures Alacritty
 * `git`: Configures git

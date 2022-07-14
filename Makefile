@@ -7,6 +7,7 @@ help:
 	@ echo -e "Usage: \tmake [TARGET]\n"
 	@ echo -e "Targets:"
 	@ echo -e "  shell    	  			  Configures Fish"
+	@ echo -e "  rust    	  			  Configures Rust aliases"
 	@ echo -e "  code    	  			  Configures VsCode settings and keybindings"
 	@ echo -e "  terminal    	  		  Configures Alacritty"
 	@ echo -e "  git			    	  Configures git"
@@ -23,6 +24,11 @@ shell:
 	@ ln -sf $(DOTFILES)/shell/config.fish $(HOME)/.config/fish/config.fish
 	@ mkdir -p $(HOME)/.config/fish/functions
 	@ ln -sf $(DOTFILES)/shell/fish_greeting.fish $(HOME)/.config/fish/functions/fish_greeting.fish
+
+.PHONY: rust
+shell:
+	@ touch $(HOME)/.cargo/config.toml
+	@ ln -sf $(DOTFILES)/rust/config.toml $(HOME)/.cargo/config.toml
 
 .PHONY: code
 code:

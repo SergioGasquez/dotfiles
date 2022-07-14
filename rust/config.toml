@@ -1,0 +1,11 @@
+[alias]
+b = "build"
+br = "build --release"
+c = "check"
+e = "espflash --speed 921600 --monitor"
+er = "espflash --speed 921600 --monitor --release"
+i = "install"
+t = "test"
+r = "run"
+rr = "run --release"
+x = "clean"
