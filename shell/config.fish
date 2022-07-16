@@ -14,6 +14,8 @@ alias cddoc="cd ~/Documents"
 alias cdesp="cd ~/Documents/Espressif"
 alias cdesprs="cd ~/Documents/Espressif/esp-rs"
 alias cdespidf="cd ~/Documents/Espressif/esp-idf"
+alias cdforks="cd ~/Documents/Espressif/forks"
+alias cdtests="cd ~/Documents/Espressif/tests"
 
 # Git
 alias ga='git add'
