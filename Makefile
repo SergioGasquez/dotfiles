@@ -36,6 +36,8 @@ code:
 #	@ ln -sf $(DOTFILES)/vscode/settings.json "$(HOME)/.config/Code/User/settings.json"
 	@ ln -sf $(DOTFILES)/vscode/keybindings.json "$(HOME)/.config/Code/User/keybindings.json"
 	@ ln -sf $(DOTFILES)/vscode/tasks.json "$(HOME)/.config/Code/User/tasks.json"
+	@ ln -sf $(DOTFILES)/vscode/settings.json "$(HOME)/.config/Code/User/settings.json"
+
 
 .PHONY: terminal
 terminal:
