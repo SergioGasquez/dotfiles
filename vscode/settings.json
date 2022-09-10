@@ -1,5 +1,9 @@
 // .config/Code/User/settings.json
 {
+    "conventionalCommits.emojiFormat": "emoji",
+    "conventionalCommits.promptScopes": false,
+    "conventionalCommits.promptFooter": false,
+    "conventionalCommits.promptBody": false,
     "debug.allowBreakpointsEverywhere": true,
     "editor.inlineSuggest.enabled": true,
     "editor.fontFamily": "Consolas, 'Courier New', monospace",
