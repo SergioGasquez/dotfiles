@@ -60,6 +60,6 @@
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "[xml]": {
-        "editor.autoClosingBrackets": "never",
-    },
+        "editor.autoClosingBrackets": "never"
+    }
 }
