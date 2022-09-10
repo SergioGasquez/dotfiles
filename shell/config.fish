@@ -5,6 +5,7 @@ alias ls="exa"
 alias df="duf"
 # yay
 alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop"
+alias upcode="yay -S --noconfirm visual-studio-code-bin"
 alias ya='yay -S --noconfirm --nodiffmenu'
 # File Navigation
 alias ...='cd ../..'
