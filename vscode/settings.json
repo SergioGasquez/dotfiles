@@ -5,6 +5,7 @@
     "conventionalCommits.promptFooter": false,
     "conventionalCommits.promptBody": false,
     "debug.allowBreakpointsEverywhere": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "editor.inlineSuggest.enabled": true,
     "editor.fontFamily": "Consolas, 'Courier New', monospace",
     "editor.formatOnSaveMode": "file",
@@ -35,6 +36,8 @@
         "rust": true,
         "c": true
     },
+    "githubPullRequests.pullBranch": "never",
+    "markdown.validate.enabled": true,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.defaultProfile.linux": "fish",
