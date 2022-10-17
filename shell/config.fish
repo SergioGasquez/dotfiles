@@ -17,6 +17,7 @@ alias cdesprs="cd ~/Documents/Espressif/esp-rs"
 alias cdespidf="cd ~/Documents/Espressif/esp-idf"
 alias cdforks="cd ~/Documents/Espressif/forks"
 alias cdtests="cd ~/Documents/Espressif/tests"
+alias cdper="cd ~/Documents/Espressif/personal"
 
 # Git
 alias ga='git add'
@@ -60,7 +61,6 @@ alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
 alias cgs='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
 alias cgn='cargo generate --git https://github.com/esp-rs/esp-template'
 alias cei='cargo espflash save-image --release'
-alias cef='cargo espflash --release --speed 921600 --monitor'
 function idf44
     export IDF_PATH=/home/sergio/.espressif/frameworks/esp-idf-release-v4.4/
     export LIBCLANG_PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-14.0.0-20220415-x86_64-unknown-linux-gnu/lib/"
