@@ -47,6 +47,7 @@ alias gsw='git switch'
 alias gswb='git switch -c'
 # Editor
 alias vs="code ."
+alias sandbox="code /home/sergio/Documents/Espressif/sandbox"
 # Rust
 alias cb='cargo build'
 alias ccl='cargo clean'
