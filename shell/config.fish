@@ -82,7 +82,7 @@ function v4-4-1
 end
 function v5-0-dev
     export IDF_PATH=/home/sergio/.espressif/frameworks/v5-0-dev/esp-idf/
-    . /home/sergio/.espressif/frameworks/v-5-0-dev/esp-idf/export.fish
+    . /home/sergio/.espressif/frameworks/v5-0-dev/esp-idf/export.fish
 end
 function v5-1-dev
     export IDF_PATH=/home/sergio/.espressif/frameworks/v5-1-dev/esp-idf/
