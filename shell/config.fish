@@ -69,25 +69,25 @@ export PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch5-8_
 export PATH="/home/sergio/.espressif/tools/xtensa-esp32s3-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s3-elf/bin:$PATH"
 export PATH="/home/sergio/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch5-8_4_0/riscv32-esp-elf/bin:$PATH"
 ## ESP-IDF source functions
-function release-v4-4
-    export IDF_PATH=/home/sergio/.espressif/frameworks/release-v4-4/esp-idf/
-    . /home/sergio/.espressif/frameworks/release-v4-4/esp-idf/export.fish
+function release-v4.4
+    export IDF_PATH=/home/sergio/.espressif/frameworks/release-v4.4/esp-idf/
+    . /home/sergio/.espressif/frameworks/release-v4.4/esp-idf/export.fish
 end
 function master
     export IDF_PATH=/home/sergio/.espressif/frameworks/master/esp-idf/
     . /home/sergio/.espressif/frameworks/master/esp-idf/export.fish
 end
-function v4-4-1
-    export IDF_PATH=/home/sergio/.espressif/frameworks/v4-4-1/esp-idf/
-    . /home/sergio/.espressif/frameworks/v4-4-1/esp-idf/export.fish
+function v4.4.1
+    export IDF_PATH=/home/sergio/.espressif/frameworks/v4.4.1/esp-idf/
+    . /home/sergio/.espressif/frameworks/v4.4.1/esp-idf/export.fish
 end
-function v5-0-dev
-    export IDF_PATH=/home/sergio/.espressif/frameworks/v5-0-dev/esp-idf/
-    . /home/sergio/.espressif/frameworks/v5-0-dev/esp-idf/export.fish
+function v5.0-dev
+    export IDF_PATH=/home/sergio/.espressif/frameworks/v5.0-dev/esp-idf/
+    . /home/sergio/.espressif/frameworks/v5.0-dev/esp-idf/export.fish
 end
-function v5-1-dev
-    export IDF_PATH=/home/sergio/.espressif/frameworks/v5-1-dev/esp-idf/
-    . /home/sergio/.espressif/frameworks/v5-1-dev/esp-idf/export.fish
+function v5.1-dev
+    export IDF_PATH=/home/sergio/.espressif/frameworks/v5.1-dev/esp-idf/
+    . /home/sergio/.espressif/frameworks/v5.1-dev/esp-idf/export.fish
 end
 
 # Starship
