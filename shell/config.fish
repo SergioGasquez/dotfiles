@@ -61,10 +61,33 @@ alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
 alias cgs='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
 alias cgn='cargo generate --git https://github.com/esp-rs/esp-template'
 alias cei='cargo espflash save-image --release'
-function idf44
-    export IDF_PATH=/home/sergio/.espressif/frameworks/esp-idf-release-v4.4/
-    export LIBCLANG_PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-14.0.0-20220415-x86_64-unknown-linux-gnu/lib/"
-    . /home/sergio/.espressif/frameworks/esp-idf-release-v4.4/export.fish
+## ESP-RS Env
+export LIBCLANG_PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-15.0.0-20221014-x86_64-unknown-linux-gnu/esp-clang/lib"
+export PATH="/home/sergio/.espressif/tools/xtensa-esp32s2-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s2-elf/bin:$PATH"
+export PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32-elf/bin:$PATH"
+export PATH="/home/sergio/.espressif/tools/xtensa-esp32s3-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s3-elf/bin:$PATH"
+export PATH="/home/sergio/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch5-8_4_0/riscv32-esp-elf/bin:$PATH"
+## ESP-IDF source functions
+function release-v4-4
+    export IDF_PATH=/home/sergio/.espressif/frameworks/release-v4-4/esp-idf/
+    . /home/sergio/.espressif/frameworks/release-v4-4/esp-idf/export.fish
 end
+function master
+    export IDF_PATH=/home/sergio/.espressif/frameworks/master/esp-idf/
+    . /home/sergio/.espressif/frameworks/master/esp-idf/export.fish
+end
+function v4-4-1
+    export IDF_PATH=/home/sergio/.espressif/frameworks/v4-4-1/esp-idf/
+    . /home/sergio/.espressif/frameworks/v4-4-1/esp-idf/export.fish
+end
+function v5-0-dev
+    export IDF_PATH=/home/sergio/.espressif/frameworks/v5-0-dev/esp-idf/
+    . /home/sergio/.espressif/frameworks/v-5-0-dev/esp-idf/export.fish
+end
+function v5-1-dev
+    export IDF_PATH=/home/sergio/.espressif/frameworks/v5-1-dev/esp-idf/
+    . /home/sergio/.espressif/frameworks/v5-1-dev/esp-idf/export.fish
+end
+
 # Starship
 starship init fish | source
