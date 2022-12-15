@@ -62,6 +62,7 @@ alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
 alias cgs='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
 alias cgn='cargo generate --git https://github.com/esp-rs/esp-template'
 alias cei='cargo espflash save-image --release'
+export ESPFLASH_BAUD="921600"
 ## ESP-RS Env
 export LIBCLANG_PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-15.0.0-20221014-x86_64-unknown-linux-gnu/esp-clang/lib"
 export PATH="/home/sergio/.espressif/tools/xtensa-esp32s2-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s2-elf/bin:$PATH"
