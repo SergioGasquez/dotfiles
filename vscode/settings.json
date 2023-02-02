@@ -68,5 +68,7 @@
     },
     "[xml]": {
         "editor.autoClosingBrackets": "never"
-    }
+    },
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
 }
