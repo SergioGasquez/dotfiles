@@ -3,8 +3,9 @@
 alias cat="bat"
 alias ls="exa"
 alias df="duf"
+alias lsusb="lsplug"
 # yay
-alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop"
+alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop && sudo snap refresh"
 alias upcode="yay -S --noconfirm visual-studio-code-bin"
 alias ya='yay -S --noconfirm --nodiffmenu'
 # File Navigation
@@ -14,7 +15,7 @@ alias .....='cd ../../../..'
 alias cddoc="cd ~/Documents"
 alias cdesp="cd ~/Documents/Espressif"
 alias cdesprs="cd ~/Documents/Espressif/esp-rs"
-alias cdespidf="cd ~/Documents/Espressif/esp-idf"
+alias cdespidf="cd ~/Documents/Espressif/espressif"
 alias cdforks="cd ~/Documents/Espressif/forks"
 alias cdtests="cd ~/Documents/Espressif/tests"
 alias cdper="cd ~/Documents/Espressif/personal"
