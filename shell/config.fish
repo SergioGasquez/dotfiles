@@ -50,12 +50,13 @@ alias gswb='git switch -c'
 alias vs="code ."
 alias sandbox="code /home/sergio/Documents/Espressif/sandbox"
 # Rust
+alias c='cargo'
 alias cb='cargo build'
 alias ccl='cargo clean'
+alias ccb = 'cargo clean && cargo build'
+alias cdoc='cargo doc --open'
 alias cesp='cargo espflash'
 alias cf='cargo fmt'
-alias cdoc='cargo doc --open'
-alias c='cargo'
 # Docker
 alias ds='systemctl start docker'
 alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
