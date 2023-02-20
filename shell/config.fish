@@ -5,7 +5,7 @@ alias ls="exa"
 alias df="duf"
 alias lsusb="lsplug"
 # yay
-alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop && sudo snap refresh && cargo install-update -a && rustup update"
+alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop && sudo snap refresh && cargo install-update -a && rustup update && rustup self update"
 alias upcode="yay -S --noconfirm visual-studio-code-bin"
 alias ya='yay -S --noconfirm --nodiffmenu'
 # File Navigation
