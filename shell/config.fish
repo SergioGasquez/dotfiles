@@ -66,11 +66,12 @@ alias cgn='cargo generate --git https://github.com/esp-rs/esp-template'
 alias cei='cargo espflash save-image --release'
 export ESPFLASH_BAUD="921600"
 ## ESP-RS Env
-export LIBCLANG_PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf-clang/esp-15.0.0-20221014-x86_64-unknown-linux-gnu/esp-clang/lib"
-export PATH="/home/sergio/.espressif/tools/xtensa-esp32s2-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s2-elf/bin:$PATH"
-export PATH="/home/sergio/.espressif/tools/xtensa-esp32-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32-elf/bin:$PATH"
-export PATH="/home/sergio/.espressif/tools/xtensa-esp32s3-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s3-elf/bin:$PATH"
-export PATH="/home/sergio/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch5-8_4_0/riscv32-esp-elf/bin:$PATH"
+export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-15.0.0-20221201/esp-clang/lib"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32s2-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s2-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32s3-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s3-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/riscv32-esp-elf/esp-2021r2-patch5-8_4_0/riscv32-esp-elf/bin:$PATH"
+
 ## ESP-IDF source functions
 function release-v4.4
     export IDF_PATH=/home/sergio/.espressif/frameworks/release-v4.4/esp-idf/
