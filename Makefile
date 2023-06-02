@@ -64,11 +64,4 @@ gnome:
 network:
 	@ ln -sf $(DOTFILES)/resolved.conf /etc/resolved.conf
 
-.PHONY: rust
-rust:
-	@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	# Espressif Rust Dependencies
-	@ cargo install cargo-generate cargo-espflash espflas ldproxy
-	@ rustup install nightly
-	@ sudo usermod -a -G uucp $USER
 

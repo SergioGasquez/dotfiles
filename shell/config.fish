@@ -61,17 +61,16 @@ alias cf='cargo fmt'
 alias ds='systemctl start docker'
 alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
 # Esp
-alias cgs='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
-alias cgn='cargo generate --git https://github.com/esp-rs/esp-template'
+alias cgs='cargo generate esp-rs/esp-idf-template cargo'
+alias cgn='cargo generate -a esp-rs/esp-template'
 alias cei='cargo espflash save-image --release'
-export ESPFLASH_BAUD="921600"
 ## ESP-RS Env
-export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-15.0.0-20221201/esp-clang/lib"
-export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32s2-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s2-elf/bin:$PATH"
-export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32s3-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32s3-elf/bin:$PATH"
-export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf/esp-2021r2-patch5-8_4_0/xtensa-esp32-elf/bin:$PATH"
-export PATH="/home/sergio/.rustup/toolchains/esp/riscv32-esp-elf/esp-2021r2-patch5-8_4_0/riscv32-esp-elf/bin:$PATH"
-
+export ESPFLASH_BAUD="921600"
+export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32s2-elf/esp-12.2.0_20230208/xtensa-esp32s2-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin:$PATH"
 ## ESP-IDF source functions
 function release-v4.4
     export IDF_PATH=/home/sergio/.espressif/frameworks/release-v4.4/esp-idf/

@@ -40,6 +40,10 @@
     "markdown.validate.enabled": true,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
+    // MacOs
+    // "terminal.integrated.defaultProfile.linux": "zsh",
+    // "terminal.integrated.fontFamily": "monospace",
+    // Linux
     "terminal.integrated.defaultProfile.linux": "fish",
     "rust-analyzer.checkOnSave.command": "clippy",
     "rust-analyzer.checkOnSave.allTargets": false,
@@ -71,4 +75,6 @@
     },
     "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
     "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
+    "workbench.colorTheme": "Default Dark+",
+    "redhat.telemetry.enabled": false
 }
