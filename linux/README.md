@@ -5,11 +5,13 @@ I use:
   - [Alacritty](https://alacritty.org/) as terminal
   - [Starship](https://starship.rs/) as prompt
   - Fish as shell
+
 ![Terminal](assets/terminal.png)
 
 - IDE:
   - [VsCode Insiders](https://code.visualstudio.com/insiders/) as IDE
   - Terminal is also using Starship and Fish
+
 ![VsCode](assets/vscode.png)
 
 

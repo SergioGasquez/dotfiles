@@ -6,11 +6,13 @@ I use:
   - [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=es-es&gl=es) as terminal
   - [Starship](https://starship.rs/) as prompt
   - Powershell as shell
+
 ![Terminal](assets/terminal.png)
 
 - IDE:
   - [VsCode Insiders](https://code.visualstudio.com/insiders/) as IDE
   - Terminal is also using Starship and Powershell
+
 ![VsCode](assets/vscode.png)
 
 
