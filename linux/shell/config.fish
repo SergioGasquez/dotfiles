@@ -19,6 +19,7 @@ alias cdespidf="cd ~/Documents/Espressif/espressif"
 alias cdforks="cd ~/Documents/Espressif/forks"
 alias cdtests="cd ~/Documents/Espressif/tests"
 alias cdper="cd ~/Documents/Espressif/personal"
+alias cdtp="cd ~/Documents/Espressif/third-parties"
 
 # Git
 alias ga='git add'
@@ -47,7 +48,8 @@ alias grc='git rebase --continue'
 alias gsw='git switch'
 alias gswb='git switch -c'
 # Editor
-alias vs="code ."
+alias vs="code-insiders ."
+alias code="code-insiders"
 alias sandbox="code /home/sergio/Documents/Espressif/sandbox"
 # Rust
 alias c='cargo'
@@ -92,6 +94,5 @@ function v5.1-dev
     export IDF_PATH=/home/sergio/.espressif/frameworks/v5.1-dev/esp-idf/
     . /home/sergio/.espressif/frameworks/v5.1-dev/esp-idf/export.fish
 end
-
 # Starship
 starship init fish | source

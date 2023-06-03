@@ -12,7 +12,6 @@
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "editor.suggestSelection": "first",
     "editor.trimAutoWhitespace": false,
     "editor.rulers": [
         80
@@ -27,7 +26,7 @@
     "git.confirmSync": false,
     "gitlens.hovers.currentLine.over": "line",
     "github.copilot.enable": {
-        "*": false,
+        "*": true,
         "yaml": false,
         "plaintext": false,
         "markdown": false,
@@ -40,21 +39,10 @@
     "markdown.validate.enabled": true,
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
-    // MacOs
-    // "terminal.integrated.defaultProfile.linux": "zsh",
-    // "terminal.integrated.fontFamily": "monospace",
-    // Linux
     "terminal.integrated.defaultProfile.linux": "fish",
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "rust-analyzer.checkOnSave.allTargets": false,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
     "security.workspace.trust.untrustedFiles": "open",
     "window.titleBarStyle": "custom",
-    "[c]": {
-        "editor.defaultFormatter": "ms-vscode.cpptools"
-    },
-    "[cpp]": {
-        "editor.defaultFormatter": "ms-vscode.cpptools"
-    },
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
@@ -76,5 +64,4 @@
     "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
     "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
     "workbench.colorTheme": "Default Dark+",
-    "redhat.telemetry.enabled": false
 }
