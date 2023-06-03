@@ -1,5 +1,9 @@
 # Dotfiles
-Repository storing the dotfiles for my Arch Linux enviroment.
+Repository storing my dotfiles:
+- [`main`](https://github.com/SergioGasquez/dotfiles) branch cotains files for my Arch Linux enviroment.
+- [`mac-os` ](https://github.com/SergioGasquez/dotfiles/tree/mac-os)branch cotains files for my macOs environment.
+- [`windows`](https://github.com/SergioGasquez/dotfiles/tree/windows) branch cotains files for my Windows environment.
+
 ## Makefile
 ### Targets
 * `shell`: Configures Fish
