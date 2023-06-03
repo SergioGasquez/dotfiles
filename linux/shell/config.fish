@@ -6,7 +6,6 @@ alias df="duf"
 alias lsusb="lsplug"
 # yay
 alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop && sudo snap refresh && cargo install-update -a && rustup update && rustup self update"
-alias upcode="yay -S --noconfirm visual-studio-code-bin"
 alias ya='yay -S --noconfirm --nodiffmenu'
 # File Navigation
 alias ...='cd ../..'
@@ -20,7 +19,6 @@ alias cdforks="cd ~/Documents/Espressif/forks"
 alias cdtests="cd ~/Documents/Espressif/tests"
 alias cdper="cd ~/Documents/Espressif/personal"
 alias cdtp="cd ~/Documents/Espressif/third-parties"
-
 # Git
 alias ga='git add'
 alias gaa='git add -A'
@@ -50,9 +48,8 @@ alias gswb='git switch -c'
 # Editor
 alias vs="code-insiders ."
 alias code="code-insiders"
-alias sandbox="code /home/sergio/Documents/Espressif/sandbox"
+alias sandbox="code-insiders /home/sergio/Documents/Espressif/sandbox"
 # Rust
-alias c='cargo'
 alias cb='cargo build'
 alias ccl='cargo clean'
 alias ccb='cargo clean && cargo build'
@@ -62,10 +59,6 @@ alias cf='cargo fmt'
 # Docker
 alias ds='systemctl start docker'
 alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
-# Esp
-alias cgs='cargo generate esp-rs/esp-idf-template cargo'
-alias cgn='cargo generate -a esp-rs/esp-template'
-alias cei='cargo espflash save-image --release'
 ## ESP-RS Env
 export ESPFLASH_BAUD="921600"
 export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
@@ -94,5 +87,6 @@ function v5.1-dev
     export IDF_PATH=/home/sergio/.espressif/frameworks/v5.1-dev/esp-idf/
     . /home/sergio/.espressif/frameworks/v5.1-dev/esp-idf/export.fish
 end
+
 # Starship
 starship init fish | source

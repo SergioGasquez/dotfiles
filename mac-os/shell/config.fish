@@ -3,6 +3,8 @@
 alias cat="bat"
 alias ls="exa"
 alias df="duf"
+# Brew
+alias upup="brew upgrade && cargo install-update -a && rustup update && rustup self update"
 # File Navigation
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -12,7 +14,8 @@ alias cdesp="cd ~/Documents/Espressif"
 alias cdesprs="cd ~/Documents/Espressif/esp-rs"
 alias cdforks="cd ~/Documents/Espressif/forks"
 alias cdtests="cd ~/Documents/Espressif/tests"
-alias cdpersonal="cd ~/Documents/Espressif/personal"
+alias cdper="cd ~/Documents/Espressif/personal"
+alias cdtp="cd ~/Documents/Espressif/third-parties"
 # Git
 alias ga='git add'
 alias gaa='git add -A'
@@ -40,29 +43,26 @@ alias grc='git rebase --continue'
 alias gsw='git switch'
 alias gswb='git switch -c'
 # Editor
-alias vs="code ."
-alias sandbox="code ~/Documents/Espressif/sandbox"
+alias vs="code-insiders ."
+alias code="code-insiders"
+alias sandbox="code-insiders ~/Documents/Espressif/sandbox"
 # Rust
 alias cb='cargo build'
 alias ccl='cargo clean'
+alias ccb='cargo clean && cargo build'
+alias cdoc='cargo doc --open'
 alias cesp='cargo espflash'
 alias cf='cargo fmt'
-alias cdoc='cargo doc --open'
-alias c='cargo'
 # Docker
 alias ds='systemctl start docker'
 alias dp='docker system prune -a'
-# Esp
-alias cg='cargo generate --git https://github.com/esp-rs/esp-idf-template cargo'
-alias cei='cargo espflash save-image --release'
-alias cef='cargo espflash flash --release --monitor'
 ## ESP-RS
+export ESPFLASH_BAUD="921600"
 export LIBCLANG_PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
-export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:$PATH"
 export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32s2-elf/esp-12.2.0_20230208/xtensa-esp32s2-elf/bin:$PATH"
 export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin:$PATH"
+export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:$PATH"
 export PATH="/Users/sergio/.rustup/toolchains/esp/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin:$PATH"
-export ESPFLASH_BAUD="921600"
 ## ESP-IDF
 function release-v4.4
     export IDF_PATH=/Users/sergio/.espressif/frameworks/release-v4.4/esp-idf/

@@ -22,13 +22,13 @@ git:
 install-packages:
 	@ yay --needed -S - < packages
 
-.PHONY: remove-packages
-remove-packages:
-	@ yay --noconfirm -R - < pacakages-to-delete
-
 .PHONY: network
 network:
 	@ ln -sf $(DOTFILES)/resolved.conf /etc/resolved.conf
+
+.PHONY: remove-packages
+remove-packages:
+	@ yay --noconfirm -R - < pacakages-to-delete
 
 .PHONY: rust
 rust:

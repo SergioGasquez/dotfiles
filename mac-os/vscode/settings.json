@@ -1,0 +1,68 @@
+// .config/Code/User/settings.json
+{
+    "conventionalCommits.emojiFormat": "emoji",
+    "conventionalCommits.promptScopes": false,
+    "conventionalCommits.promptFooter": false,
+    "conventionalCommits.promptBody": false,
+    "debug.allowBreakpointsEverywhere": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.suggestSelection": "first",
+    "editor.trimAutoWhitespace": false,
+    "editor.rulers": [
+        80
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "files.associations": {
+        "*.toml": "toml"
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "cpp": true,
+        "python": true,
+        "rust": true,
+        "c": true
+    },
+    "githubPullRequests.pullBranch": "never",
+    "markdown.validate.enabled": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "security.workspace.trust.untrustedFiles": "open",
+    "window.titleBarStyle": "custom",
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[xml]": {
+        "editor.autoClosingBrackets": "never"
+    },
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
+    "workbench.colorTheme": "Default Dark+",
+}
