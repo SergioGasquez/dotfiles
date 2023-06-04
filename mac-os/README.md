@@ -3,7 +3,6 @@
 I use:
 - Terminal:
   - [Warp](https://www.warp.dev/) as terminal
-  - [Starship](https://starship.rs/) as prompt
   - Fish as shell
 
 ![Terminal](assets/terminal.png)
