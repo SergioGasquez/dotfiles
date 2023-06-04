@@ -8,7 +8,7 @@ help:
 	@ echo -e "Targets:"
 	@ echo -e "  git			    	  Configures git"
 	@ echo -e "  install-packages    	  Installs all the packages"
-	@ echo -e "  rust    	  			  Configures Rust aliases"
+	@ echo -e "  rust    	  			  Configures Rust aliases and installs crates"
 	@ echo -e "  shell    	  			  Configures Fish"
 	@ echo -e "  vscode    	  			  Configures VS Code settings"
 	@ echo -e "  terminal    	  		  Configures Alacritty"
@@ -26,6 +26,7 @@ install-packages:
 rust:
 	@ touch $(HOME)/.cargo/config.toml
 	@ ln -sf $(DOTFILES)/../common/rust/config.toml $(HOME)/.cargo/config.toml
+	@ cargo install < $(DOTFILES)/../common/rust/crates
 
 .PHONY: shell
 shell:
