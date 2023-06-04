@@ -18,8 +18,7 @@ git:
 
 .PHONY: install-packages
 install-packages:
-	@ brew install < packages
-	@ brew install --cask < packages-casks
+	@ cat packages | xargs -I {} brew install {}
 
 .PHONY: rust
 rust:
