@@ -9,4 +9,4 @@ Cozy repository where I store my dotfiles for my different Operating Systems
 
 ## [Windows](windows)
 
-![Windows](assets/Windows.png)
+![Windows](assets/windows.png)
