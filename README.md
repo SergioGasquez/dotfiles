@@ -1,5 +1,8 @@
 # Dotfiles
-Cozy repository where I store my dotfiles for my different Operating Systems
+Cozy repository where I store my dotfiles:
+- [Linux (Arch Linux)](linux)
+- [macOS](mac-os)
+- [Windows](windows)
 
 ## [Linux (Arch Linux)](linux)
 
