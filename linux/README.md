@@ -14,7 +14,6 @@ I use:
 
 ![VsCode](assets/vscode.png)
 
-
 ## Makefile
 ### Targets
 * `git`: Configures git
