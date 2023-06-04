@@ -1,4 +1,4 @@
-# Linux
+# Linux (Arch Linux)
 
 I use:
 - Terminal:

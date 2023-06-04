@@ -5,6 +5,8 @@ Cozy repository where I store my dotfiles for my different Operating Systems
 
 ## [macOS](mac-os)
 
-![macOs](assets/mac-os.png)
+![macOS](assets/mac-os.png)
 
 ## [Windows](windows)
+
+![Windows](assets/Windows.png)

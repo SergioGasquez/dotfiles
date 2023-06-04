@@ -1,4 +1,4 @@
-# macOs
+# macOS
 
 I use:
 - Terminal:
