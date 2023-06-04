@@ -15,7 +15,6 @@ I use:
 
 ![VsCode](assets/vscode.png)
 
-
 ## Starship
 1. Install `winget`
 2. Install Starship
@@ -29,16 +28,25 @@ I use:
 
 ## Rust
 1. [Install Rust](https://www.rust-lang.org/tools/install)
-2. Create symbolic link for Rust config file (Use privileged terminal):
+2. Create symbolic link for Cargo config file (Use privileged terminal):
     ```powershell
-    New-Item -ItemType SymbolicLink -Path .\rust\config.toml -Target  C:\Users\sergi\.cargo\config.toml
+    New-Item -ItemType SymbolicLink -Path .\..\common\rust\config.toml -Target  C:\Users\sergi\.cargo\config.toml
     ```
 3. Install useful crates:
     ```powershell
-    cargo install espup cargo-espflash espflash cargo-generate cargo-update cargo-sort cargo-udeps
+    Get-Content -Path ".\common\rust\crates" | ForEach-Object { Invoke-Expression "cargo install $_" }
     ```
 
 ## Git
 1. [Install Git](https://git-scm.com/download/win)
-2. Copy the content of `.gitconfig` into C:\Users\sergi\.gitconfig
-    > For some reason we cant create a symbolic link with files starting with `.` in Windows
+2. Create symbolic link for Git config file (Use privileged terminal):
+    ```powershell
+    New-Item -ItemType SymbolicLink -Path .\..\common\gitconfig -Target  C:\Users\sergi\.gitconfig
+    ```
+
+## VsCode
+1. Create symbolic link for VsCode config files (Use privileged terminal):
+    ```powershell
+    New-Item -ItemType SymbolicLink -Path .\vscode\keybindings.json -Target  'C:\Users\sergi\AppData\Roaming\Code - Insiders\User\profiles\372b37e5\keybindings.json'
+    New-Item -ItemType SymbolicLink -Path .\vscode\settings.json -Target  'C:\Users\sergi\AppData\Roaming\Code - Insiders\User\profiles\372b37e5\settings.json'
+    ```

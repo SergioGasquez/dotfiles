@@ -21,6 +21,6 @@ I use:
 * `install-packages`: Installs all the packages
 * `network`: Configures Google DNS
 * `remove-packages`: Removes unnecesary packages installed with gnome
-* `rust`: Configures Rust aliases
+* `rust`: Configures Rust aliases and installs crates
 * `shell`: Configures Fish
 * `terminal`: Configures Alacritty
