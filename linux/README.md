@@ -24,3 +24,4 @@ I use:
 * `rust`: Configures Rust aliases and installs crates
 * `shell`: Configures Fish
 * `terminal`: Configures Alacritty
+* `vscode`: Configures VS Code settings

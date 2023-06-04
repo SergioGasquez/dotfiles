@@ -13,6 +13,7 @@ help:
 	@ echo -e "  rust    	  			  Configures Rust aliases and installs crates"
 	@ echo -e "  shell    	  			  Configures Fish"
 	@ echo -e "  terminal    	  		  Configures Alacritty"
+	@ echo -e "  vscode    	  			  Configures VS Code settings"
 
 .PHONY: git
 git:
@@ -48,3 +49,9 @@ shell:
 terminal:
 	@ mkdir -p "$(HOME)/.config/alacritty"
 	@ ln -sf $(DOTFILES)/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+
+.PHONY: vscode
+vscode:
+	@ mkdir -p "$(HOME)/.config/Code/User/settings.json"
+	@ ln -sf "$(DOTFILES)/vscode/settings.json" "$(HOME)/.config/Code - Insiders/User/settings.json"
+	@ ln -sf "$(DOTFILES)/vscode/keybindings.json" "$(HOME)/.config/Code - Insiders/User/keybindings.json"
