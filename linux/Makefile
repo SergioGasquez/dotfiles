@@ -10,7 +10,7 @@ help:
 	@ echo -e "  install-packages    	  Installs all the packages"
 	@ echo -e "  network			      Configures Google DNS"
 	@ echo -e "  remove-packages    	  Removes unnecesary packages installed with gnome"
-	@ echo -e "  rust    	  			  Configures Rust aliases"
+	@ echo -e "  rust    	  			  Configures Rust aliases and installs crates"
 	@ echo -e "  shell    	  			  Configures Fish"
 	@ echo -e "  terminal    	  		  Configures Alacritty"
 
@@ -34,6 +34,7 @@ remove-packages:
 rust:
 	@ touch $(HOME)/.cargo/config.toml
 	@ ln -sf $(DOTFILES)/../common/rust/config.toml $(HOME)/.cargo/config.toml
+	@ cargo install < $(DOTFILES)/../common/rust/crates
 
 .PHONY: shell
 shell:
