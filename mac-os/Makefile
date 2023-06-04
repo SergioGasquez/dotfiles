@@ -26,7 +26,7 @@ install-packages:
 rust:
 	@ touch $(HOME)/.cargo/config.toml
 	@ ln -sf $(DOTFILES)/../common/rust/config.toml $(HOME)/.cargo/config.toml
-	@ cargo install < $(DOTFILES)/../common/rust/crates
+	@ cat ../common/rust/crates | xargs -I {} cargo install {}
 
 .PHONY: shell
 shell:
