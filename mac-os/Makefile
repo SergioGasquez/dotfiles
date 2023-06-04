@@ -38,4 +38,5 @@ shell:
 .PHONY: vscode
 vscode:
 	@ mkdir -p "$(HOME)/.config/Code/User/settings.json"
-	@ ln -sf $(DOTFILES)/vscode/settings.json $(HOME)/.config/Code/User/settings.json
+	@ ln -sf "$(DOTFILES)/vscode/settings.json" "$(HOME)/Library/Application Support/Code - Insiders/User/profiles/642c7b44/settings.json"
+	@ ln -sf "$(DOTFILES)/vscode/keybindings.json" "$(HOME)/Library/Application Support/Code - Insiders/User/profiles/642c7b44/keybindings.json"
