@@ -6,6 +6,7 @@ email = sergio.gasquez@gmail.com
 editor = \"C:\\Users\\sergi\\AppData\\Local\\Programs\\Microsoft VS Code Insiders\\bin\\code-insiders\" --wait
 [alias]
 a = add --all
+ad = !git commit --amend --no-edit && git push --force
 b = branch
 o = checkout
 c = clone --recurse-submodules
