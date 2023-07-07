@@ -4,6 +4,9 @@
     "conventionalCommits.promptScopes": false,
     "conventionalCommits.promptFooter": false,
     "conventionalCommits.promptBody": false,
+    "conventionalCommits.gitmoji": false,
+    "crates.errorDecorator": "❗️",
+    "crates.localCargoIndexHash": "index.crates.io-6f17d22bba15001f",
     "debug.allowBreakpointsEverywhere": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.inlineSuggest.enabled": true,
@@ -64,5 +67,5 @@
     },
     "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
     "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "Default Dark+"
 }

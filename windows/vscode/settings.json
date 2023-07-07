@@ -3,6 +3,9 @@
     "conventionalCommits.promptScopes": false,
     "conventionalCommits.promptFooter": false,
     "conventionalCommits.promptBody": false,
+    "conventionalCommits.gitmoji": false,
+    "crates.errorDecorator": "❗️",
+    "crates.localCargoIndexHash": "index.crates.io-6f17d22bba15001f",
     "debug.allowBreakpointsEverywhere": true,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.fontFamily": "Consolas, 'Courier New', monospace",
@@ -10,11 +13,11 @@
     "editor.formatOnType": true,
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true,
     "editor.trimAutoWhitespace": false,
     "editor.rulers": [
         80
     ],
-    "git.allowForcePush": true,
     "[c]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
     },
@@ -43,6 +46,7 @@
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
+    "git.allowForcePush": true,
     "git.confirmSync": false,
     "gitlens.hovers.currentLine.over": "line",
     "github.copilot.enable": {
@@ -83,6 +87,5 @@
             "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
         }
     },
-    "workbench.colorTheme": "Default Dark+",
-    "editor.inlineSuggest.enabled": true,
+    "workbench.colorTheme": "Default Dark+"
 }
