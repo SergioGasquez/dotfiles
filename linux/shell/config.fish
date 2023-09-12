@@ -1,7 +1,7 @@
 # ~/.config/fish/config.fish
 # Modern Unix Command
 alias cat="bat"
-alias ls="exa"
+alias ls="eza"
 alias df="duf"
 alias lsusb="lsplug"
 # yay

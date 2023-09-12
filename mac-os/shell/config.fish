@@ -1,7 +1,7 @@
 # ~/.config/fish/config.fish
 # Modern Unix Command
 alias cat="bat"
-alias ls="exa"
+alias ls="eza"
 alias df="duf"
 # Brew
 alias upup="brew upgrade && cargo install-update -a && rustup update && rustup self update"
