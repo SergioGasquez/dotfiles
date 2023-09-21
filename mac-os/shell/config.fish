@@ -3,6 +3,7 @@
 alias cat="bat"
 alias ls="eza"
 alias df="duf"
+alias lsusb="cyme"
 # Brew
 alias upup="brew upgrade && cargo install-update -a && rustup update && rustup self update"
 # File Navigation

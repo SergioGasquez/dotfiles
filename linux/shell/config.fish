@@ -3,7 +3,7 @@
 alias cat="bat"
 alias ls="eza"
 alias df="duf"
-alias lsusb="lsplug"
+alias lsusb="cyme"
 # yay
 alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop && sudo snap refresh && cargo install-update -a && rustup update && rustup self update"
 alias ya='yay -S --noconfirm --nodiffmenu'
