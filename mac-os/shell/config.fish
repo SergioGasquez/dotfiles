@@ -59,10 +59,8 @@ alias dp='docker system prune -a'
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 export LIBCLANG_PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
-export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32s2-elf/esp-12.2.0_20230208/xtensa-esp32s2-elf/bin:$PATH"
-export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin:$PATH"
-export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf/esp-12.2.0_20230208/xtensa-esp32-elf/bin:$PATH"
-export PATH="/Users/sergio/.rustup/toolchains/esp/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin:$PATH"
+export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin:$PATH"
+export PATH="/Users/sergio/.rustup/toolchains/esp/riscv32-esp-elf/esp-13.2.0_20230928/riscv32-esp-elf/bin:$PATH"
 ## ESP-IDF
 function release-v4.4
     export IDF_PATH=/Users/sergio/.espressif/frameworks/release-v4.4/esp-idf/
