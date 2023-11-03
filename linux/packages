@@ -22,6 +22,7 @@ networkmanager-openvpn
 noto-fonts-emoji
 obs-studio
 openvpn
+paru
 podman
 pulseview
 python
@@ -39,6 +40,7 @@ ttf-hack-nerd
 ttf-liberation
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-common
-visual-studio-code-insiders-bin
+vale
+visual-studio-code-bin
 wget
 wireshark-qt
