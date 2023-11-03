@@ -46,9 +46,8 @@ alias grc='git rebase --continue'
 alias gsw='git switch'
 alias gswb='git switch -c'
 # Editor
-alias vs="code-insiders ."
-alias code="code-insiders"
-alias sandbox="code-insiders /home/sergio/Documents/Espressif/sandbox"
+alias vs="code ."
+alias sandbox="code /home/sergio/Documents/Espressif/sandbox"
 # Rust
 alias cb='cargo build'
 alias ccl='cargo clean'

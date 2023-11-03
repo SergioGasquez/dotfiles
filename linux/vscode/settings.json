@@ -2,13 +2,8 @@
 {
     "conventionalCommits.emojiFormat": "emoji",
     "conventionalCommits.promptScopes": false,
-    "conventionalCommits.promptFooter": false,
     "conventionalCommits.promptBody": false,
-    "conventionalCommits.gitmoji": false,
-    "crates.errorDecorator": "❗️",
-    "crates.localCargoIndexHash": "index.crates.io-6f17d22bba15001f",
     "debug.allowBreakpointsEverywhere": true,
-    "diffEditor.ignoreTrimWhitespace": false,
     "editor.inlineSuggest.enabled": true,
     "editor.fontFamily": "Consolas, 'Courier New', monospace",
     "editor.formatOnSaveMode": "file",
@@ -26,7 +21,6 @@
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
-    "git.allowForcePush": true,
     "git.confirmSync": false,
     "gitlens.hovers.currentLine.over": "line",
     "github.copilot.enable": {
@@ -65,7 +59,32 @@
     "[xml]": {
         "editor.autoClosingBrackets": "never"
     },
+    "[toml]": {
+        "editor.formatOnSave": false
+    },
     "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
     "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
-    "workbench.colorTheme": "Default Dark+"
+    "rust-analyzer.cargo.buildScripts.enable": true,
+    "rust-analyzer.check.allTargets": false,
+    "rust-analyzer.imports.granularity.enforce": true,
+    "rust-analyzer.imports.granularity.group": "crate",
+    "rust-analyzer.procMacro.attributes.enable": true,
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "workbench.colorTheme": "Default Dark+",
+    "git.allowForcePush": true,
+    "conventionalCommits.promptFooter": false,
+    "conventionalCommits.gitmoji": false,
+    "crates.errorDecorator": "❗️",
+    "evenBetterToml.formatter.alignEntries": true,
+    "evenBetterToml.formatter.alignComments": true,
+    "evenBetterToml.formatter.arrayAutoCollapse": true,
+    "evenBetterToml.formatter.allowedBlankLines": 1,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "grammarly.files.include": [
+        "**/*.md",
+        "**/*.txt"
+    ],
+    "vale.doNotShowWarningForFileToBeSavedBeforeLinting": true,
+    "rust-analyzer.check.command": "clippy",
 }
