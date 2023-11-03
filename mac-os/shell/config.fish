@@ -48,6 +48,7 @@ alias vs="code-insiders ."
 alias code="code-insiders"
 alias sandbox="code-insiders ~/Documents/Espressif/sandbox"
 # Rust
+alias c='cargo'
 alias cb='cargo build'
 alias ccl='cargo clean'
 alias ccb='cargo clean && cargo build'

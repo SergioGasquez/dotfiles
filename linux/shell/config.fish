@@ -49,6 +49,7 @@ alias gswb='git switch -c'
 alias vs="code ."
 alias sandbox="code /home/sergio/Documents/Espressif/sandbox"
 # Rust
+alias c='cargo'
 alias cb='cargo build'
 alias ccl='cargo clean'
 alias ccb='cargo clean && cargo build'
