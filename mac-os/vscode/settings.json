@@ -1,14 +1,18 @@
 // .config/Code/User/settings.json
 {
+    // Conventional Commits
     "conventionalCommits.emojiFormat": "emoji",
     "conventionalCommits.promptScopes": false,
     "conventionalCommits.promptFooter": false,
     "conventionalCommits.promptBody": false,
     "conventionalCommits.gitmoji": false,
+    // Crates
     "crates.errorDecorator": "❗️",
-    "crates.localCargoIndexHash": "index.crates.io-6f17d22bba15001f",
+    // Debug
     "debug.allowBreakpointsEverywhere": true,
+    // Diff Editor
     "diffEditor.ignoreTrimWhitespace": false,
+    // Editor
     "editor.inlineSuggest.enabled": true,
     "editor.fontFamily": "Consolas, 'Courier New', monospace",
     "editor.formatOnSaveMode": "file",
@@ -20,12 +24,20 @@
     "editor.rulers": [
         80
     ],
+    // Even Bette TOML
+    "evenBetterToml.formatter.alignEntries": true,
+    "evenBetterToml.formatter.alignComments": true,
+    "evenBetterToml.formatter.arrayAutoCollapse": true,
+    "evenBetterToml.formatter.allowedBlankLines": 1,
+    // Explorer
     "explorer.confirmDragAndDrop": false,
+    // Files
     "files.associations": {
         "*.toml": "toml"
     },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
+    // Git / GitLens / GitHub
     "git.allowForcePush": true,
     "git.autofetch": true,
     "git.confirmSync": false,
@@ -41,13 +53,37 @@
         "c": true
     },
     "githubPullRequests.pullBranch": "never",
+    // Grammarly
+    "grammarly.files.include": [
+        "**/*.md",
+        "**/*.txt"
+    ],
+    // Markdown
     "markdown.validate.enabled": true,
+    // Rust Analyzer
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
+    "rust-analyzer.cargo.buildScripts.enable": true,
+    "rust-analyzer.check.allTargets": false,
+    "rust-analyzer.imports.granularity.enforce": true,
+    "rust-analyzer.imports.granularity.group": "crate",
+    "rust-analyzer.procMacro.attributes.enable": true,
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "rust-analyzer.check.command": "clippy",
+    // Terminal
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.fontFamily": "Hack Nerd Font",
+    // - Linux
+    "terminal.integrated.defaultProfile.linux": "fish",
+    // - MacOS
+    "terminal.integrated.defaultProfile.osx": "fish",
+    // Other
     "security.workspace.trust.untrustedFiles": "open",
     "window.titleBarStyle": "custom",
+    "workbench.colorTheme": "Default Dark+",
+    // Language Specific
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
@@ -66,7 +102,7 @@
     "[xml]": {
         "editor.autoClosingBrackets": "never"
     },
-    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
-    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
-    "workbench.colorTheme": "Default Dark+",
+    "[toml]": {
+        "editor.formatOnSave": false
+    },
 }
