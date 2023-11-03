@@ -18,7 +18,7 @@ I use:
 * `git`: Configures git
 * `install-packages`: Installs all the packages
 * `network`: Configures Google DNS
-* `remove-packages`: Removes unnecesary packages installed with gnome
+* `remove-packages`: Removes unnecessary packages installed with gnome
 * `rust`: Configures Rust aliases and installs crates
 * `shell`: Configures Fish
 * `vscode`: Configures VS Code settings
