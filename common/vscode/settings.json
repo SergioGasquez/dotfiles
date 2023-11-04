@@ -80,7 +80,7 @@
     // - MacOS
     "terminal.integrated.defaultProfile.osx": "fish",
     // - Windows
-    "terminal.integrated.defaultProfile.windows": "powershell",
+    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
     "terminal.integrated.profiles.windows": {
         "PowerShell": {
             "source": "PowerShell",
