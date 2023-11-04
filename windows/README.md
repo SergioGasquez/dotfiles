@@ -15,13 +15,15 @@ I use:
 
 ![VsCode](assets/vscode.png)
 
+## Winget
+1. [Install Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
+
 ## Starship
-1. Install `winget`
-2. Install Starship
+1. Install Starship
     ```powershell
     winget install --id Starship.Starship
     ```
-3. Create symbolic link for $PROFILE (Use privileged terminal)
+2. Create symbolic link for $PROFILE (Use privileged terminal)
     ```powershell
     New-Item -ItemType SymbolicLink -Path .\shell\Microsoft.PowerShell_profile.ps1 -Target  C:\Users\sergi\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
     ```
@@ -38,7 +40,10 @@ I use:
     ```
 
 ## Git
-1. [Install Git](https://git-scm.com/download/win)
+1. [Install Git](https://git-scm.com/download/win) or:
+    ```powershell
+    winget install -e --id Git.Git
+    ```
 2. Create symbolic link for Git config file (Use privileged terminal):
     ```powershell
     New-Item -ItemType SymbolicLink -Path .\..\common\gitconfig -Target  C:\Users\sergi\.gitconfig
@@ -50,3 +55,16 @@ I use:
     New-Item -ItemType SymbolicLink -Path .\vscode\keybindings.json -Target  'C:\Users\sergi\AppData\Roaming\Code - Insiders\User\profiles\372b37e5\keybindings.json'
     New-Item -ItemType SymbolicLink -Path .\vscode\settings.json -Target  'C:\Users\sergi\AppData\Roaming\Code - Insiders\User\profiles\372b37e5\settings.json'
     ```
+
+## Python
+1. [Install Python](https://www.python.org/downloads/windows/) or:
+    ```powershell
+    winget install -e --id Python.Python.3.10
+    ```
+
+## [PowerToys](https://github.com/microsoft/PowerToys)
+1. Install from [release](https://github.com/microsoft/PowerToys/releases) or:
+    ```powershell
+    winget instal Microsoft.PowerToys -s winget
+    ```
+2. Disable `Win+Space` shorcut
