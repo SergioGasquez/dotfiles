@@ -12,27 +12,6 @@ export ESPFLASH_BAUD="921600"
 export LIBCLANG_PATH="$HOME/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
 export PATH="$HOME/.rustup/toolchains/esp/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin:$PATH"
 export PATH="$HOME/.rustup/toolchains/esp/riscv32-esp-elf/esp-13.2.0_20230928/riscv32-esp-elf/bin:$PATH"
-## ESP-IDF source functions
-function release-v4.4
-    export IDF_PATH=$HOME/.espressif/frameworks/release-v4.4/esp-idf/
-    . $HOME.espressif/frameworks/release-v4.4/esp-idf/export.fish
-end
-function master
-    export IDF_PATH=$HOME/.espressif/frameworks/master/esp-idf/
-    . $HOME/.espressif/frameworks/master/esp-idf/export.fish
-end
-function v4.4.1
-    export IDF_PATH=$HOME/.espressif/frameworks/v4.4.1/esp-idf/
-    . $HOME/.espressif/frameworks/v4.4.1/esp-idf/export.fish
-end
-function v5.0-dev
-    export IDF_PATH=$HOME/.espressif/frameworks/v5.0-dev/esp-idf/
-    . $HOME/.espressif/frameworks/v5.0-dev/esp-idf/export.fish
-end
-function v5.1-dev
-    export IDF_PATH=$HOME/.espressif/frameworks/v5.1-dev/esp-idf/
-    . $HOME/.espressif/frameworks/v5.1-dev/esp-idf/export.fish
-end
 
 # Starship
 starship init fish | source
