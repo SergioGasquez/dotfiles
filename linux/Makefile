@@ -18,7 +18,7 @@ help:
 
 .PHONY: git
 git:
-	@ ln -sf $(DOTFILES)/common/gitconfig $(HOME)/.gitconfig
+	@ ln $(DOTFILES)/common/gitconfig $(HOME)/.gitconfig
 
 .PHONY: install-packages
 install-packages:
@@ -26,7 +26,7 @@ install-packages:
 
 .PHONY: network
 network:
-	@ ln -sf $(LINUX_DOTFILES)/resolved.conf /etc/resolved.conf
+	@ ln $(LINUX_DOTFILES)/resolved.conf /etc/resolved.conf
 
 .PHONY: remove-packages
 remove-packages:
@@ -35,26 +35,24 @@ remove-packages:
 .PHONY: rust
 rust:
 	@ touch $(HOME)/.cargo/config.toml
-	@ ln -sf $(DOTFILES)/common/rust/config.toml $(HOME)/.cargo/config.toml
+	@ ln $(DOTFILES)/common/rust/config.toml $(HOME)/.cargo/config.toml
 	@ cat ../common/rust/crates | xargs -I {} cargo install {}
 
 .PHONY: shell
 shell:
 	@ mkdir -p $(HOME)/.config/fish
-	@ touch $(HOME)/.config/fish/config.fish
-	@ touch $(HOME)/.config/fish/aliases.fish
-	@ ln -sf $(DOTFILES)/common/shell/config.fish $(HOME)/.config/fish/config.fish
-	@ ln -sf $(DOTFILES)/common/shell/aliases.fish $(HOME)/.config/fish/aliases.fish
+	@ ln $(DOTFILES)/common/shell/aliases.fish $(HOME)/.config/fish/aliases.fish
+	@ ln $(DOTFILES)/common/shell/config.fish $(HOME)/.config/fish/config.fish
 	@ mkdir -p $(HOME)/.config/fish/functions
-	@ ln -sf $(DOTFILES)/common/shell/fish_greeting.fish $(HOME)/.config/fish/functions/fish_greeting.fish
+	@ ln $(DOTFILES)/common/shell/fish_greeting.fish $(HOME)/.config/fish/functions/fish_greeting.fish
 
 .PHONY: terminal
 terminal:
 	@ mkdir -p "$(HOME)/.config/alacritty"
-	@ ln -sf $(LINUX_DOTFILES)/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+	@ ln $(LINUX_DOTFILES)/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
 
 .PHONY: vscode
 vscode:
-	@ mkdir -p "$(HOME)/.config/Code/User/settings.json"
-	@ ln -sf "$(DOTFILES)/common/vscode/settings.json" "$(HOME)/.config/Code - Insiders/User/settings.json"
-	@ ln -sf "$(DOTFILES)/common/vscode/keybindings.json" "$(HOME)/.config/Code - Insiders/User/keybindings.json"
+	@ mkdir -p "$(HOME)/.config/Code/User/"
+	@ ln "$(DOTFILES)/common/vscode/settings.json" "$(HOME)/.config/Code/User/settings.json"
+	@ ln "$(DOTFILES)/common/vscode/keybindings.json" "$(HOME)/.config/Code/User/keybindings.json"
