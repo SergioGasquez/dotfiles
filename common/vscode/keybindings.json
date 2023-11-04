@@ -4,12 +4,12 @@
     {
         "key": "ctrl+d",
         "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly && isMac"
+        "when": "editorTextFocus && !editorReadonly"
     },
     {
         "key": "cmd+d",
         "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly && !isMac"
+        "when": "editorTextFocus && !editorReadonly"
     },
     // Terminal
     {
