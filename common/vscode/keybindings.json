@@ -13,14 +13,22 @@
     },
     // Terminal
     {
-        "key": "ctrl+shift+`",
-        "command": "-workbench.action.terminal.new",
+        "key": "ctrl+shift+space",
+        "command": "workbench.action.terminal.new",
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
     },
     {
-        "key": "shift+cmd+`",
+        "key": "shift+cmd+space",
         "command": "workbench.action.terminal.new",
         "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "workbench.action.terminal.focusAtIndex1"
+    },
+    {
+        "key": "cmd+space",
+        "command": "workbench.action.terminal.focusAtIndex1"
     },
     {
         "key": "ctrl+w",
@@ -31,6 +39,16 @@
         "command": "workbench.action.terminal.kill"
     },
     // Cursor
+    {
+        "key": "shift+ctrl+up",
+        "command": "editor.action.insertCursorAbove",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+ctrl+down",
+        "command": "editor.action.insertCursorBelow",
+        "when": "editorTextFocus"
+    },
     {
         "key": "shift+cmd+up",
         "command": "editor.action.insertCursorAbove",
