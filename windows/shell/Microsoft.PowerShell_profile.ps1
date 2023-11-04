@@ -16,25 +16,25 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
 
 # Aliases
 ## File Navigation
-Function Back {Set-Location -Path .\..}
+Function Back { Set-Location -Path .\.. }
 Set-Alias -Name .. -Value Back
-Function BackBack {Set-Location -Path .\..\..}
+Function BackBack { Set-Location -Path .\..\.. }
 Set-Alias -Name ... -Value BackBack
-Function BackBack {Set-Location -Path .\..\..\..}
+Function BackBack { Set-Location -Path .\..\..\.. }
 Set-Alias -Name .... -Value BackBack
-Function Documents {Set-Location -Path C:\Users\sergi\Documents}
+Function Documents { Set-Location -Path C:\Users\sergi\Documents }
 Set-Alias -Name cddoc -Value Documents
-Function Espressif {Set-Location -Path C:\Users\sergi\Documents\Espressif}
+Function Espressif { Set-Location -Path C:\Users\sergi\Documents\Espressif }
 Set-Alias -Name cdesp -Value Espressif
-Function EspRs {Set-Location -Path C:\Users\sergi\Documents\Espressif\esp-rs}
+Function EspRs { Set-Location -Path C:\Users\sergi\Documents\Espressif\esp-rs }
 Set-Alias -Name cdesprs -Value EspRs
-Function Forks {Set-Location -Path C:\Users\sergi\Documents\Espressif\forks}
+Function Forks { Set-Location -Path C:\Users\sergi\Documents\Espressif\forks }
 Set-Alias -Name cdforks -Value Forks
-Function Tests {Set-Location -Path C:\Users\sergi\Documents\Espressif\tests}
+Function Tests { Set-Location -Path C:\Users\sergi\Documents\Espressif\tests }
 Set-Alias -Name cdtests -Value Tests
-Function Personal {Set-Location -Path C:\Users\sergi\Documents\Espressif\personal}
+Function Personal { Set-Location -Path C:\Users\sergi\Documents\Espressif\personal }
 Set-Alias -Name cdper -Value Personal
-Function ThirdParty {Set-Location -Path C:\Users\sergi\Documents\Espressif\third-party}
+Function ThirdParty { Set-Location -Path C:\Users\sergi\Documents\Espressif\third-party }
 Set-Alias -Name cdtp -Value ThirdParty
 ## Editor
 Set-Alias -Name code -Value code-insiders
