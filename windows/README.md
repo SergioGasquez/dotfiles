@@ -41,7 +41,7 @@ Dotfiles for Windows enviroment.
     ```
 3. Install useful crates:
     ```powershell
-    Get-Content -Path "..\common\rust\crates" | ForEach-Object { Write-Host "- Installing $_"; Invoke-Expression "cargo install $_" }
+    Get-Content -Path "..\common\rust\crates" | ForEach-Object { $crate, $arguments = $_.split(" ", 2); cargo install $crate $arguments }
     ```
 
 ## Git
