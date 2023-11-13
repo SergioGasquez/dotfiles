@@ -41,6 +41,9 @@ alias gre='git rebase --edit-todo'
 alias grc='git rebase --continue'
 alias gsw='git switch'
 alias gswb='git switch -c'
+# GitHub CLI
+alias ghpr='gh pr --web'
+alias ghcpr='gh pr create --web'
 # Rust
 alias c='cargo'
 alias cb='cargo build'
