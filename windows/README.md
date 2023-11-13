@@ -20,7 +20,7 @@ I use:
     > **Note**
     > [Winget package registry browser](https://winget.run/)
 1. Install software:
-   ````powershell
+   ```powershell
    Get-Content ".\packages" | ForEach-Object {  Write-Host "- Installing $_"; winget install --accept-package-agreements --accept-source-agreements $_ }
    ```
 
