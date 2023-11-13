@@ -1,7 +1,6 @@
 # Windows
-Dotfiles for my Windows enviroment.
+Dotfiles for Windows enviroment.
 
-I use:
 - Terminal:
   - [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=es-es&gl=es) as terminal
   - [Starship](https://starship.rs/) as prompt
@@ -10,10 +9,10 @@ I use:
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [VsCode Insiders](https://code.visualstudio.com/insiders/) as IDE
+  - [VS Code Insiders](https://code.visualstudio.com/insiders/) as IDE
   - Terminal is also using Starship and Powershell
 
-![VsCode](assets/vscode.png)
+![VS Code](assets/vscode.png)
 
 ## Winget
 1. [Install Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
@@ -51,14 +50,14 @@ I use:
     $sourceFile = "..\common\gitconfig"; $destinationFile = "C:\Users\sergi\.gitconfig"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
 
-## VsCode
-1. Create symbolic link for VsCode config files (Use privileged terminal):
+## VS Code
+1. Create symbolic link for VS Code config files (Use privileged terminal):
     ```powershell
     $sourceFile = "..\common\vscode\keybindings.json"; $destinationFile = "C:\Users\sergi\AppData\Roaming\Code\User\keybindings.json"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     $sourceFile = "..\common\vscode\settings.json"; $destinationFile = "C:\Users\sergi\AppData\Roaming\Code\User\settings.json"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
     > **Note**
-    > This is step is not really required since loging into VsCode syncs keybingins and settings.
+    > This is step is not required since loging into VS Code syncs keybingins and settings.
 
 
 ## [PowerToys](https://github.com/microsoft/PowerToys)

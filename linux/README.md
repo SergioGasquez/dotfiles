@@ -1,6 +1,6 @@
 # Linux (Arch Linux)
+Dotfiles for Arch Linux enviroment.
 
-I use:
 - Terminal:
   - [Alacritty](https://alacritty.org/) as terminal
   - [Starship](https://starship.rs/) as prompt
@@ -9,10 +9,10 @@ I use:
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [VsCode Insiders](https://code.visualstudio.com/insiders/) as IDE
+  - [VS Code Insiders](https://code.visualstudio.com/insiders/) as IDE
   - Terminal is also using Starship and Fish
 
-![VsCode](assets/vscode.png)
+![VS Code](assets/vscode.png)
 
 ## Makefile
 ### Targets
@@ -25,4 +25,4 @@ I use:
 * `terminal`: Configures Alacritty
 * `vscode`: Configures VS Code settings
   * > **Note**
-    > This is step is not really required since loging into VsCode syncs keybingins and settings.
+    > This is step is not required since loging into VS Code syncs keybingins and settings.

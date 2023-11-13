@@ -1,6 +1,6 @@
 # macOS
+Dotfiles for macOS enviroment.
 
-I use:
 - Terminal:
   - [Warp](https://www.warp.dev/) as terminal
   - Fish as shell
@@ -8,10 +8,10 @@ I use:
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [VsCode Insiders](https://code.visualstudio.com/insiders/) as IDE
+  - [VS Code Insiders](https://code.visualstudio.com/insiders/) as IDE
   - Terminal is also using Starship and Fish
 
-![VsCode](assets/vscode.png)
+![VS Code](assets/vscode.png)
 
 ## Makefile
 ### Targets
