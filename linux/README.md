@@ -24,3 +24,5 @@ I use:
 * `shell`: Configures Fish
 * `terminal`: Configures Alacritty
 * `vscode`: Configures VS Code settings
+  * > **Note**
+    > This is step is not really required since loging into VsCode syncs keybingins and settings.
