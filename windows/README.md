@@ -32,6 +32,7 @@ Dotfiles for Windows enviroment.
     ```powershell
     $sourceFile = ".\shell\Microsoft.PowerShell_profile.ps1"; $destinationFile = "C:\Users\sergi\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
+3. [Starship requires nerd font](https://starship.rs/guide/#%F0%9F%9A%80-installation), install them.
 
 ## Rust
 1. [Install Rust](https://www.rust-lang.org/tools/install)
@@ -59,6 +60,15 @@ Dotfiles for Windows enviroment.
     > **Note**
     > This is step is not required since loging into VS Code syncs keybingins and settings.
 
+## Windows Terminal
+1. Create symbolic link for Windows terminal config files (Use privileged terminal):
+    ```powershell
+    $sourceFile = ".\terminal\settings.json"; $destinationFile = "C:\Users\sergi\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
+    ```
+    > **Warning**
+    > Make sure that the `settings.json` path is correct, see possible locations in https://learn.microsoft.com/en-us/windows/terminal/install#settings-json-file
+    > **Warning**
+    > Make sure that the required [nerd font](https://www.nerdfonts.com/) is installed, in this case, `Hack Nerd Font` is used
 
 ## [PowerToys](https://github.com/microsoft/PowerToys)
 1. Disable `Win+Space` shorcut
