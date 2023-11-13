@@ -22,6 +22,7 @@ pf = push --force
 pt= push --tags
 r = remote -v
 ra = remote add
+re = rebase upstream/main
 s = status
 st = stash
 sta = stash apply
