@@ -1,5 +1,7 @@
 alacritty
 bat
+bluez
+bluez-utils
 blueberry
 brave-bin
 consolas-font
@@ -7,10 +9,13 @@ clang
 curl
 docker
 duf
+dsview
 eza
 fish
 gcc
 git
+github-cli
+gnome-browser-connector
 gnome-shell-extension-pixel-saver-git
 gnome-themes-extra
 google-chrome-dev
@@ -29,9 +34,9 @@ python
 python-pip
 python-virtualenv
 qbittorrent
+rambox-pro-bin-blur-me-not
 ripgrep
 saleae-logic2
-snapd
 spotify
 starship
 ttf-courier-prime
