@@ -26,3 +26,8 @@ Dotfiles for Arch Linux enviroment.
 * `vscode`: Configures VS Code settings
   * > **Note**
     > This is step is not required since loging into VS Code syncs keybingins and settings.
+
+## Vale Config
+1. Clone the git repo with vale rules
+2. Initialize it: `vale sync`
+3. Configure VS Code `vale.valeCLI.config` configuration to point at the `.vale.ini` of the cloned repo.
