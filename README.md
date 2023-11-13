@@ -4,6 +4,8 @@ Cozy repository where I store my dotfiles:
 - [macOS](mac-os)
 - [Windows](windows)
 
+Linux and Windows are installed in a dual boot environment, see [Installation Guide](InstallationGuide.md) for instructions.
+
 ## [Linux (Arch Linux)](linux)
 
 ![Linux](assets/linux.png)
