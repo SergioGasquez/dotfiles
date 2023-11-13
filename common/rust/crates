@@ -3,7 +3,7 @@ cargo-binstall
 cargo-espflash
 cargo-generate
 cargo-msrv
-cargo-semver-checks
+cargo-semver-checks --locked
 cargo-sort
 cargo-udeps
 cargo-update
@@ -14,5 +14,5 @@ cyme
 mdbook
 mdbook-mermaid
 ldproxy
-probe-rs
+probe-rs --features=cli
 svd2rust
