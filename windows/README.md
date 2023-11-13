@@ -17,54 +17,55 @@ I use:
 
 ## Winget
 1. [Install Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
+    > **Note**
+    > [Winget package registry browser](https://winget.run/)
+1. Install software:
+   ````powershell
+   Get-Content ".\packages" | ForEach-Object {  Write-Host "- Installing $_"; winget install --accept-package-agreements --accept-source-agreements $_ }
+   ```
 
 ## Starship
-1. Install Starship
+1. Update execution policies:
     ```powershell
-    winget install --id Starship.Starship
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
     ```
 2. Create symbolic link for $PROFILE (Use privileged terminal)
     ```powershell
-    New-Item -ItemType SymbolicLink -Path .\shell\Microsoft.PowerShell_profile.ps1 -Target  C:\Users\sergi\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+    $sourceFile = ".\shell\Microsoft.PowerShell_profile.ps1"; $destinationFile = "C:\Users\sergi\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
 
 ## Rust
 1. [Install Rust](https://www.rust-lang.org/tools/install)
 2. Create symbolic link for Cargo config file (Use privileged terminal):
     ```powershell
-    New-Item -ItemType SymbolicLink -Path .\..\common\rust\config.toml -Target  C:\Users\sergi\.cargo\config.toml
+    $sourceFile = "..\common\rust\config.toml"; $destinationFile = "C:\Users\sergi\.cargo\config.toml"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
 3. Install useful crates:
     ```powershell
-    Get-Content -Path ".\common\rust\crates" | ForEach-Object { Invoke-Expression "cargo install $_" }
+    Get-Content -Path "..\common\rust\crates" | ForEach-Object { Write-Host "- Installing $_"; Invoke-Expression "cargo install $_" }
     ```
 
 ## Git
-1. [Install Git](https://git-scm.com/download/win) or:
+1. Create symbolic link for Git config file (Use privileged terminal):
     ```powershell
-    winget install -e --id Git.Git
-    ```
-2. Create symbolic link for Git config file (Use privileged terminal):
-    ```powershell
-    New-Item -ItemType SymbolicLink -Path .\..\common\gitconfig -Target  C:\Users\sergi\.gitconfig
+    $sourceFile = "..\common\gitconfig"; $destinationFile = "C:\Users\sergi\.gitconfig"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
 
 ## VsCode
 1. Create symbolic link for VsCode config files (Use privileged terminal):
     ```powershell
-    New-Item -ItemType SymbolicLink -Path .\vscode\keybindings.json -Target  'C:\Users\sergi\AppData\Roaming\Code - Insiders\User\profiles\372b37e5\keybindings.json'
-    New-Item -ItemType SymbolicLink -Path .\vscode\settings.json -Target  'C:\Users\sergi\AppData\Roaming\Code - Insiders\User\profiles\372b37e5\settings.json'
+    $sourceFile = "..\common\vscode\keybindings.json"; $destinationFile = "C:\Users\sergi\AppData\Roaming\Code\User\keybindings.json"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
+    $sourceFile = "..\common\vscode\settings.json"; $destinationFile = "C:\Users\sergi\AppData\Roaming\Code\User\settings.json"; if (-not (Test-Path -Path $destinationFile)) { New-Item -ItemType File -Path $destinationFile -Force }; New-Item -ItemType SymbolicLink -Path $destinationFile -Value $sourceFile -Force; Write-Host "Symbolic link created from $destinationFile to $sourceFile"
     ```
+    > **Note**
+    > This is step is not really required since loging into VsCode syncs keybingins and settings.
 
-## Python
-1. [Install Python](https://www.python.org/downloads/windows/) or:
-    ```powershell
-    winget install -e --id Python.Python.3.10
-    ```
 
 ## [PowerToys](https://github.com/microsoft/PowerToys)
-1. Install from [release](https://github.com/microsoft/PowerToys/releases) or:
-    ```powershell
-    winget instal Microsoft.PowerToys -s winget
-    ```
-2. Disable `Win+Space` shorcut
+1. Disable `Win+Space` shorcut
+    - Open PowerToys > Keyboard manager > Enable it > Remap a shorcut
+      - Select: `Win (Left) + Space`
+      - To send: `Disable`
+
+## Nvidia GeForce
+1. Disable Perfomance Overlay: Settings > General > turn off In-game Overlay
