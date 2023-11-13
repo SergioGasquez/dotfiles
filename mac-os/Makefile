@@ -5,13 +5,13 @@ DOTFILES := $(shell cd .. && pwd)
 
 .PHONY: help
 help:
-	@ echo -e "Usage: \tmake [TARGET]\n"
-	@ echo -e "Targets:"
-	@ echo -e "  git			    	  Configures git"
-	@ echo -e "  install-packages    	  Installs all the packages"
-	@ echo -e "  rust    	  			  Configures Rust aliases and installs crates"
-	@ echo -e "  shell    	  			  Configures Fish"
-	@ echo -e "  vscode    	  			  Configures VS Code settings"
+	@echo "Usage: make [TARGET]\n"
+	@echo "Targets:"
+	@echo "  git                 Configures git"
+	@echo "  install-packages    Installs all the packages"
+	@echo "  rust                Configures Rust aliases and installs crates"
+	@echo "  shell               Configures Fish"
+	@echo "  vscode              Configures VS Code settings"
 
 .PHONY: git
 git:
