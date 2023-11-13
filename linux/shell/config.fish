@@ -2,8 +2,7 @@
 # Commmon aliases
 . ~/.config/fish/aliases.fish
 # Arch Linux
-alias upup="yay -Syu --noconfirm --noansweredit --devel --sudoloop && sudo snap refresh && cargo install-update -a && rustup update && rustup self update"
-alias ya='yay -S --noconfirm --nodiffmenu'
+alias upup="paru -Syua --noconfirm --devel --sudoloop && paru --clean && cargo install-update -a && rustup update && rustup self update"
 # Editor
 alias vs="code ."
 alias sandbox="code $HOME/Documents/Espressif/sandbox"
