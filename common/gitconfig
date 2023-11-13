@@ -2,6 +2,8 @@
 [user]
 name = Sergio Gasquez
 email = sergio.gasquez@gmail.com
+[color]
+ui = true
 [core]
 editor = code
 [alias]
@@ -32,13 +34,12 @@ sw = switch
 swb = switch -c
 t = tag
 td = tag -d
+undo = reset --soft HEAD^
 [init]
 defaultBranch = main
 [push]
 default = simple
 [credential "https://github.com"]
-helper =
 helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-helper =
 helper = !/usr/bin/gh auth git-credential
