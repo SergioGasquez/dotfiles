@@ -20,3 +20,5 @@ Dotfiles for macOS enviroment.
 * `rust`: Configures Rust aliases and installs crates
 * `shell`: Configures Fish
 * `vscode`: Configures VS Code settings
+  > **Note**
+  > This is step is not required since loging into VS Code syncs keybingins and settings.

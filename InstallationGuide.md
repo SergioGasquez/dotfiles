@@ -165,6 +165,10 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 1. Enable Search plugin: View > Search Engine
 2. Go to the Search tab. Search pluggins > Check for updates.
   1. Install any other plugin
+#### Vale Config in VS Code
+1. Clone the git repo with vale rules
+2. Initialize it: `vale sync`
+3. Configure VS Code `vale.valeCLI.config` configuration to point at the `.vale.ini` of the cloned repo.
 
 ### Windows
 #### Configure Mouse Acceleration
