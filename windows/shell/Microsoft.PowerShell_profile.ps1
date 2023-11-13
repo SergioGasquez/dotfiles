@@ -36,5 +36,4 @@ Function Personal { Set-Location -Path C:\Users\sergi\Documents\Espressif\person
 Set-Alias -Name cdper -Value Personal
 Function ThirdParty { Set-Location -Path C:\Users\sergi\Documents\Espressif\third-party }
 Set-Alias -Name cdtp -Value ThirdParty
-## Editor
-Set-Alias -Name code -Value code-insiders
+
