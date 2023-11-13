@@ -42,6 +42,7 @@ alias grc='git rebase --continue'
 alias gsw='git switch'
 alias gswb='git switch -c'
 # GitHub CLI
+alias ghr='gh repo view --web'
 alias ghpr='gh pr --web'
 alias ghcpr='gh pr create --web'
 # Rust
