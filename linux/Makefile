@@ -5,16 +5,18 @@ DOTFILES := $(shell cd .. && pwd)
 
 .PHONY: help
 help:
-	@ echo -e "Usage: \tmake [TARGET]\n"
-	@ echo -e "Targets:"
-	@ echo -e "  git			    	  Configures git"
-	@ echo -e "  install-packages    	  Installs all the packages"
-	@ echo -e "  network			      Configures Google DNS"
-	@ echo -e "  remove-packages    	  Removes unnecesary packages installed with gnome"
-	@ echo -e "  rust    	  			  Configures Rust aliases and installs crates"
-	@ echo -e "  shell    	  			  Configures Fish"
-	@ echo -e "  terminal    	  		  Configures Alacritty"
-	@ echo -e "  vscode    	  			  Configures VS Code settings"
+	@ echo "Usage: make [TARGET]\n"
+	@ echo "Targets:"
+	@ echo "  git                 Configures git"
+	@ echo "  install-packages    Installs all the packages"
+	@ echo "  network             Configures Google DNS"
+	@ echo "  probe-rs            Configures probe-rs udev rules (https://probe.rs/docs/getting-started/probe-setup/#udev-rules)"
+	@ echo "  remove-packages     Removes unnecessary packages installed with gnome"
+	@ echo "  rust                Configures Rust aliases and installs crates"
+	@ echo "  shell               Configures Fish"
+	@ echo "  terminal            Configures Alacritty"
+	@ echo "  vscode              Configures VS Code settings"
+
 
 .PHONY: git
 git:
@@ -28,10 +30,11 @@ install-packages:
 network:
 	@ ln -sf $(LINUX_DOTFILES)/resolved.conf /etc/resolved.conf
 
-.PHONY: bluetooth
-network:
-	@ systemctl start bluetooth.service
-	@ systemctl enable bluetooth.service
+.PHONY: probe-rs
+vscode:
+	@ sudo wget -O /etc/udev/rules.d/69-probe-rs.rules https://probe.rs/files/69-probe-rs.rules
+	@ sudo udevadm control --reload-rules
+	@ sudo udevadm trigger
 
 .PHONY: remove-packages
 remove-packages:
@@ -41,7 +44,7 @@ remove-packages:
 rust:
 	@ touch $(HOME)/.cargo/config.toml
 	@ ln -sf $(DOTFILES)/common/rust/config.toml $(HOME)/.cargo/config.toml
-	@ cat ../common/rust/crates | xargs -I {} cargo install {}
+	@ bash -c 'while read -r crate arguments; do cargo install "$crate" $arguments; done < ../common/rust/crates
 
 .PHONY: shell
 shell:
@@ -61,3 +64,4 @@ vscode:
 	@ mkdir -p "$(HOME)/.config/Code/User/"
 	@ ln -sf "$(DOTFILES)/common/vscode/settings.json" "$(HOME)/.config/Code/User/settings.json"
 	@ ln -sf "$(DOTFILES)/common/vscode/keybindings.json" "$(HOME)/.config/Code/User/keybindings.json"
+

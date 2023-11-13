@@ -19,6 +19,7 @@ Dotfiles for Arch Linux enviroment.
 * `git`: Configures git
 * `install-packages`: Installs all the packages
 * `network`: Configures Google DNS
+* `probe-rs`: Configures probe-rs udev rules (https://probe.rs/docs/getting-started/probe-setup/#udev-rules)
 * `remove-packages`: Removes unnecessary packages installed with gnome
 * `rust`: Configures Rust aliases and installs crates
 * `shell`: Configures Fish
