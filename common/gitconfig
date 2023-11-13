@@ -8,24 +8,29 @@ editor = code
 a = add --all
 ad = !git commit --amend --no-edit && git push --force
 b = branch
-o = checkout
+bd = branch -d
+cm = commit -m
 c = clone --recurse-submodules
 d = diff
 e = edit
 f = fetch
 fu = fetch upstream
-cm = commit -m
 l = pull
-s = status
 log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+o = checkout
+pf = push --force
+pt= push --tags
 r = remote -v
 ra = remote add
+s = status
 st = stash
 sta = stash apply
 stc = stash clear
 stp = stash pop
 sw = switch
 swb = switch -c
+t = tag
+td = tag -d
 [init]
 defaultBranch = main
 [push]
