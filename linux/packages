@@ -26,6 +26,7 @@ llvm
 lsplug
 networkmanager-openvpn
 noto-fonts-emoji
+ntfs-3g
 obs-studio
 openvpn
 paru
@@ -40,6 +41,7 @@ ripgrep
 saleae-logic2
 spotify
 starship
+syncthing
 ttf-courier-prime
 ttf-hack
 ttf-hack-nerd
