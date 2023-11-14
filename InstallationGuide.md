@@ -161,6 +161,9 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 1. Install kernel: `pacman -S linux-zen linux-zen-headers nvidia-dkms`
 2. Udapte mkinitcpio: `mkinitcpio -P`
 3. Update Grub Customizer to use Zen Kernel
+#### Fix `espflash` "Permission Denied" or "Port doesn’t exist" errors
+1. Run: `sudo usermod -a -G "$(stat -c "%G" /dev/ttyUSB0)" $USER`
+   - Port may need to be updated
 #### `qBitTorrent`
 1. Enable Search plugin: View > Search Engine
 2. Go to the Search tab. Search pluggins > Check for updates.
