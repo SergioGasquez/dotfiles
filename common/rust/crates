@@ -14,5 +14,5 @@ cyme
 mdbook
 mdbook-mermaid
 ldproxy
-probe-rs --features=cli
+probe-rs --features cli,ftdi
 svd2rust
