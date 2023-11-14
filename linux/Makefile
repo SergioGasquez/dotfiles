@@ -10,11 +10,11 @@ help:
 	@ echo "  git                 Configures git"
 	@ echo "  install-packages    Installs all the packages"
 	@ echo "  network             Configures Google DNS"
-	@ echo "  probe-rs            Configures probe-rs udev rules (https://probe.rs/docs/getting-started/probe-setup/#udev-rules)"
 	@ echo "  remove-packages     Removes unnecessary packages installed with gnome"
 	@ echo "  rust                Configures Rust aliases and installs crates"
 	@ echo "  shell               Configures Fish"
 	@ echo "  terminal            Configures Alacritty"
+	@ echo "  udev                Configures openocd (https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32c2/api-guides/jtag-debugging/configure-other-jtag.html) and probe-rs(https://probe.rs/docs/getting-started/probe-setup/#udev-rules) udev rules"
 	@ echo "  vscode              Configures VS Code settings"
 
 
@@ -29,12 +29,6 @@ install-packages:
 .PHONY: network
 network:
 	@ ln -sf $(LINUX_DOTFILES)/resolved.conf /etc/resolved.conf
-
-.PHONY: probe-rs
-vscode:
-	@ sudo wget -O /etc/udev/rules.d/69-probe-rs.rules https://probe.rs/files/69-probe-rs.rules
-	@ sudo udevadm control --reload-rules
-	@ sudo udevadm trigger
 
 .PHONY: remove-packages
 remove-packages:
@@ -58,6 +52,13 @@ shell:
 terminal:
 	@ mkdir -p "$(HOME)/.config/alacritty"
 	@ ln -sf $(LINUX_DOTFILES)/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+
+.PHONY: udev
+vscode:
+	@ sudo wget -O /etc/udev/rules.d/69-probe-rs.rules https://probe.rs/files/69-probe-rs.rules
+	@ sudo wget -O /etc/udev/rules.d/60-openocd.rules https://raw.githubusercontent.com/espressif/openocd-esp32/master/contrib/60-openocd.rules
+	@ sudo udevadm control --reload-rules
+	@ sudo udevadm trigger
 
 .PHONY: vscode
 vscode:

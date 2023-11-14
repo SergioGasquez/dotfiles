@@ -161,6 +161,15 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 1. Install kernel: `pacman -S linux-zen linux-zen-headers nvidia-dkms`
 2. Udapte mkinitcpio: `mkinitcpio -P`
 3. Update Grub Customizer to use Zen Kernel
+#### Fix `espflash` "Permission Denied" or "Port doesn’t exist" errors
+1. Run: `sudo usermod -a -G "$(stat -c "%G" /dev/ttyUSB0)" $USER`
+   - Port may need to be updated
+#### [Setup Docker](https://docs.docker.com/engine/install/linux-postinstall/)
+1. Enable the daemon: `systemctl enable docker`
+2. Create the docker group: `sudo groupadd docker`
+3. Add your user to the docker group: `sudo usermod -aG docker $USER`
+4. Reboot
+5. Verify that you can run `docker` commands without `sudo`.
 #### `qBitTorrent`
 1. Enable Search plugin: View > Search Engine
 2. Go to the Search tab. Search pluggins > Check for updates.
