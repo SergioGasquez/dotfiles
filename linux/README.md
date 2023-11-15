@@ -9,7 +9,7 @@ Dotfiles for Arch Linux enviroment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [VS Code Insiders](https://code.visualstudio.com/insiders/) as IDE
+  - [VS Code](https://code.visualstudio.com/) as IDE
   - Terminal is also using Starship and Fish
 
 ![VS Code](assets/vscode.png)
@@ -23,7 +23,7 @@ Dotfiles for Arch Linux enviroment.
 * `rust`: Configures Rust aliases and installs crates
 * `shell`: Configures Fish
 * `terminal`: Configures Alacritty
-* `udev`: Configures openocd (https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32c2/api-guides/jtag-debugging/configure-other-jtag.html) and probe-rs(https://probe.rs/docs/getting-started/probe-setup/#udev-rules) udev rules
+* `udev`: Configures OpenOCD (https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32c2/api-guides/jtag-debugging/configure-other-jtag.html) and probe-rs(https://probe.rs/docs/getting-started/probe-setup/#udev-rules) udev rules
 * `vscode`: Configures VS Code settings
   > **Note**
   > This is step is not required since loging into VS Code syncs keybingins and settings.
