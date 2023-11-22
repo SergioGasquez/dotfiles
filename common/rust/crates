@@ -7,6 +7,7 @@ cargo-semver-checks --locked
 cargo-sort
 cargo-udeps
 cargo-update
+--git https://github.com/ubnt-intrepid/dot.git
 espflash
 espup
 eza

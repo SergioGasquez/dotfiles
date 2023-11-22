@@ -1,5 +1,5 @@
 # Linux (Arch Linux)
-Dotfiles for Arch Linux enviroment.
+Dotfiles for Arch Linux environment.
 
 - Terminal:
   - [Alacritty](https://alacritty.org/) as terminal
@@ -14,17 +14,26 @@ Dotfiles for Arch Linux enviroment.
 
 ![VS Code](assets/vscode.png)
 
-## Makefile
-### Targets
-* `git`: Configures git
-* `install-packages`: Installs all the packages
-* `network`: Configures Google DNS
-* `remove-packages`: Removes unnecessary packages installed with gnome
-* `rust`: Configures Rust aliases and installs crates
-* `shell`: Configures Fish
-* `terminal`: Configures Alacritty
-* `udev`: Configures OpenOCD (https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32c2/api-guides/jtag-debugging/configure-other-jtag.html) and probe-rs(https://probe.rs/docs/getting-started/probe-setup/#udev-rules) udev rules
-* `vscode`: Configures VS Code settings
-  > **Note**
-  > This is step is not required since loging into VS Code syncs keybingins and settings.
+## Setup Dotfiles
 
+1. [Install Rust](https://www.rust-lang.org/tools/install)
+    ```
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+2. Install extra crates:
+    ```
+    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$$line"; cargo install "$$crate" $$arguments; done
+    ```
+3. Install extra packages:
+    ```
+    paru --needed -S - < packages
+    ```
+4. Remove unnecessary packages:
+    ```
+    paru --noconfirm -R - < packages-to-delete
+    ```
+5. Initialize dotfiles and check if all the links exist and are correct
+    ```
+    dot init SergioGasquez/dotfiles
+    dot check
+    ```

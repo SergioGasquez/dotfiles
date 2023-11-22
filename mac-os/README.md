@@ -1,5 +1,5 @@
 # macOS
-Dotfiles for macOS enviroment.
+Dotfiles for macOS environment.
 
 - Terminal:
   - [Warp](https://www.warp.dev/) as terminal
@@ -13,12 +13,27 @@ Dotfiles for macOS enviroment.
 
 ![VS Code](assets/vscode.png)
 
-## Makefile
-### Targets
-* `git`: Configures git
-* `install-packages`: Installs all the packages
-* `rust`: Configures Rust aliases and installs crates
-* `shell`: Configures Fish
-* `vscode`: Configures VS Code settings
-  > **Note**
-  > This is step is not required since loging into VS Code syncs keybingins and settings.
+## Setup Dotfiles
+
+1. [Install Rust](https://www.rust-lang.org/tools/install)
+    ```
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+2. Install extra crates:
+    ```
+    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$$line"; cargo install "$$crate" $$arguments; done
+    ```
+3. [Install brew](https://brew.sh/):
+    ```
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+4. Install extra packages:
+    ```
+    cat packages | xargs -I {} brew install {}
+    ```
+5. Initialize dotfiles and check if all the links exist and are correct
+    ```
+    dot init SergioGasquez/dotfiles
+    dot check
+    ```
+
