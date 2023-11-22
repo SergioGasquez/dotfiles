@@ -1,5 +1,5 @@
 # Linux (Arch Linux)
-Dotfiles for Arch Linux enviroment.
+Dotfiles for Arch Linux environment.
 
 - Terminal:
   - [Alacritty](https://alacritty.org/) as terminal
@@ -16,15 +16,9 @@ Dotfiles for Arch Linux enviroment.
 
 ## Makefile
 ### Targets
-* `git`: Configures git
+* `dot`: Configures dotfiles symlinks
+  * Needs to be executed after `rust`
 * `install-packages`: Installs all the packages
-* `network`: Configures Google DNS
 * `remove-packages`: Removes unnecessary packages installed with gnome
-* `rust`: Configures Rust aliases and installs crates
-* `shell`: Configures Fish
-* `terminal`: Configures Alacritty
+* `rust`: Installs Rust and crates
 * `udev`: Configures OpenOCD (https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32c2/api-guides/jtag-debugging/configure-other-jtag.html) and probe-rs(https://probe.rs/docs/getting-started/probe-setup/#udev-rules) udev rules
-* `vscode`: Configures VS Code settings
-  > **Note**
-  > This is step is not required since loging into VS Code syncs keybingins and settings.
-

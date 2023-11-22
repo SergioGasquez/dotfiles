@@ -1,0 +1,32 @@
+[general]
+"common/gitconfig" = "$HOME/.gitconfig"
+"common/rust/config.toml" = "$HOME/.cargo/config.toml"
+
+[windows]
+# Prompt
+"windows/shell/Microsoft.PowerShell_profile.ps1" = "$HOME/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
+# VS Code
+"common/vscode/settings.json" = "$APPDATA/Code/User/settings.json"
+"common/vscode/keybindings.json" = "$APPDATA/Code/User/keybindings.json"
+# Terminal
+"windows/terminal/settings.json" = "$APPDATA/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+
+[linux]
+# Fish
+"linux/shell/config.fish" = "$HOME/.config/fish/config.fish"
+"common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
+"common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
+# Terminal
+"linux/alacritty.yml" = "$HOME/.config/alacritty/alacritty.yml"
+# VS Code
+"common/vscode/settings.json" = "$HOME/.config/Code/User/settings.json"
+"common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
+
+[darwin]
+# Fish
+"mac-os/shell/config.fish" = "$HOME/.config/fish/config.fish"
+"common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
+"common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
+# VS Code
+"common/vscode/settings.json" = "$HOME/Library/Application\ Support/Code/User/settings.json"
+"common/vscode/keybindings.json" = "$HOME/Library/Application\ Support/Code/User/keybindings.json"

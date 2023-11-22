@@ -1,5 +1,5 @@
 # macOS
-Dotfiles for macOS enviroment.
+Dotfiles for macOS environment.
 
 - Terminal:
   - [Warp](https://www.warp.dev/) as terminal
@@ -15,10 +15,5 @@ Dotfiles for macOS enviroment.
 
 ## Makefile
 ### Targets
-* `git`: Configures git
 * `install-packages`: Installs all the packages
-* `rust`: Configures Rust aliases and installs crates
-* `shell`: Configures Fish
-* `vscode`: Configures VS Code settings
-  > **Note**
-  > This is step is not required since loging into VS Code syncs keybingins and settings.
+* `rust`: Installs Rust and crates
