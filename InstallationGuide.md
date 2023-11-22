@@ -178,6 +178,12 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 1. Clone the git repo with vale rules
 2. Initialize it: `vale sync`
 3. Configure VS Code `vale.valeCLI.config` configuration to point at the `.vale.ini` of the cloned repo.
+#### Fix dualboot time issue in Windows:
+In Linux:
+```
+timedatectl set-local-rtc 1 --adjust-system-clock
+```
+On Windows, make sure the time is automatically set
 
 ### Windows
 #### Configure Mouse Acceleration
