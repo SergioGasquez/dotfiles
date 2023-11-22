@@ -26,7 +26,7 @@ Dotfiles for Windows environment.
     ```powershell
     Get-Content -Path "..\common\rust\crates" | ForEach-Object { $crate, $arguments = $_.split(" ", 2); cargo install $crate $arguments }
     ```
-5. Initialize dotfiles and check if all the links exist and are correct
+5. Initialize dotfiles and check if all the links exist and are correct. Using a **privileged terminal**:
     ```
     dot init SergioGasquez/dotfiles
     dot -v check
