@@ -7,8 +7,7 @@ alias upup="brew upgrade && cargo install-update -a && rustup update && rustup s
 alias vs="code-insiders ."
 alias code="code-insiders"
 alias sandbox="code-insiders ~/Documents/Espressif/sandbox"
-alias dotfiles="code-insiders ~/Documents/dotfiles"
-
+alias dotfiles="code-insiders ~/.dotfiles"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 export LIBCLANG_PATH="$HOME/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"

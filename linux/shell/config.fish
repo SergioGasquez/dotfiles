@@ -6,7 +6,7 @@ alias upup="paru -Syua --noconfirm --devel --sudoloop && paru --clean && cargo i
 # Editor
 alias vs="code ."
 alias sandbox="code $HOME/Documents/Espressif/sandbox"
-alias dotfiles="code $HOME/Documents/dotfiles"
+alias dotfiles="code $HOME/.dotfiles"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 export LIBCLANG_PATH="$HOME/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
