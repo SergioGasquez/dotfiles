@@ -13,7 +13,27 @@ Dotfiles for macOS environment.
 
 ![VS Code](assets/vscode.png)
 
-## Makefile
-### Targets
-* `install-packages`: Installs all the packages
-* `rust`: Installs Rust and crates
+## Setup Dotfiles
+
+1. [Install Rust](https://www.rust-lang.org/tools/install)
+    ```
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+2. Install extra crates:
+    ```
+    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$$line"; cargo install "$$crate" $$arguments; done
+    ```
+3. [Install brew](https://brew.sh/):
+    ```
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+4. Install extra packages:
+    ```
+    cat packages | xargs -I {} brew install {}
+    ```
+5. Initialize dotfiles and check if all the links exist and are correct
+    ```
+    dot init SergioGasquez/dotfiles
+    dot check
+    ```
+

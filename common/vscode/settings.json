@@ -29,11 +29,19 @@
     "evenBetterToml.formatter.alignComments": true,
     "evenBetterToml.formatter.arrayAutoCollapse": true,
     "evenBetterToml.formatter.allowedBlankLines": 1,
+    "evenBetterToml.formatter.arrayAutoExpand": true,
+    "evenBetterToml.formatter.arrayTrailingComma": true,
+    "evenBetterToml.formatter.reorderArrays": true,
+    "evenBetterToml.formatter.columnWidth": 80,
     // Explorer
     "explorer.confirmDragAndDrop": false,
     // Files
     "files.associations": {
-        "*.toml": "toml"
+        "*.toml": "toml",
+        "config": "toml",
+        "*.svd": "xml",
+        ".mappings": "toml",
+        "*.x": "mapfile"
     },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
@@ -101,6 +109,9 @@
             "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
         }
     },
+    // Vale
+    "vale.valeCLI.config": "/home/sergio/Documents/Espressif/esp-vale-config/.vale.ini",
+    "vale.enableSpellcheck": true,
     // Other
     "security.workspace.trust.untrustedFiles": "open",
     "window.titleBarStyle": "custom",
@@ -127,4 +138,10 @@
     "[toml]": {
         "editor.formatOnSave": false
     },
+    // Dont sync vale config path
+    "settingsSync.ignoredSettings": [
+        "vale.valeCLI.config"
+    ],
+    "settingsSync.keybindingsPerPlatform": false,
+    "grammarly.config.suggestionCategories.conjugationAtStartOfSentence": "on",
 }

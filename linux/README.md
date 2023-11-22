@@ -14,11 +14,26 @@ Dotfiles for Arch Linux environment.
 
 ![VS Code](assets/vscode.png)
 
-## Makefile
-### Targets
-* `dot`: Configures dotfiles symlinks
-  * Needs to be executed after `rust`
-* `install-packages`: Installs all the packages
-* `remove-packages`: Removes unnecessary packages installed with gnome
-* `rust`: Installs Rust and crates
-* `udev`: Configures OpenOCD (https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32c2/api-guides/jtag-debugging/configure-other-jtag.html) and probe-rs(https://probe.rs/docs/getting-started/probe-setup/#udev-rules) udev rules
+## Setup Dotfiles
+
+1. [Install Rust](https://www.rust-lang.org/tools/install)
+    ```
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+2. Install extra crates:
+    ```
+    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$$line"; cargo install "$$crate" $$arguments; done
+    ```
+3. Install extra packages:
+    ```
+    paru --needed -S - < packages
+    ```
+4. Remove unnecessary packages:
+    ```
+    paru --noconfirm -R - < packages-to-delete
+    ```
+5. Initialize dotfiles and check if all the links exist and are correct
+    ```
+    dot init SergioGasquez/dotfiles
+    dot check
+    ```

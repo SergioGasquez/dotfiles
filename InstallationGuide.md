@@ -13,7 +13,7 @@ Notes to install Windows alongside Arch Linux (using GNOME)
         - Advanced Mode > Boot > Secure Boot > OS Type > Other OS
         - Advanced Mode > Boot > Secure Boot > Secure Boot Mode > Custom
     - Make sure that RAM is using the right profile.
-        - This might require using latest BIOS FW, otherwise it might result in the OS crashing
+        - This might require using latest BIOS FW, otherwise, it might result in the OS crashing
             - For Windows, it is a blue screen
             - For Linux, it just froze
 
@@ -128,8 +128,8 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 ### Linux
 #### Keyboard Layout
 1. Settings > Keyboard > Add "Spanish" input source and remove the others
-#### Bluettoth
-1. Install necessary packages for [blueetoth](https://wiki.archlinux.org/title/bluetooth) ([pulseaudio](https://wiki.archlinux.org/title/bluetooth_headset#Headset_via_Bluez5/PulseAudio) and `bluedoid` might also be required):
+#### Bluetooth
+1. Install necessary packages for [blueetooth](https://wiki.archlinux.org/title/bluetooth) ([pulseaudio](https://wiki.archlinux.org/title/bluetooth_headset#Headset_via_Bluez5/PulseAudio) and `bluedoid` might also be required):
     ```
     sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth blueberry bluez bluez-utils
     ```
@@ -150,8 +150,8 @@ Notes to install Windows alongside Arch Linux (using GNOME)
   cd grub2-themes
   sudo ./install.sh -t vimix -b
   ```
-#### Keyboard Shorcuts
-1. Go to Settings > Keyboard Shortcuts > View and Customize Shorcuts
+#### Keyboard Shortcuts
+1. Go to Settings > Keyboard Shortcuts > View and Customize Shortcuts
    1. Settings > Keyboard Shortcuts> Set "Switch windows" to `Alt+Tab`.
    2. Set `Ctrl+Alt+T` to open `alacritty`.
 #### [Change Mirrors](https://wiki.archlinux.org/title/installation_guide#Select_the_mirrors)
@@ -172,7 +172,7 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 5. Verify that you can run `docker` commands without `sudo`.
 #### `qBitTorrent`
 1. Enable Search plugin: View > Search Engine
-2. Go to the Search tab. Search pluggins > Check for updates.
+2. Go to the Search tab. Search plugins> Check for updates.
   1. Install any other plugin
 #### Vale Config in VS Code
 1. Clone the git repo with vale rules
@@ -192,8 +192,14 @@ Notes to install Windows alongside Arch Linux (using GNOME)
      - Right click > Properties > Check the Read-only attribute
 #### `qBitTorrent`
 1. Enable Search plugin: View > Search Engine
-2. Go to the Search tab. Search pluggins > Check for updates.
+2. Go to the Search tab. Search plugins > Check for updates.
   1. Install any other plugin
-
+#### [PowerToys](https://github.com/microsoft/PowerToys)
+1. Disable `Win+Space` shortcut
+    - Open PowerToys > Keyboard manager > Enable it > Remap a shortcut
+      - Select: `Win (Left) + Space`
+      - To send: `Disable`
+#### Nvidia GeForce
+1. Disable Performance Overlay: Settings > General > Turn off In-game Overlay
 
 
