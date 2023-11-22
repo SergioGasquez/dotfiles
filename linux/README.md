@@ -35,5 +35,5 @@ Dotfiles for Arch Linux environment.
 5. Initialize dotfiles and check if all the links exist and are correct
     ```
     dot init SergioGasquez/dotfiles
-    dot check
+    dot -v check
     ```
