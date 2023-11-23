@@ -112,7 +112,7 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 
 1. Display server, [Xorg](https://wiki.archlinux.org/title/Xorg) or [Wayland](https://wayland.freedesktop.org/)
     1. Identify your GPU: `lspci -v | grep -A1 -e VGA -e 3D`
-    2. Install the proper drivers: `pacman -S nvidia nvidia-utils
+    2. Install the proper drivers: `pacman -S nvidia nvidia-utils`
         > For the **[Turing (NV160/TU*XXX*)](https://nouveau.freedesktop.org/CodeNames.html#NV160)** series or newer the **[nvidia-open](https://archlinux.org/packages/?name=nvidia-open)** package may be installed for open source kernel modules on the **[linux](https://archlinux.org/packages/?name=linux)** kernel (On other kernels **[nvidia-open-dkms](https://archlinux.org/packages/?name=nvidia-open-dkms)** must be used).
 
     1. Install a display server:
