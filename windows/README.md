@@ -15,7 +15,7 @@ Dotfiles for Windows environment.
 ![VS Code](assets/vscode.png)
 
 1. [Install Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
-    > **Note**
+    > [!TIP]
     > [Winget package registry browser](https://winget.run/)
 2. Install packages:
    ```powershell
