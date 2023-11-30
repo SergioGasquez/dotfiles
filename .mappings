@@ -16,19 +16,22 @@
 "linux/shell/config.fish" = "$HOME/.config/fish/config.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
+## Completions
+"common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
+"common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
 # Terminal
 "linux/alacritty.yml" = "$HOME/.config/alacritty/alacritty.yml"
 # VS Code
 # "common/vscode/settings.json" = "$HOME/.config/Code/User/settings.json"
 # "common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
-# Completions
-"common/shell/espup.fish" = "/home/sergio/.config/fish/completions/espup.fish"
-"common/shell/espflash.fish" ="/home/sergio/.config/fish/completions/espflash.fish"
 [darwin]
 # Fish
 "mac-os/shell/config.fish" = "$HOME/.config/fish/config.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
+## Completions
+"common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
+"common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
 # VS Code
 # "common/vscode/settings.json" = "$HOME/Library/Application\ Support/Code/User/settings.json"
 # "common/vscode/keybindings.json" = "$HOME/Library/Application\ Support/Code/User/keybindings.json"
