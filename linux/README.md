@@ -37,3 +37,6 @@ Dotfiles for Arch Linux environment.
     dot init SergioGasquez/dotfiles
     dot -v check
     ```
+6. Add [command completions](https://github.com/esp-rs/espflash/pull/388):
+   1. Regenerate completions using: `comp` alias
+   2. If there is any Cargo subcommand completions, add the manually. Eg `sudo cat cargo-espflash.fish >> /usr/share/fish/completions/cargo.fish`

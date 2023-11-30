@@ -21,7 +21,9 @@
 # VS Code
 # "common/vscode/settings.json" = "$HOME/.config/Code/User/settings.json"
 # "common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
-
+# Completions
+"common/shell/espup.fish" = "/home/sergio/.config/fish/completions/espup.fish"
+"common/shell/espflash.fish" ="/home/sergio/.config/fish/completions/espflash.fish"
 [darwin]
 # Fish
 "mac-os/shell/config.fish" = "$HOME/.config/fish/config.fish"

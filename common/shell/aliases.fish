@@ -53,3 +53,5 @@ alias cesp='cargo espflash'
 alias cf='cargo fmt'
 # Docker
 alias dp='docker system prune -a -f && docker system prune --volumes -a -f'
+# Completions
+alias comp 'espup completions fish > ~/.dotfiles/common/shell/espup.fish && espflash completions fish > ~/.dotfiles/common/shell/espflash.fish'
