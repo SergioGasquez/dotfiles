@@ -14,6 +14,18 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
     }
 }
 
+# Completions
+. C:\Users\sergi\.dotfiles\windows\shell\espup.ps1
+. C:\Users\sergi\.dotfiles\windows\shell\espflash.ps1
+
+function Update-Completions {
+    espup completions fish > $HOME\.dotfiles\windows\shell\espup.ps1
+    espflash completions fish > $HOME\.dotfiles\windows\shell\espflash.ps1
+}
+
+# Create an alias for the function
+Set-Alias -Name comp -Value Update-Completions
+
 # Aliases
 ## File Navigation
 Function Back { Set-Location -Path .\.. }
