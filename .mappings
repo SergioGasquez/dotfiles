@@ -16,6 +16,8 @@
 "linux/shell/config.fish" = "$HOME/.config/fish/config.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
+"common/shell/fork.fish" = "$HOME/.config/fish/functions/fork.fish"
+"common/shell/esprs.fish" = "$HOME/.config/fish/functions/esprs.fish"
 ## Completions
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
