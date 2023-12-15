@@ -17,5 +17,9 @@ export PATH="$HOME/.rustup/toolchains/esp/riscv32-esp-elf/esp-13.2.0_20230928/ri
 # Brew
 eval (/opt/homebrew/bin/brew shellenv)
 
+# SSH
+eval $(ssh-agent -c) >/dev/null
+ssh-add $HOME/.ssh/id_ed25519 >/dev/null 2>&1
+
 # Starship
 starship init fish | source
