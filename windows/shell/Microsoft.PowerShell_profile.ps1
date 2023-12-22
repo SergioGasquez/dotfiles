@@ -24,7 +24,7 @@ function Update-Completions {
 }
 
 # Create an alias for the function
-Set-Alias -Name comp -Value Update-Completions
+Set-Alias -Name completions -Value Update-Completions
 
 # Aliases
 ## File Navigation
