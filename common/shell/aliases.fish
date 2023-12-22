@@ -15,6 +15,13 @@ alias cdforks="cd ~/Documents/Espressif/forks"
 alias cdtests="cd ~/Documents/Espressif/tests"
 alias cdper="cd ~/Documents/Espressif/personal"
 alias cdtp="cd ~/Documents/Espressif/third-parties"
+alias esp32="cd ~/Documents/Espressif/tests/esp32"
+alias esp32c2="cd ~/Documents/Espressif/tests/templates/esp32c2"
+alias esp32c3="cd ~/Documents/Espressif/tests/templates/esp32c3"
+alias esp32c6="cd ~/Documents/Espressif/tests/templates/esp32c6"
+alias esp32h2="cd ~/Documents/Espressif/tests/templates/esp32h2"
+alias esp32s2="cd ~/Documents/Espressif/tests/templates/esp32s2"
+alias esp32s3="cd ~/Documents/Espressif/tests/templates/esp32s3"
 # Git
 alias ga='git add'
 alias gaa='git add -A'
