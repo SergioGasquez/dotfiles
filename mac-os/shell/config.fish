@@ -10,9 +10,8 @@ alias sandbox="code-insiders ~/Documents/Espressif/sandbox"
 alias dotfiles="code-insiders ~/.dotfiles"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
-export LIBCLANG_PATH="$HOME/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.0-20230516/esp-clang/lib"
-export PATH="$HOME/.rustup/toolchains/esp/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin:$PATH"
-export PATH="$HOME/.rustup/toolchains/esp/riscv32-esp-elf/esp-13.2.0_20230928/riscv32-esp-elf/bin:$PATH"
+export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin:$PATH"
+export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-16.0.4-20231113/esp-clang/lib"
 
 # Brew
 eval (/opt/homebrew/bin/brew shellenv)
