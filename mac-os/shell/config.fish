@@ -2,7 +2,7 @@
 # Commmon aliases
 . ~/.config/fish/aliases.fish
 # Brew
-alias upup="brew upgrade && cargo install-update -a && rustup update && rustup self update"
+alias upup="brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update"
 # Editor
 alias vs="code-insiders ."
 alias code="code-insiders"
