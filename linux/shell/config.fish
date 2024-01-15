@@ -2,11 +2,11 @@
 # Commmon aliases
 . ~/.config/fish/aliases.fish
 # Arch Linux
-alias upup="paru -Syua --noconfirm --devel --sudoloop && paru --clean --noconfirm --sudoloop && cargo install-update -a && rustup update && rustup self update && espup update"
+abbr -a upup 'paru -Syua --noconfirm --devel --sudoloop && paru --clean --noconfirm --sudoloop && cargo install-update -a && rustup update && rustup self update && espup update'
 # Editor
-alias vs="code ."
-alias sandbox="code $HOME/Documents/Espressif/sandbox"
-alias dotfiles="code $HOME/.dotfiles"
+abbr -a vs 'code .'
+abbr -a sandbox 'code $HOME/Documents/Espressif/sandbox'
+abbr -a dotfiles 'code $HOME/.dotfiles'
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin:$PATH"
