@@ -62,3 +62,5 @@ abbr -a cf 'cargo fmt'
 abbr -a dp 'docker system prune -a -f && docker system prune --volumes -a -f'
 # Completions
 abbr -a comp 'espup completions fish > ~/.dotfiles/common/shell/espup.fish && espflash completions fish > ~/.dotfiles/common/shell/espflash.fish'
+# Python
+abbr -a pip 'uv pip'
