@@ -12,7 +12,7 @@ complete -c espup -n "__fish_seen_subcommand_from install" -s f -l export-file -
 complete -c espup -n "__fish_seen_subcommand_from install" -s l -l log-level -d 'Verbosity level of the logs' -r -f -a "{debug	'',info	'',warn	'',error	''}"
 complete -c espup -n "__fish_seen_subcommand_from install" -s a -l name -d 'Xtensa Rust toolchain name' -r
 complete -c espup -n "__fish_seen_subcommand_from install" -s n -l nightly-version -d 'Nightly Rust toolchain version' -r
-complete -c espup -n "__fish_seen_subcommand_from install" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c6,esp32h2,esp32s2,esp32s3,all]' -r
+complete -c espup -n "__fish_seen_subcommand_from install" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c6,esp32h2,esp32s2,esp32s3,esp32p4,all]' -r
 complete -c espup -n "__fish_seen_subcommand_from install" -s v -l toolchain-version -d 'Xtensa Rust toolchain version' -r
 complete -c espup -n "__fish_seen_subcommand_from install" -s r -l esp-riscv-gcc -d 'Install Espressif RISC-V toolchain built with croostool-ng'
 complete -c espup -n "__fish_seen_subcommand_from install" -s e -l extended-llvm -d 'Extends the LLVM installation'
@@ -27,7 +27,7 @@ complete -c espup -n "__fish_seen_subcommand_from update" -s f -l export-file -d
 complete -c espup -n "__fish_seen_subcommand_from update" -s l -l log-level -d 'Verbosity level of the logs' -r -f -a "{debug	'',info	'',warn	'',error	''}"
 complete -c espup -n "__fish_seen_subcommand_from update" -s a -l name -d 'Xtensa Rust toolchain name' -r
 complete -c espup -n "__fish_seen_subcommand_from update" -s n -l nightly-version -d 'Nightly Rust toolchain version' -r
-complete -c espup -n "__fish_seen_subcommand_from update" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c6,esp32h2,esp32s2,esp32s3,all]' -r
+complete -c espup -n "__fish_seen_subcommand_from update" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c6,esp32h2,esp32s2,esp32s3,esp32p4,all]' -r
 complete -c espup -n "__fish_seen_subcommand_from update" -s v -l toolchain-version -d 'Xtensa Rust toolchain version' -r
 complete -c espup -n "__fish_seen_subcommand_from update" -s r -l esp-riscv-gcc -d 'Install Espressif RISC-V toolchain built with croostool-ng'
 complete -c espup -n "__fish_seen_subcommand_from update" -s e -l extended-llvm -d 'Extends the LLVM installation'
