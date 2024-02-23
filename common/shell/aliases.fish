@@ -53,6 +53,7 @@ abbr -a ghcpr 'gh pr create --web'
 # Rust
 abbr -a c cargo
 abbr -a cb 'cargo build'
+abbr -a cbr 'cargo build --release'
 abbr -a ccl 'cargo clean'
 abbr -a ccb 'cargo clean && cargo build'
 abbr -a cdoc 'cargo doc --open'
