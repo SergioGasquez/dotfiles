@@ -2,7 +2,7 @@
 # Commmon aliases
 . ~/.config/fish/aliases.fish
 # Arch Linux
-abbr -a upup 'paru -Syua --noconfirm --devel --sudoloop && paru --clean --noconfirm --sudoloop && cargo install-update -a && rustup update && rustup self update && espup update'
+abbr -a upup 'sudo pacman -Syy && sudo pacman -Syu && paru -Syua --noconfirm --devel --sudoloop && paru --clean --noconfirm --sudoloop && cargo install-update -a && rustup update && rustup self update && espup update'
 # Editor
 abbr -a vs 'code .'
 abbr -a sandbox 'code $HOME/Documents/Espressif/sandbox'
