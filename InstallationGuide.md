@@ -38,18 +38,18 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 4. Connect to the internet:
     1. Verify that your connection is up: `ip link`
         1. If the desired interface does not show as up: `ip set dev <interface> up`
-5. Update the system clock: `timedatectl set-ntp true`
+5. Update the system clock: `timedatectl`
 6. List disk partitions: `fdisk -l`. We need to identify the following partitions:
     1. An EFI System partition: It should have been generated during Windows installation (usually *`sda1` or `nvme0n1p1`*)
     2. A root partition: The free partition that we made during Windows installation with type labeled as “Microsoft basic data” (usually *`sda5` or `nvme0n1p5`*)
 7. Format the disk partition: `mkfs.ext4 /dev/<root_partition>`
 8. Mount the file systems:
     1. Root partition: `mount /dev/<root_partition> /mnt`
-    2. EFI partition: `mkdir /mnt/efi;mount /dev/<efi_partition> /mnt/efi`
+    2. EFI partition: `mount --mkdir /dev/<efi_partition> /mnt/efi`
 
 ## Installation
 
-1. Install essential packages: `pacstrap /mnt base linux linux-firmware`
+1. Install essential packages: `pacstrap -K /mnt base linux linux-firmware`
 
 ## Configure the System
 
@@ -87,7 +87,7 @@ Notes to install Windows alongside Arch Linux (using GNOME)
     `GRUB_DISABLE_OS_PROBER=false`
     3. Mount EFI partition:`mount /dev/<efi_partition> /efi`
         1. This may be not required since its already mounted
-    4. Install GRUB EFI application: `grub-instal --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
+    4. Install GRUB EFI application: `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
     5. Use the grub-mkconfig tool to generate `/boot/grub/grub.cfg`: `grub-mkconfig -o /boot/grub/grub.cfg`
 2.  Enable [Microcode](https://wiki.archlinux.org/title/Microcode)
     1. Install the correct package intel/amd) : `pacman -S amd-ucode`
@@ -115,7 +115,7 @@ Notes to install Windows alongside Arch Linux (using GNOME)
     2. Install the proper drivers: `pacman -S nvidia nvidia-utils`
         > For the **[Turing (NV160/TU*XXX*)](https://nouveau.freedesktop.org/CodeNames.html#NV160)** series or newer the **[nvidia-open](https://archlinux.org/packages/?name=nvidia-open)** package may be installed for open source kernel modules on the **[linux](https://archlinux.org/packages/?name=linux)** kernel (On other kernels **[nvidia-open-dkms](https://archlinux.org/packages/?name=nvidia-open-dkms)** must be used).
 
-    1. Install a display server:
+    3. Install a display server:
         - Wayland: `pacman -S wayland weston`
         - Xorg: `pacman -S xorg-server xorg-apps`
 2. Desktop environment, [GNOME](https://wiki.archlinux.org/title/GNOME)
@@ -157,10 +157,6 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 #### [Change Mirrors](https://wiki.archlinux.org/title/installation_guide#Select_the_mirrors)
 1. Install reflector: `sudo pacman -S reflector rsync`
 2. Sort the 30 most recently synchronized mirrors by download speed and overwrite the local mirrorlist: `sudo reflector --latest 50 --sort rate --save /etc/pacman.d/mirrorlist`
-#### Install `linux-zen` Kernel
-1. Install kernel: `pacman -S linux-zen linux-zen-headers nvidia-dkms`
-2. Udapte mkinitcpio: `mkinitcpio -P`
-3. Update Grub Customizer to use Zen Kernel
 #### Fix `espflash` "Permission Denied" or "Port doesn’t exist" errors
 1. Run: `sudo usermod -a -G "$(stat -c "%G" /dev/ttyUSB0)" $USER`
    - Port may need to be updated
