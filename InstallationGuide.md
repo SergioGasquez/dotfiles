@@ -128,6 +128,8 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 ### Linux
 #### Keyboard Layout
 1. Settings > Keyboard > Add "Spanish" input source and remove the others
+#### Workspaces on All Displays
+1. Settings > Multitasking > Multi-Monitor > Workspaces on all displays
 #### Bluetooth
 1. Install necessary packages for [blueetooth](https://wiki.archlinux.org/title/bluetooth) ([pulseaudio](https://wiki.archlinux.org/title/bluetooth_headset#Headset_via_Bluez5/PulseAudio) and `bluedoid` might also be required):
     ```
