@@ -22,7 +22,7 @@ Dotfiles for Arch Linux environment.
     ```
 2. Install extra crates:
     ```
-    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$$line"; cargo install "$$crate" $$arguments; done
+    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$line"; cargo install "$crate" $arguments; done
     ```
 3. Install extra packages:
     ```
