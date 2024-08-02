@@ -15,3 +15,5 @@ export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang
 abbr -a espidf '. /home/sergio/Documents/Espressif/espressif/esp-idf_v5.2/export.fish'
 # Starship
 starship init fish | source
+# Zoxide
+zoxide init fish | source

@@ -1,5 +1,6 @@
-# Modern Unix Command
+# Modern Unix Tools
 abbr -a cat bat
+abbr -a cd z
 abbr -a ls eza
 abbr -a df duf
 abbr -a lsusb cyme

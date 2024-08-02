@@ -14,6 +14,7 @@ duf
 dsview
 eza
 fish
+fzf
 gcc
 git
 github-cli
@@ -55,3 +56,4 @@ visual-studio-code-bin
 vlc-wayland-git
 wget
 wireshark-qt
+zoxide
