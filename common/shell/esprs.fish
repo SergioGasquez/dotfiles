@@ -18,5 +18,5 @@ function esprs --argument repository_name
     end
 
     echo "Opening the repository with VS Code"
-    code $repo_path
+    cursor $repo_path
 end
