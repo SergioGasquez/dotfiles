@@ -1,5 +1,4 @@
 act
-amethyst
 bat
 brave-browser
 ccache
@@ -8,7 +7,6 @@ curl
 dfu-util
 duf
 docker
-eza
 fish
 font-hack-nerd-font
 font-noto-emoji
@@ -24,11 +22,9 @@ pkg-config
 python
 podman
 rambox
-saleae-logic
 spotify
 starship
 uv
 vale
 warp
 wget
-zoxide

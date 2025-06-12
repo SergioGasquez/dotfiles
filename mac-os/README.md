@@ -21,7 +21,7 @@ Dotfiles for macOS environment.
     ```
 2. Install extra crates:
     ```
-    cat ../common/rust/crates | while IFS= read -r line; do read -r crate arguments <<< "$$line"; cargo install "$$crate" $$arguments; done
+    while IFS= read -r line; do crate="${line%% *}"; args="${line#* }"; cargo install "$crate" $args; done < ../common/rust/crates
     ```
 3. [Install brew](https://brew.sh/):
     ```

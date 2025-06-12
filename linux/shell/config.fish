@@ -10,7 +10,6 @@ abbr -a dotfiles 'cursor $HOME/.dotfiles'
 # ESP-RS
 export ESPFLASH_BAUD="921600"
 export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-14.2.0_20240906/xtensa-esp-elf/bin:$PATH"
-export PATH="/home/sergio/.local/bin:$PATH"
 export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-18.1.2_20240912/esp-clang/lib"
 # ESP-IDF
 abbr -a espidf '. /home/sergio/Documents/Espressif/espressif/esp-idf_v5.2/export.fish'
@@ -18,3 +17,5 @@ abbr -a espidf '. /home/sergio/Documents/Espressif/espressif/esp-idf_v5.2/export
 starship init fish | source
 # Zoxide
 zoxide init fish | source
+# uv
+fish_add_path "/home/sergio/.local/bin"
