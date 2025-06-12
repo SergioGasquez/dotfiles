@@ -1,13 +1,16 @@
 cargo-audit
 cargo-binstall
+cargo-clean-all
 cargo-espflash
 cargo-generate
+cargo-machete
 cargo-msrv
 cargo-semver-checks --locked
 cargo-sort
 cargo-udeps
 cargo-update
 --git https://github.com/ubnt-intrepid/dot.git
+esp-generate
 espflash
 espup
 eza
@@ -15,5 +18,6 @@ cyme
 mdbook
 mdbook-mermaid
 ldproxy
-probe-rs --features cli,ftdi
+probe-rs-tools
 svd2rust
+zoxide
