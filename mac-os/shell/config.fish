@@ -2,7 +2,7 @@
 # Commmon aliases
 . ~/.config/fish/aliases.fish
 # Brew
-alias upup="brew upgrade --cask $(brew list --cask | grep -v 'ftdi-vcp-driver')  && cargo install-update -a && rustup update && rustup self update && espup update"
+alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update"
 # Editor
 alias vs="cursor ."
 alias sandbox="cursor ~/Documents/Espressif/sandbox"
@@ -22,3 +22,6 @@ starship init fish | source
 fish_add_path "/Users/sergio/.local/bin"
 # Zoxide
 zoxide init fish | source
+# Rust
+fish_add_path "/Users/sergio/.cargo/bin"
+
