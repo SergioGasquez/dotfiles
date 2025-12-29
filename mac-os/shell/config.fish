@@ -9,8 +9,8 @@ alias sandbox="cursor ~/Documents/Espressif/sandbox"
 alias dotfiles="cursor ~/.dotfiles"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
-export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-14.2.0_20240906/xtensa-esp-elf/bin:$PATH"
-export LIBCLANG_PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-19.1.2_20250225/esp-clang/lib"
+export PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-15.2.0_20250920/xtensa-esp-elf/bin:$PATH"
+export LIBCLANG_PATH="/Users/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-20.1.1_20250829/esp-clang/lib"
 # Brew
 eval (/opt/homebrew/bin/brew shellenv)
 # SSH
