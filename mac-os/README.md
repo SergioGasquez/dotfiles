@@ -29,7 +29,7 @@ Dotfiles for macOS environment.
     ```
 4. Install extra packages:
     ```
-    xargs -a packages -r -n1 brew install
+    while IFS= read -r package; do [ -n "$package" ] && brew install "$package"; done < packages
     ```
 5. Initialize dotfiles and check if all the links exist and are correct
     ```

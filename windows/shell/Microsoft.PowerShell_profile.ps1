@@ -15,12 +15,16 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
 }
 
 # Completions
-. $HOME\.dotfiles\windows\shell\espup.ps1
-. $HOME\.dotfiles\windows\shell\espflash.ps1
+if (Test-Path "$HOME\.dotfiles\windows\shell\espup.ps1") {
+    . "$HOME\.dotfiles\windows\shell\espup.ps1"
+}
+if (Test-Path "$HOME\.dotfiles\windows\shell\espflash.ps1") {
+    . "$HOME\.dotfiles\windows\shell\espflash.ps1"
+}
 
 function Update-Completions {
-    espup completions fish > $HOME\.dotfiles\windows\shell\espup.ps1
-    espflash completions fish > $HOME\.dotfiles\windows\shell\espflash.ps1
+    espup completions -l error powershell | Set-Content -Encoding UTF8 $HOME\.dotfiles\windows\shell\espup.ps1
+    espflash completions powershell | Set-Content -Encoding UTF8 $HOME\.dotfiles\windows\shell\espflash.ps1
 }
 
 # Create an alias for the function
@@ -30,10 +34,10 @@ Set-Alias -Name completions -Value Update-Completions
 ## File Navigation
 Function Back { Set-Location -Path .\.. }
 Set-Alias -Name .. -Value Back
-Function BackBack { Set-Location -Path .\..\.. }
-Set-Alias -Name ... -Value BackBack
-Function BackBack { Set-Location -Path .\..\..\.. }
-Set-Alias -Name .... -Value BackBack
+Function BackTwo { Set-Location -Path .\..\.. }
+Set-Alias -Name ... -Value BackTwo
+Function BackThree { Set-Location -Path .\..\..\.. }
+Set-Alias -Name .... -Value BackThree
 Function Documents { Set-Location -Path  $HOME\Documents }
 Set-Alias -Name cddoc -Value Documents
 Function Espressif { Set-Location -Path $HOME\Documents\Espressif }
@@ -46,6 +50,6 @@ Function Tests { Set-Location -Path $HOME\Documents\Espressif\tests }
 Set-Alias -Name cdtests -Value Tests
 Function Personal { Set-Location -Path $HOME\Documents\Espressif\personal }
 Set-Alias -Name cdper -Value Personal
-Function ThirdParty { Set-Location -Path $HOME\Documents\Espressif\third-party }
+Function ThirdParty { Set-Location -Path $HOME\Documents\Espressif\third-parties }
 Set-Alias -Name cdtp -Value ThirdParty
 

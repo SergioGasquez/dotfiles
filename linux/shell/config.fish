@@ -9,13 +9,11 @@ abbr -a sandbox 'cursor $HOME/Documents/Espressif/sandbox'
 abbr -a dotfiles 'cursor $HOME/.dotfiles'
 # ESP-RS
 export ESPFLASH_BAUD="921600"
-export PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp-elf/esp-15.2.0_20250920/xtensa-esp-elf/bin:$PATH"
-export LIBCLANG_PATH="/home/sergio/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-20.1.1_20250829/esp-clang/lib"
-# ESP-IDF
-abbr -a espidf '. /home/sergio/Documents/Espressif/espressif/esp-idf_v5.2/export.fish'
+export PATH="$HOME/.rustup/toolchains/esp/xtensa-esp-elf/esp-15.2.0_20250920/xtensa-esp-elf/bin:$PATH"
+export LIBCLANG_PATH="$HOME/.rustup/toolchains/esp/xtensa-esp32-elf-clang/esp-20.1.1_20250829/esp-clang/lib"
 # Starship
 starship init fish | source
 # Zoxide
 zoxide init fish | source
 # uv
-fish_add_path "/home/sergio/.local/bin"
+fish_add_path "$HOME/.local/bin"
