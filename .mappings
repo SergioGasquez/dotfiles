@@ -1,6 +1,8 @@
 [general]
 "common/gitconfig" = "$HOME/.gitconfig"
 "common/rust/config.toml" = "$HOME/.cargo/config.toml"
+"common/pi/settings.json" = "$HOME/.pi/agent/settings.json"
+"common/pi/skills" = "$HOME/.pi/agent/skills"
 
 [windows]
 # Prompt
