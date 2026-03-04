@@ -30,6 +30,10 @@ function Update-Completions {
 # Create an alias for the function
 Set-Alias -Name completions -Value Update-Completions
 
+# Editor
+$env:EDITOR = "zed --wait"
+$env:VISUAL = "zed --wait"
+
 # Aliases
 ## File Navigation
 Function Back { Set-Location -Path .\.. }

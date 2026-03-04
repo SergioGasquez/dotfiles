@@ -9,10 +9,10 @@ Dotfiles for Arch Linux environment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [VS Code](https://code.visualstudio.com/) as IDE
+  - [Zed](https://zed.dev/) as IDE
   - Terminal is also using Starship and Fish
 
-![VS Code](assets/vscode.png)
+![Zed](assets/vscode.png)
 
 ## Setup Dotfiles
 

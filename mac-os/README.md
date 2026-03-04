@@ -8,10 +8,10 @@ Dotfiles for macOS environment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [VS Code Insiders](https://code.visualstudio.com/insiders/) as IDE
+  - [Zed](https://zed.dev/) as IDE
   - Terminal is also using Starship and Fish
 
-![VS Code](assets/vscode.png)
+![Zed](assets/vscode.png)
 
 ## Setup Dotfiles
 

@@ -17,6 +17,6 @@ function esprs --argument repository_name
         echo "Repository $repository_name already exists in $repo_path"
     end
 
-    echo "Opening the repository with VS Code"
-    cursor $repo_path
+    echo "Opening the repository with Zed"
+    zed $repo_path
 end

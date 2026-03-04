@@ -9,9 +9,11 @@ end
 # Brew
 alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update"
 # Editor
-alias vs="cursor ."
-alias sandbox="cursor ~/Documents/Espressif/sandbox"
-alias dotfiles="cursor ~/.dotfiles"
+set -gx EDITOR "zed --wait"
+set -gx VISUAL "zed --wait"
+alias vs="zed ."
+alias sandbox="zed ~/Documents/Espressif/sandbox"
+alias dotfiles="zed ~/.dotfiles"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 export PATH="$HOME/.rustup/toolchains/esp/xtensa-esp-elf/esp-15.2.0_20250920/xtensa-esp-elf/bin:$PATH"
