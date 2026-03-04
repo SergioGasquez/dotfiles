@@ -1,6 +1,11 @@
 # ~/.config/fish/config.fish
 # Commmon aliases
 . ~/.config/fish/aliases.fish
+
+if test -f /Users/sergio/.dotfiles/mac-os/shell/espressif.fish
+    . /Users/sergio/.dotfiles/mac-os/shell/espressif.fish
+end
+
 # Brew
 alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update"
 # Editor
