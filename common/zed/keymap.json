@@ -1,0 +1,16 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "cmd-shift-space": "agent::Toggle",
+      "ctrl-shift-space": "agent::Toggle",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-d": "editor::ToggleComments",
+      "ctrl-d": "editor::ToggleComments",
+    },
+  },
+]
