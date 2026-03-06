@@ -23,15 +23,19 @@ Dotfiles for macOS environment.
     ```
     while IFS= read -r line; do crate="${line%% *}"; args="${line#* }"; cargo install "$crate" $args; done < ../common/rust/crates
     ```
-3. [Install brew](https://brew.sh/):
+3. Install Espressif Rust toolchains and generate the export file used by Fish:
+    ```
+    espup install
+    ```
+4. [Install brew](https://brew.sh/):
     ```
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
-4. Install extra packages:
+5. Install extra packages:
     ```
     while IFS= read -r package; do [ -n "$package" ] && brew install "$package"; done < packages
     ```
-5. Initialize dotfiles and check if all the links exist and are correct
+6. Initialize dotfiles and check if all the links exist and are correct
     ```
     dot init SergioGasquez/dotfiles
     dot -v check
