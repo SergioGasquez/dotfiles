@@ -8,22 +8,54 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "git": {
-    "disable_git": false
+    "disable_git": false,
   },
   "agent_servers": {
     "pi-acp": {
-      "type": "registry"
-    }
+      "type": "registry",
+    },
   },
   "session": {
-    "trust_all_worktrees": true
+    "trust_all_worktrees": true,
+  },
+  "file_types": {
+    "GitHub Actions": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
   },
   "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
   "buffer_font_size": 15,
+  "terminal": {
+    "font_family": "Hack Nerd Font",
+    "font_size": 14,
+  },
   "theme": {
     "mode": "dark",
     "light": "Ayu Light",
     "dark": "VSCode Dark Modern",
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "title": {
+        "color": "#5ac1fe",
+      },
+    },
+  },
+  "theme_overrides": {
+    "VSCode Dark Modern": {
+      "syntax": {
+        "title": {
+          "color": "#5ac1fe",
+        },
+        "title.markup": {
+          "color": "#5ac1fe",
+        },
+        "link_text": {
+          "color": "#5ac1fe",
+        },
+        "link_text.markup": {
+          "color": "#5ac1fe",
+        },
+      },
+    },
   },
 }
