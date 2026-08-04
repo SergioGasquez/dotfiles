@@ -7,7 +7,7 @@ if test -f $HOME/.dotfiles/mac-os/shell/espressif.fish
 end
 
 # Brew
-alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update && npm install -g @mariozechner/pi-coding-agent@latest"
+alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update && pi update"
 # Editor
 set -gx EDITOR "zed --wait"
 set -gx VISUAL "zed --wait"

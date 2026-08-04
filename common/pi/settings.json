@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.56.2",
+  "lastChangelogVersion": "0.83.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",
   "enableSkillCommands": true,
@@ -8,9 +8,7 @@
   ],
   "defaultThinkingLevel": "high",
   "enabledModels": [
-    "openai-codex/gpt-5.3-codex",
-    "openai-codex/gpt-5.4",
-    "google-antigravity/claude-opus-4-6-thinking",
-    "google-antigravity/gemini-3.1-pro-high"
-  ]
+    "openai-codex/gpt-5.6-sol"
+  ],
+  "theme": "dark"
 }
