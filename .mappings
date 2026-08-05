@@ -3,6 +3,7 @@
 "common/rust/config.toml" = "$HOME/.cargo/config.toml"
 "common/pi/settings.json" = "$HOME/.pi/agent/settings.json"
 "common/pi/skills" = "$HOME/.pi/agent/skills"
+"common/pi/AGENTS.md" = "$HOME/.pi/agent/AGENTS.md"
 
 [windows]
 # Prompt
