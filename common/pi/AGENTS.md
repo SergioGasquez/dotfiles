@@ -36,3 +36,15 @@
 - Pull requests: use a short title and a concise body describing the changes (no summary header, no validation section)
 - Branches: use simple descriptive names (`fix/async-stream`, `feat/users-model`)
 - Use `gh` for PRs, reviews, issues, and anything related with GitHub like search
+
+## esp-rs repositories
+
+When working in an `esp-rs` repository or fork:
+
+- Identify the affected chip, board, enabled features, and toolchain before reasoning about behavior; support and peripheral details vary by target.
+- Read the repository's documentation, source, examples, and tests first. For `esp-hal`, also consult its [technical documentation](https://github.com/esp-rs/esp-hal/tree/main/documentation) and [published crate documentation](https://docs.espressif.com/projects/rust/).
+- Do not edit changelog files in `esp-hal`; changelog entries are tracked in the PR description.
+- For chip or peripheral behavior, verify assumptions against the relevant [Technical Reference Manual](https://www.espressif.com/en/support/documents/technical-documents). Use the [ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/latest/) and [implementation](https://github.com/espressif/esp-idf) as additional references, while accounting for differences from the Rust implementation.
+- For other crates, use their repository documentation and published API documentation on `docs.rs`.
+- Treat hardware-dependent behavior as unverified unless it was tested on the relevant device. When hardware is required, ask the user to connect the exact board and provide the command to run, expected result, and any output needed for diagnosis.
+- For `espflash`, compare behavior with [esptool](https://github.com/espressif/esptool) and its [chip-specific documentation](https://docs.espressif.com/projects/esptool/en/latest/) when useful, especially for image formats, flashing, reset behavior, and target detection.
