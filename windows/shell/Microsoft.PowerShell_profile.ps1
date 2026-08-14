@@ -48,8 +48,6 @@ Function Espressif { Set-Location -Path $HOME\Documents\Espressif }
 Set-Alias -Name cdesp -Value Espressif
 Function EspRs { Set-Location -Path $HOME\Documents\Espressif\esp-rs }
 Set-Alias -Name cdesprs -Value EspRs
-Function Forks { Set-Location -Path $HOME\Documents\Espressif\forks }
-Set-Alias -Name cdforks -Value Forks
 Function Tests { Set-Location -Path $HOME\Documents\Espressif\tests }
 Set-Alias -Name cdtests -Value Tests
 Function Personal { Set-Location -Path $HOME\Documents\Espressif\personal }
