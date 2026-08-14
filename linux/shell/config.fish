@@ -19,7 +19,7 @@ set -gx EDITOR "cursor --wait"
 set -gx VISUAL "cursor --wait"
 abbr -a vs 'cursor .'
 abbr -a sandbox 'cursor $HOME/Documents/Espressif/sandbox'
-abbr -a dotfiles 'cursor $HOME/.dotfiles'
+abbr -a dotfiles 'cursor $HOME/.dotfiles && exit'
 # ESP-RS
 export ESPFLASH_BAUD="921600"
 # Starship
@@ -30,3 +30,4 @@ zoxide init fish | source
 fish_add_path "$HOME/.local/bin"
 # Rust
 fish_add_path "$HOME/.cargo/bin"
+true
