@@ -8,10 +8,10 @@ Dotfiles for macOS environment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [Zed](https://zed.dev/) as IDE
+  - [Cursor](https://www.cursor.com/) and [Zed](https://zed.dev/) as IDEs
   - Terminal is also using Starship and Fish
 
-![Zed](assets/vscode.png)
+![Cursor and Zed](assets/vscode.png)
 
 ## Setup Dotfiles
 

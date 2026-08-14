@@ -9,10 +9,10 @@ Dotfiles for Arch Linux environment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [Cursor](https://www.cursor.com/) as IDE
+  - [Cursor](https://www.cursor.com/) and [Zed](https://zed.dev/) as IDEs
   - Terminal is also using Starship and Fish
 
-![Cursor](assets/vscode.png)
+![Cursor and Zed](assets/vscode.png)
 
 ## Setup Dotfiles
 

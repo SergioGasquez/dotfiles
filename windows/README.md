@@ -9,10 +9,10 @@ Dotfiles for Windows environment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [Zed](https://zed.dev/) as IDE
+  - [Cursor](https://www.cursor.com/) and [Zed](https://zed.dev/) as IDEs
   - Terminal is also using Starship and Powershell
 
-![Zed](assets/vscode.png)
+![Cursor and Zed](assets/vscode.png)
 
 1. [Install Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget)
 > [!TIP]

@@ -4,6 +4,7 @@ brave-browser
 ccache
 cmake
 curl
+cursor
 dfu-util
 duf
 docker
