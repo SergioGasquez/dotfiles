@@ -93,7 +93,7 @@ multiplier = 3
 [selection]
 save_to_clipboard = true
 
-[shell]
+[terminal.shell]
 program = "/bin/fish"
 
 [window]
