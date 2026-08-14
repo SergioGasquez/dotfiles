@@ -8,13 +8,13 @@ end
 
 # Brew
 function upup
-    brew update; or return
-    brew upgrade; or return
-    cargo install-update -a; or return
-    rustup update; or return
-    espup update; or return
-    pi update; or return
-    pi update --extensions
+    yes | brew update; or return
+    brew upgrade --yes; or return
+    yes | cargo install-update -a; or return
+    yes | rustup update; or return
+    yes | espup update; or return
+    yes | pi update; or return
+    yes | pi update --extensions
 end
 # Editor
 set -gx EDITOR "cursor --wait"

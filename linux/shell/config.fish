@@ -4,13 +4,13 @@
 . ~/.dotfiles/linux/shell/espressif.fish
 # Arch Linux
 function upup
-    paru -Syu --devel --sudoloop; or return
-    paru --clean --sudoloop; or return
-    cargo install-update -a; or return
-    rustup update; or return
-    espup update; or return
-    pi update; or return
-    pi update --extensions
+    paru -Syu --devel --sudoloop --noconfirm; or return
+    paru --clean --sudoloop --noconfirm; or return
+    yes | cargo install-update -a; or return
+    yes | rustup update; or return
+    yes | espup update; or return
+    yes | pi update; or return
+    yes | pi update --extensions
 end
 # Editor
 set -gx EDITOR "cursor --wait"
