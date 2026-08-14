@@ -7,7 +7,15 @@ if test -f $HOME/.dotfiles/mac-os/shell/espressif.fish
 end
 
 # Brew
-alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update && pi update && pi update --extensions"
+function upup
+    brew update; or return
+    brew upgrade; or return
+    cargo install-update -a; or return
+    rustup update; or return
+    espup update; or return
+    pi update; or return
+    pi update --extensions
+end
 # Editor
 set -gx EDITOR "cursor --wait"
 set -gx VISUAL "cursor --wait"

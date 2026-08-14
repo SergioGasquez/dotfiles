@@ -3,7 +3,15 @@
 . ~/.config/fish/aliases.fish
 . ~/.dotfiles/linux/shell/espressif.fish
 # Arch Linux
-abbr -a upup 'sudo pacman -Syy --noconfirm && sudo pacman -Syu --noconfirm && paru -Syua --noconfirm --devel --sudoloop && paru --clean --noconfirm --sudoloop && cargo install-update -a && rustup update && rustup self update && espup update && pi update && pi update --extensions'
+function upup
+    paru -Syu --devel --sudoloop; or return
+    paru --clean --sudoloop; or return
+    cargo install-update -a; or return
+    rustup update; or return
+    espup update; or return
+    pi update; or return
+    pi update --extensions
+end
 # Editor
 set -gx EDITOR "cursor --wait"
 set -gx VISUAL "cursor --wait"
