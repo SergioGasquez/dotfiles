@@ -89,8 +89,6 @@
             "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
         }
     },
-    "vale.valeCLI.config": "/home/sergio/Documents/Espressif/gitlab/esp-vale-config/.vale.ini",
-    "vale.enableSpellcheck": true,
     "security.workspace.trust.untrustedFiles": "open",
     "window.titleBarStyle": "custom",
     "[dockerfile]": {
@@ -114,9 +112,6 @@
     "[toml]": {
         "editor.formatOnSave": false
     },
-    "settingsSync.ignoredSettings": [
-        "vale.valeCLI.config"
-    ],
     "settingsSync.keybindingsPerPlatform": false,
     "grammarly.config.suggestionCategories.conjugationAtStartOfSentence": "on",
     "github.copilot.editor.enableAutoCompletions": true,

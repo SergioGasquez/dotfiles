@@ -36,11 +36,15 @@ Dotfiles for Arch Linux environment.
     ```
     paru --noconfirm -R - < packages-to-delete
     ```
-6. Initialize dotfiles and check if all the links exist and are correct
+6. With npm installed, install [Pi](https://pi.dev/docs/latest/quickstart#install):
+    ```
+    npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+    ```
+7. Initialize dotfiles and check if all the links exist and are correct
     ```
     dot init SergioGasquez/dotfiles
     dot -v check
     ```
-7. Add [command completions](https://github.com/esp-rs/espflash/pull/388):
+8. Add [command completions](https://github.com/esp-rs/espflash/pull/388):
    1. Regenerate completions using: `comp` alias
    2. If there is any Cargo subcommand completions, add the manually. Eg `sudo cat cargo-espflash.fish >> /usr/share/fish/completions/cargo.fish`

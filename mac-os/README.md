@@ -35,7 +35,11 @@ Dotfiles for macOS environment.
     ```
     while IFS= read -r package; do [ -n "$package" ] && brew install "$package"; done < packages
     ```
-6. Initialize dotfiles and check if all the links exist and are correct
+6. With npm installed, install [Pi](https://pi.dev/docs/latest/quickstart#install):
+    ```
+    npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+    ```
+7. Initialize dotfiles and check if all the links exist and are correct
     ```
     dot init SergioGasquez/dotfiles
     dot -v check

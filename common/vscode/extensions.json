@@ -717,16 +717,6 @@
     },
     {
         "identifier": {
-            "id": "chrischinchilla.vale-vscode",
-            "uuid": "47ccfd8f-1e2c-4453-9fe6-1bca66288d1d"
-        },
-        "preRelease": false,
-        "version": "0.17.5",
-        "pinned": false,
-        "installed": true
-    },
-    {
-        "identifier": {
             "id": "coolchyni.beyond-debug",
             "uuid": "4c6a1625-43cf-4b46-ac0b-eedb77aba254"
         },
