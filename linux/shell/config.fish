@@ -28,3 +28,5 @@ starship init fish | source
 zoxide init fish | source
 # uv
 fish_add_path "$HOME/.local/bin"
+# Rust
+fish_add_path "$HOME/.cargo/bin"

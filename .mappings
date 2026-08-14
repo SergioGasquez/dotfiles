@@ -30,9 +30,6 @@
 # Zed
 "linux/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
-# VS Code
-# "common/vscode/settings.json" = "$HOME/.config/Code/User/settings.json"
-# "common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
 # Cursor
 "linux/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"

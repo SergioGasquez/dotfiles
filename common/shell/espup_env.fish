@@ -19,9 +19,6 @@ if test -f "$espup_export_file"
                 if not contains -- "$espup_bin" $PATH
                     set -gx PATH "$espup_bin" $PATH
                 end
-            else
-                set -l espup_path (string replace -r '^export PATH="?([^"]*)"?$' '$1' -- "$line")
-                set -gx PATH (string split ':' -- "$espup_path")
             end
         else if string match -qr '^export LIBCLANG_PATH=' -- "$line"
             set -gx LIBCLANG_PATH (string replace -r '^export LIBCLANG_PATH="?([^"]*)"?$' '$1' -- "$line")

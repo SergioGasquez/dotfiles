@@ -2,6 +2,7 @@ Brave.Brave
 Cursor.Cursor
 Discord.Discord
 Git.Git
+GitHub.cli
 Google.Chrome
 Kitware.CMake
 Microsoft.PowerToys
