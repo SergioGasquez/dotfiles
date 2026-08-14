@@ -1,6 +1,12 @@
-# Espressif repositories
+# Espressif development
 
-These instructions apply when working in an `esp-rs` repository or fork under this directory.
+These instructions apply when working in an `esp-rs` repository, fork, or test project under this directory.
+
+## Repository location and remotes
+
+- `esp-rs` repositories are direct children of `$HOME/Documents/Espressif/esp-rs`.
+- In each repository, `origin` is the `SergioGasquez/<repo>` fork and `upstream` is the canonical `esp-rs/<repo>` repository.
+- Push personal branches to `origin` and fetch canonical changes from `upstream`. Verify remote names before any command that could change remote branches.
 
 ## General workflow
 
