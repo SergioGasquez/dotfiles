@@ -16,5 +16,9 @@
   {
     "key": "cmd+k cmd+o",
     "command": "workbench.action.files.openFolder"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.openRecent"
   }
 ]
