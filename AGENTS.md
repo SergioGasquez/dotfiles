@@ -22,6 +22,7 @@ This repository stores personal dotfiles shared across Linux, macOS, and Windows
 
 - Treat a request to add, change, or remove a shortcut in one IDE as a request to make the equivalent change in every configured IDE.
 - Keep `common/cursor/keybindings.json`, `common/vscode/keybindings.json`, and `common/zed/keymap.json` synchronized.
+- Keep shortcuts cross-platform: every custom `Ctrl` binding for Linux and Windows must also have an equivalent `Command` binding for macOS.
 - Translate commands and context conditions into each editor's native syntax instead of copying entries verbatim.
 - If an editor has no equivalent command or cannot express the same condition, leave its configuration valid and clearly report the limitation.
 
