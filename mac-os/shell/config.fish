@@ -9,11 +9,11 @@ end
 # Brew
 alias upup="brew update && brew upgrade && cargo install-update -a && rustup update && rustup self update && espup update && pi update"
 # Editor
-set -gx EDITOR "zed --wait"
-set -gx VISUAL "zed --wait"
-alias vs="zed ."
-alias sandbox="zed ~/Documents/Espressif/sandbox"
-alias dotfiles="zed ~/.dotfiles"
+set -gx EDITOR "cursor --wait"
+set -gx VISUAL "cursor --wait"
+alias vs="cursor ."
+alias sandbox="cursor ~/Documents/Espressif/sandbox"
+alias dotfiles="cursor ~/.dotfiles"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 # Brew

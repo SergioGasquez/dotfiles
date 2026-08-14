@@ -31,8 +31,8 @@ function Update-Completions {
 Set-Alias -Name completions -Value Update-Completions
 
 # Editor
-$env:EDITOR = "zed --wait"
-$env:VISUAL = "zed --wait"
+$env:EDITOR = "cursor --wait"
+$env:VISUAL = "cursor --wait"
 
 # Aliases
 ## File Navigation

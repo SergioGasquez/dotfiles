@@ -1,14 +1,15 @@
 # ~/.config/fish/config.fish
 # Commmon aliases
 . ~/.config/fish/aliases.fish
+. ~/.dotfiles/linux/shell/espressif.fish
 # Arch Linux
 abbr -a upup 'sudo pacman -Syy --noconfirm && sudo pacman -Syu --noconfirm && paru -Syua --noconfirm --devel --sudoloop && paru --clean --noconfirm --sudoloop && cargo install-update -a && rustup update && rustup self update && espup update'
 # Editor
-set -gx EDITOR "zed --wait"
-set -gx VISUAL "zed --wait"
-abbr -a vs 'zed .'
-abbr -a sandbox 'zed $HOME/Documents/Espressif/sandbox'
-abbr -a dotfiles 'zed $HOME/.dotfiles'
+set -gx EDITOR "cursor --wait"
+set -gx VISUAL "cursor --wait"
+abbr -a vs 'cursor .'
+abbr -a sandbox 'cursor $HOME/Documents/Espressif/sandbox'
+abbr -a dotfiles 'cursor $HOME/.dotfiles'
 # ESP-RS
 export ESPFLASH_BAUD="921600"
 # Starship

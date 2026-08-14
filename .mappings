@@ -30,6 +30,13 @@
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
+# VS Code
+# "common/vscode/settings.json" = "$HOME/.config/Code/User/settings.json"
+# "common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
+# Cursor
+"common/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
+"common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"
+
 [darwin]
 # Fish
 "mac-os/shell/config.fish" = "$HOME/.config/fish/config.fish"

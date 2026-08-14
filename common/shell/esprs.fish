@@ -17,6 +17,11 @@ function esprs --argument repository_name
         echo "Repository $repository_name already exists in $repo_path"
     end
 
-    echo "Opening the repository with Zed"
-    zed $repo_path
+    echo "Opening the repository with Cursor"
+    if command -sq cursor
+        cursor $repo_path
+    else
+        echo "Error: cursor is not available in PATH."
+        return 1
+    end
 end
