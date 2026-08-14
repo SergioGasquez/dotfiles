@@ -3,5 +3,18 @@
     "key": "ctrl+d",
     "command": "editor.action.commentLine",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+d",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k ctrl+o",
+    "command": "workbench.action.files.openFolder"
+  },
+  {
+    "key": "cmd+k cmd+o",
+    "command": "workbench.action.files.openFolder"
   }
 ]

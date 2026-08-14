@@ -6,6 +6,8 @@
       "ctrl-shift-space": "agent::Toggle",
       "cmd-r": ["projects::OpenRecent", { "create_new_window": false }],
       "ctrl-r": ["projects::OpenRecent", { "create_new_window": false }],
+      "cmd-k cmd-o": "workspace::Open",
+      "ctrl-k ctrl-o": "workspace::Open",
     },
   },
   {

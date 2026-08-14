@@ -68,6 +68,15 @@
         "key": "ctrl+r",
         "command": "workbench.action.openRecent"
     },
+    // Open Folder
+    {
+        "key": "ctrl+k ctrl+o",
+        "command": "workbench.action.files.openFolder"
+    },
+    {
+        "key": "cmd+k cmd+o",
+        "command": "workbench.action.files.openFolder"
+    },
     // Goto Line
     {
         "key": "cmd+g",
