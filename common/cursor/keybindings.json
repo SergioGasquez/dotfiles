@@ -20,5 +20,9 @@
   {
     "key": "cmd+r",
     "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.openRecent"
   }
 ]

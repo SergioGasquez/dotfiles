@@ -12,7 +12,7 @@
 # Terminal
 "windows/terminal/settings.json" = "$APPDATA/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 # Zed
-"common/zed/settings.json" = "$APPDATA/Zed/settings.json"
+"windows/zed/settings.json" = "$APPDATA/Zed/settings.json"
 "common/zed/keymap.json" = "$APPDATA/Zed/keymap.json"
 
 [linux]
@@ -28,13 +28,13 @@
 # Terminal
 "linux/alacritty.toml" = "$HOME/.config/alacritty/alacritty.toml"
 # Zed
-"common/zed/settings.json" = "$HOME/.config/zed/settings.json"
+"linux/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
 # VS Code
 # "common/vscode/settings.json" = "$HOME/.config/Code/User/settings.json"
 # "common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
 # Cursor
-"common/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
+"linux/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"
 
 [darwin]
@@ -48,8 +48,8 @@
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
 # Zed
-"common/zed/settings.json" = "$HOME/.config/zed/settings.json"
+"mac-os/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
 # Cursor
-"common/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
+"mac-os/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/Library/Application Support/Cursor/User/keybindings.json"

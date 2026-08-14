@@ -1,7 +1,9 @@
 # ~/.config/fish/config.fish
 # Commmon aliases
 . ~/.config/fish/aliases.fish
-. ~/.dotfiles/linux/shell/espressif.fish
+if test -f $HOME/.dotfiles/linux/shell/espressif.fish
+    . $HOME/.dotfiles/linux/shell/espressif.fish
+end
 # Arch Linux
 function upup
     paru -Syu --devel --sudoloop --noconfirm; or return

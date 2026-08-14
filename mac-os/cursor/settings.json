@@ -1,0 +1,134 @@
+{
+    "conventionalCommits.emojiFormat": "emoji",
+    "conventionalCommits.promptScopes": false,
+    "conventionalCommits.promptFooter": false,
+    "conventionalCommits.promptBody": false,
+    "conventionalCommits.gitmoji": false,
+    "crates.errorDecorator": "❗️",
+    "debug.allowBreakpointsEverywhere": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.suggestSelection": "first",
+    "editor.trimAutoWhitespace": false,
+    "editor.rulers": [
+        80
+    ],
+    "evenBetterToml.formatter.alignComments": true,
+    "evenBetterToml.formatter.alignEntries": true,
+    "evenBetterToml.formatter.arrayAutoExpand": true,
+    "evenBetterToml.formatter.arrayTrailingComma": true,
+    "evenBetterToml.formatter.reorderArrays": true,
+    "explorer.confirmDragAndDrop": false,
+    "files.associations": {
+        "*.toml": "toml",
+        "config": "toml",
+        "*.svd": "xml",
+        ".mappings": "toml",
+        "*.x": "mapfile"
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "git.allowForcePush": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "cpp": true,
+        "python": true,
+        "rust": true,
+        "c": true
+    },
+    "githubPullRequests.pullBranch": "never",
+    "grammarly.files.include": [
+        "**/*.md",
+        "**/*.txt"
+    ],
+    "markdown.validate.enabled": true,
+    "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
+    "rust-analyzer.cargo.buildScripts.enable": true,
+    "rust-analyzer.check.allTargets": false,
+    "rust-analyzer.imports.granularity.enforce": true,
+    "rust-analyzer.imports.granularity.group": "crate",
+    "rust-analyzer.procMacro.attributes.enable": true,
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "rust-analyzer.check.command": "clippy",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.defaultProfile.osx": "fish",
+    "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Windows PowerShell": {
+            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        }
+    },
+    "vale.enableSpellcheck": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "window.titleBarStyle": "custom",
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[xml]": {
+        "editor.autoClosingBrackets": "never"
+    },
+    "[toml]": {
+        "editor.formatOnSave": false
+    },
+    "settingsSync.ignoredSettings": [
+        "vale.valeCLI.config"
+    ],
+    "settingsSync.keybindingsPerPlatform": false,
+    "grammarly.config.suggestionCategories.conjugationAtStartOfSentence": "on",
+    "github.copilot.editor.enableAutoCompletions": true,
+    "cursor.cpp.disabledLanguages": [
+        "yaml",
+        "plaintext",
+        "markdown"
+    ],
+    "workbench.colorTheme": "Default Dark Modern",
+    "diffEditor.renderSideBySide": true,
+    "git.replaceTagsWhenPull": true,
+    "window.newWindowProfile": "Default",
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "window.autoDetectColorScheme": false,
+    "yaml.disableSchemaDetection": []
+}
