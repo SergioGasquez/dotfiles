@@ -47,6 +47,9 @@ function esprs --argument repository_name
     echo "Opening the repository with Cursor"
     if command -sq cursor
         cursor "$repo_path"
+        if test $status -eq 0
+            exit
+        end
     else
         echo "Error: cursor is not available in PATH."
         return 1
