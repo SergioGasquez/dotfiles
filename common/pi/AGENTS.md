@@ -18,7 +18,9 @@
 - No speculative abstractions, one-use interfaces, factories, config, or scaffolding for later
 - Remove unnecessary code, optimize for deletion and clean your own mess
 - Read files in full before wide-ranging changes, before editing files you have not fully inspected, and when asked to investigate or audit
-- Never preserve backward compatibility unless the user asks for it
+- Preserve existing behavior by default. Do not add compatibility shims unless
+  the user asks for them, and make breaking changes only when they are explicit
+  requirements or unavoidable and clearly reported
 - The codebase is your memory system, make the code self-explanatory
 
 ### Execution Model

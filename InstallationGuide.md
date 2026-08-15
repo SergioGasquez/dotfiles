@@ -29,177 +29,258 @@ Notes to install Windows alongside Arch Linux (using GNOME)
 
 # [Arch Installation](https://wiki.archlinux.org/title/installation_guide)
 
-## Pre-Installation
+### Pre-installation
 
-1. Boot the USB
-2. Set the console keyboard layout: `loadkeys es`
-3. Verify the boot mode: `ls /sys/firmware/efi/efivars`
-    1. If the command shows the directory without error, then the system is booted in UEFI mode. If the directory does not exist, the system may be booted in BIOS (or CSM) mode.
-4. Connect to the internet:
-    1. Verify that your connection is up: `ip link`
-        1. If the desired interface does not show as up: `ip set dev <interface> up`
-5. Update the system clock: `timedatectl`
-6. List disk partitions: `fdisk -l`. We need to identify the following partitions:
-    1. An EFI System partition: It should have been generated during Windows installation (usually *`sda1` or `nvme0n1p1`*)
-    2. A root partition: The free partition that we made during Windows installation with type labeled as “Microsoft basic data” (usually *`sda5` or `nvme0n1p5`*)
-7. Format the disk partition: `mkfs.ext4 /dev/<root_partition>`
-8. Mount the file systems:
-    1. Root partition: `mount /dev/<root_partition> /mnt`
-    2. EFI partition: `mount --mkdir /dev/<efi_partition> /mnt/efi`
+1. Boot the Arch USB in UEFI mode.
+2. Set the console keyboard layout:
+   ```bash
+   loadkeys es
+   ```
+3. Verify UEFI mode. If this directory does not exist, reboot and select the
+   UEFI entry for the USB:
+   ```bash
+   ls /sys/firmware/efi/efivars
+   ```
+4. Connect to the internet and verify the interface state:
+   ```bash
+   ip link
+   ip link set dev <interface> up
+   ```
+   Use `iwctl` when a Wi-Fi connection must be configured.
+5. Verify the system clock:
+   ```bash
+   timedatectl
+   ```
+6. Inspect the partition table:
+   ```bash
+   fdisk -l
+   ```
+   Identify the existing EFI System Partition created by Windows. Create a
+   Linux root partition in the unallocated space with `fdisk` or `cfdisk`.
+   Do not format the EFI System Partition.
+7. Format only the new Linux root partition:
+   ```bash
+   mkfs.ext4 /dev/<root_partition>
+   ```
+8. Mount the root and existing EFI partitions:
+   ```bash
+   mount /dev/<root_partition> /mnt
+   mount --mkdir /dev/<efi_partition> /mnt/efi
+   ```
 
-## Installation
+### Install the base system
 
-1. Install essential packages: `pacstrap -K /mnt base linux linux-firmware`
+Install the base system and the tools required by the dotfiles setup:
 
-## Configure the System
+```bash
+pacstrap -K /mnt base base-devel linux linux-firmware \
+    curl git nano networkmanager sudo
+```
 
-1. Fstab: `genfstab -U /mnt >> /mnt/etc/fstab`
-    > The fstab file can be used to define how disk partitions, various other block devices, or remote file systems should be mounted into the file system.
-2. Chroot: `arch-chroot /mnt`
-    > chroot is an operation that changes the apparent root directory for the current running process and their children.
-3. Time zone:
-    1. `ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime`
-    2. `hwclock --systohc`
-4. Install nano: `pacman -S nano`
-5. Localization:
-    1. Edit `/etc/locale.gen`: `nano /etc/locale.gen`
-        1. Uncomment `en_US.UTF-8 UTF-8`
-    2. Generate the locales:
-     `locale-gen`
-    3. Create the `locale.conf` file, and set the LANG variable accordingly:
-        1. `nano /etc/locale.conf`
-            > LANG=en_US.UTF-8
-    4. Set console keyboard layout:
-        1. `nano /etc/vconsole.conf`
-            > KEYMAP=es
-6. Network Configuration
-    1. Create the hostname file:
-        1. `nano /etc/hostname`
-            > Zephyr
-    2. Install and set NetworkManager:
-        1. `pacman  -S networkmanager`
-        2. `systemctl enable NetworkManager`
-7. Recreate the initramfs image: `mkinitcpio -P`
-8. Set the root password: `passwd`
-1. Configure the bootloader, [GRUB](https://wiki.archlinux.org/title/GRUB#Installation_2)
-    1. Install the necessary packages: `pacman -S grub os-prober efibootmgr`
-    2. [To recognize other OSs](https://wiki.archlinux.org/title/GRUB#Detecting_other_operating_systems), edit `/etc/default/grub` and add/uncomment:
-    `GRUB_DISABLE_OS_PROBER=false`
-    3. Mount EFI partition:`mount /dev/<efi_partition> /efi`
-        1. This may be not required since its already mounted
-    4. Install GRUB EFI application: `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
-    5. Use the grub-mkconfig tool to generate `/boot/grub/grub.cfg`: `grub-mkconfig -o /boot/grub/grub.cfg`
-2.  Enable [Microcode](https://wiki.archlinux.org/title/Microcode)
-    1. Install the correct package intel/amd) : `pacman -S amd-ucode`
-    2. Reconfigure GRUB: `grub-mkconfig -o /boot/grub/grub.cfg`
-3.  Exit arch: *Ctrl + d*
-4.  Unmount partitions: `umount -R /mnt`
-5.  Reboot
-6.  Log in with: *root - <password>*
+### Configure the system
 
-## Post-Installation: [General Recommendations](https://wiki.archlinux.org/title/General_recommendations)
+1. Generate `fstab`:
+   ```bash
+   genfstab -U /mnt >> /mnt/etc/fstab
+   ```
+2. Enter the installed system:
+   ```bash
+   arch-chroot /mnt
+   ```
+3. Configure the time zone:
+   ```bash
+   ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+   hwclock --systohc
+   ```
+4. Uncomment `en_US.UTF-8 UTF-8` in `/etc/locale.gen`, then configure the
+   locale and console keyboard:
+   ```bash
+   locale-gen
+   echo 'LANG=en_US.UTF-8' > /etc/locale.conf
+   echo 'KEYMAP=es' > /etc/vconsole.conf
+   ```
+5. Set the machine-specific hostname:
+   ```bash
+   echo '<hostname>' > /etc/hostname
+   ```
+6. Enable networking:
+   ```bash
+   systemctl enable NetworkManager
+   ```
+7. Recreate the initramfs and set the root password:
+   ```bash
+   mkinitcpio -P
+   passwd
+   ```
+8. Create the regular user and configure `sudo`:
+   ```bash
+   useradd -m -G wheel -s /bin/bash <username>
+   passwd <username>
+   EDITOR=nano visudo
+   ```
+   Uncomment `%wheel ALL=(ALL:ALL) ALL`.
 
-### System Administration
+### Configure GRUB and microcode
 
-1. Add your user to a group : `useradd -m -G wheel -s /bin/bash sergio`
-2. Set a password: `passwd sergio`
-3. Set up sudo:
-    1. Install the package: `pacman -S sudo`
-    2. Configure it: `EDITOR=nano visudo`
-        1. Uncomment the line: `%wheel ALL=(ALL:ALL) ALL`
+1. Install GRUB and its UEFI dependencies:
+   ```bash
+   pacman -S grub efibootmgr os-prober
+   ```
+2. Set `GRUB_DISABLE_OS_PROBER=false` in `/etc/default/grub`.
+3. Install GRUB and generate its configuration:
+   ```bash
+   grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+   grub-mkconfig -o /boot/grub/grub.cfg
+   ```
+4. Install the [microcode](https://wiki.archlinux.org/title/Microcode) package
+   matching the CPU:
+   ```bash
+   pacman -S intel-ucode  # Intel
+   pacman -S amd-ucode    # AMD
+   ```
+   Run only the applicable command, then regenerate GRUB:
+   ```bash
+   grub-mkconfig -o /boot/grub/grub.cfg
+   ```
+5. Exit, unmount, and reboot:
+   ```bash
+   exit
+   umount -R /mnt
+   reboot
+   ```
 
-### Graphical User Interface
+## Post-installation
 
-1. Display server, [Xorg](https://wiki.archlinux.org/title/Xorg) or [Wayland](https://wayland.freedesktop.org/)
-    1. Identify your GPU: `lspci -v | grep -A1 -e VGA -e 3D`
-    2. Install the proper drivers: `pacman -S nvidia nvidia-utils`
-        > For the **[Turing (NV160/TU*XXX*)](https://nouveau.freedesktop.org/CodeNames.html#NV160)** series or newer the **[nvidia-open](https://archlinux.org/packages/?name=nvidia-open)** package may be installed for open source kernel modules on the **[linux](https://archlinux.org/packages/?name=linux)** kernel (On other kernels **[nvidia-open-dkms](https://archlinux.org/packages/?name=nvidia-open-dkms)** must be used).
+### Graphical environment
 
-    3. Install a display server:
-        - Wayland: `pacman -S wayland weston`
-        - Xorg: `pacman -S xorg-server xorg-apps`
-2. Desktop environment, [GNOME](https://wiki.archlinux.org/title/GNOME)
-    1. Install the necessary packages `pacman -S gnome gnome-extra`
-        1. Use default config
-    2. Enable it: `systemctl enable gdm.service`
-    3. Reboot
+1. Identify the GPU:
+   ```bash
+   lspci -v | grep -A1 -E 'VGA|3D'
+   ```
+2. Install the driver appropriate for that exact GPU. Consult the
+   [ArchWiki graphics documentation](https://wiki.archlinux.org/title/Xorg#Driver_installation)
+   instead of installing a vendor-specific package unconditionally.
+3. Install GNOME and the current PipeWire audio stack:
+   ```bash
+   sudo pacman -S gnome pipewire pipewire-audio pipewire-pulse wireplumber
+   sudo systemctl enable gdm
+   ```
+   GNOME uses Wayland by default; Weston is not required. Install
+   `xorg-server` only when an Xorg session is needed.
+4. Reboot.
 
-## Fine-Tuning
-### Linux
-#### Keyboard Layout
-1. Settings > Keyboard > Add "Spanish" input source and remove the others
-#### Workspaces on All Displays
-1. Settings > Multitasking > Multi-Monitor > Workspaces on all displays
+### Linux fine-tuning
+
+#### Keyboard and workspaces
+
+- Settings > Keyboard > add the Spanish input source and remove unused ones.
+- Settings > Multitasking > Multi-Monitor > Workspaces on all displays.
+- Settings > Keyboard Shortcuts > set **Switch windows** to `Alt+Tab`.
+- Add `Ctrl+Alt+T` as a shortcut for `alacritty`.
+
 #### Bluetooth
-1. Install necessary packages for [blueetooth](https://wiki.archlinux.org/title/bluetooth) ([pulseaudio](https://wiki.archlinux.org/title/bluetooth_headset#Headset_via_Bluez5/PulseAudio) and `bluedoid` might also be required):
-    ```
-    sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth blueberry bluez bluez-utils
-    ```
-2. Enable and start the service
-    ```
-    systemctl start bluetooth.service
-    systemctl enable bluetooth.service
-    ```
-#### AUR Helper
-- [paru](https://github.com/Morganamilo/paru/)
-- [yay](https://github.com/Jguer/yay#source)
-  - Uncomment `Color` option from `/etc/pacman.conf`
-#### Grub Customization
-- Use Grub Customizer to rename the entries and order
-- Change [grub-theme](https://github.com/vinceliuice/grub2-themes):
-  ```
+
+Use PipeWire rather than replacing it with PulseAudio:
+
+```bash
+sudo pacman -S bluez bluez-utils
+sudo systemctl enable --now bluetooth
+```
+
+Configure devices through GNOME Settings. See the
+[ArchWiki Bluetooth documentation](https://wiki.archlinux.org/title/Bluetooth)
+for troubleshooting.
+
+#### AUR helper
+
+Install [paru](https://github.com/Morganamilo/paru):
+
+```bash
+git clone https://aur.archlinux.org/paru.git /tmp/paru
+(cd /tmp/paru && makepkg -si)
+rm -rf /tmp/paru
+```
+
+Optionally enable `Color` in `/etc/pacman.conf`.
+
+#### GRUB customization
+
+- Use GRUB Customizer to rename and reorder entries.
+- Install the [GRUB theme](https://github.com/vinceliuice/grub2-themes):
+  ```bash
   git clone https://github.com/vinceliuice/grub2-themes
   cd grub2-themes
   sudo ./install.sh -t vimix -b
   ```
-#### Keyboard Shortcuts
-1. Go to Settings > Keyboard Shortcuts > View and Customize Shortcuts
-   1. Settings > Keyboard Shortcuts> Set "Switch windows" to `Alt+Tab`.
-   2. Set `Ctrl+Alt+T` to open `alacritty`.
-#### [Change Mirrors](https://wiki.archlinux.org/title/installation_guide#Select_the_mirrors)
-1. Install reflector: `sudo pacman -S reflector rsync`
-2. Sort the 30 most recently synchronized mirrors by download speed and overwrite the local mirrorlist: `sudo reflector --latest 50 --sort rate --save /etc/pacman.d/mirrorlist`
-#### Fix `espflash` "Permission Denied" or "Port doesn’t exist" errors
-1. Run: `sudo usermod -a -G "$(stat -c "%G" /dev/ttyUSB0)" $USER`
-   - Port may need to be updated
-#### [Setup Docker](https://docs.docker.com/engine/install/linux-postinstall/)
-1. Enable the daemon: `systemctl enable docker`
-2. Create the docker group: `sudo groupadd docker`
-3. Add your user to the docker group: `sudo usermod -aG docker $USER`
-4. Reboot
-5. Verify that you can run `docker` commands without `sudo`.
-#### `qBitTorrent`
-1. Enable Search plugin: View > Search Engine
-2. Go to the Search tab. Search plugins> Check for updates.
-  1. Install any other plugin
-#### Fix Dualboot Time Issue in Windows:
-In Linux:
+
+#### Mirrors
+
+```bash
+sudo pacman -S reflector rsync
+sudo reflector --latest 50 --sort rate --save /etc/pacman.d/mirrorlist
 ```
+
+#### Serial-port permissions for `espflash`
+
+Replace the device path when necessary, then log out and back in:
+
+```bash
+sudo usermod -aG "$(stat -c '%G' /dev/ttyUSB0)" "$USER"
+```
+
+#### [Docker](https://docs.docker.com/engine/install/linux-postinstall/)
+
+```bash
+sudo systemctl enable --now docker
+sudo usermod -aG docker "$USER"
+```
+
+Log out and back in, then verify that Docker works without `sudo`.
+
+#### qBittorrent
+
+1. Enable View > Search Engine.
+2. In the Search tab, select Search plugins > Check for updates.
+
+#### Dual-boot clock
+
+To make Linux use the local hardware clock:
+
+```bash
 timedatectl set-local-rtc 1 --adjust-system-clock
 ```
-On Windows, make sure the time is automatically set
 
-### Windows
-#### Configure Mouse Acceleration
- 1. Go to Bluetooth & devices > Mouse > Additional mouse settings
- 2. Switch to the **Pointer Options** tab, then untick the **Enhanced pointer precision** box.
-#### Update Displays Frequency
- 1. Right click on desktop > Display settings > Choose the display > Update the Choose a refresh rate field
-#### League of Legends Resets to Full Screen:
- 1. Edit  `C:\Riot Games\League of Legends\Config\game.cfg` file
-     - Set `WindowMode` to 2 instead of 0
- 2. Set  `C:\Riot Games\League of Legends\Config\game.cfg` to read-only
-     - Right click > Properties > Check the Read-only attribute
-#### `qBitTorrent`
-1. Enable Search plugin: View > Search Engine
-2. Go to the Search tab. Search plugins > Check for updates.
-  1. Install any other plugin
+Ensure that Windows sets the time automatically.
+
+### Windows fine-tuning
+
+#### Mouse acceleration
+
+Settings > Bluetooth & devices > Mouse > Additional mouse settings > Pointer
+Options > clear **Enhance pointer precision**.
+
+#### Display refresh rate
+
+Right-click the desktop > Display settings > select the display > choose the
+correct refresh rate.
+
+#### League of Legends window mode
+
+1. Set `WindowMode=2` in
+   `C:\Riot Games\League of Legends\Config\game.cfg`.
+2. Mark the file read-only if the game keeps resetting the value.
+
+#### qBittorrent
+
+1. Enable View > Search Engine.
+2. In the Search tab, select Search plugins > Check for updates.
+
 #### [PowerToys](https://github.com/microsoft/PowerToys)
-1. Disable `Win+Space` shortcut
-    - Open PowerToys > Keyboard manager > Enable it > Remap a shortcut
-      - Select: `Win (Left) + Space`
-      - To send: `Disable`
-#### Nvidia GeForce
-1. Disable Performance Overlay: Settings > General > Turn off In-game Overlay
 
+Disable `Win+Space` through Keyboard Manager when it conflicts with another
+shortcut.
 
+#### NVIDIA app
+
+Disable the performance overlay under Settings > General when it is not
+needed.
