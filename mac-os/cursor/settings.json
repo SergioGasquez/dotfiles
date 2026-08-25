@@ -125,6 +125,7 @@
     "git.replaceTagsWhenPull": true,
     "window.newWindowProfile": "Default",
     "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "openscad.launchPath": "/opt/homebrew/bin/openscad",
     "window.autoDetectColorScheme": false,
     "yaml.disableSchemaDetection": []
 }
