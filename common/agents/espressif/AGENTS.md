@@ -6,7 +6,9 @@ These instructions apply when working in an `esp-rs` repository, fork, or test p
 
 - `esp-rs` repositories are direct children of `$HOME/Documents/Espressif/esp-rs`.
 - In each repository, `origin` is the `SergioGasquez/<repo>` fork and `upstream` is the canonical `esp-rs/<repo>` repository.
+- Never push commits to `upstream/main`.
 - Push personal branches to `origin` and fetch canonical changes from `upstream`. Verify remote names before any command that could change remote branches.
+- Push personal branches with `git push -u origin HEAD`. Never use an unqualified `git push` when the branch tracks `upstream/main`; inspect the configured upstream and correct it to `origin/<branch>` first.
 - Before changing any file for a GitHub issue, read the applicable `AGENTS.md` files, activate the `branching` skill, inspect the current branch and remotes, and create the issue branch. Do not begin issue work on `main`, including dependency-only or lockfile-only changes.
 - When `upstream` is `esp-rs/<repo>`, fetch `upstream/main` and create the branch from `upstream/main` using the naming convention in the `branching` skill. Make, verify, and commit all issue changes on that branch, then push it to `origin` (`SergioGasquez/<repo>`).
 - Before reporting an issue as fixed, confirm that the current branch is the issue branch and that its commits containing the fix have been pushed to `origin`; include the branch name in the report.
