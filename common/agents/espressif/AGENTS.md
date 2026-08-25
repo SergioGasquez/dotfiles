@@ -19,6 +19,7 @@ These instructions apply when working in an `esp-rs` repository, fork, or test p
 - Read the repository's documentation, source, examples, and tests before making changes.
 - For chip or peripheral behavior, verify assumptions against the relevant [Technical Reference Manual](https://www.espressif.com/en/support/documents/technical-documents). Use the [ESP-IDF documentation](https://docs.espressif.com/projects/esp-idf/en/latest/) and [implementation](https://github.com/espressif/esp-idf) as additional references while accounting for differences from the Rust implementation.
 - For crates other than `esp-hal`, consult their repository documentation and published API documentation on `docs.rs`.
+- For repositories other than `esp-hal`, update the changelog file and include the pull request number in parentheses, for example `(#122)`.
 - Relevant Espressif hardware is available for testing. When hardware validation is needed, identify the exact board, chip, connection method, and physical setup; ask the user to connect it. After confirmation, run the appropriate test, flash, or monitoring commands yourself. Treat hardware-dependent behavior as unverified until tested on the relevant device.
 
 ## esp-hal
