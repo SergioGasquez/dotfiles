@@ -5,6 +5,7 @@
 "common/pi/skills" = "$HOME/.pi/agent/skills"
 "common/pi/AGENTS.md" = "$HOME/.pi/agent/AGENTS.md"
 "common/agents/espressif/AGENTS.md" = "$HOME/Documents/Espressif/AGENTS.md"
+"common/agents/crimpdeq/AGENTS.md" = "$HOME/Documents/Crimpdeq/AGENTS.md"
 
 [windows]
 # Prompt
