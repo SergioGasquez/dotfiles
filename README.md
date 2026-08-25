@@ -3,6 +3,7 @@ Cozy repository where I store my dotfiles:
 - [Linux (Arch Linux)](linux)
 - [macOS](mac-os)
 - [Windows](windows)
+- [Pi coding agent](common/pi)
 
 Linux and Windows are installed in a dual boot environment, see [Installation Guide](InstallationGuide.md) for instructions.
 
