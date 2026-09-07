@@ -17,6 +17,8 @@
 "common/zed/keymap.json" = "$APPDATA/Zed/keymap.json"
 
 [linux]
+# MCP
+"linux/mcp.json" = "$HOME/.config/mcp/mcp.json"
 # Fish
 "linux/shell/config.fish" = "$HOME/.config/fish/config.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"

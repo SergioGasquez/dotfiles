@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "konnect": {
+      "command": "env",
+      "args": [
+        "${HOME}/.local/share/kicad/10.0/3rdparty/plugins/com_github_mixelpixx_konnect/bin/konnect"
+      ]
+    }
+  }
+}

@@ -25,14 +25,15 @@ Restart Pi after installing the packages. Configure a Cursor API key with
 ## KiCad through Konnect
 
 [`Konnect`](https://github.com/mixelpixx/Konnect) is a KiCad 10 plugin and MCP
-server. With a local Cursor model, the tool path is:
+server. It works with any tool-capable model in Pi:
 
 ```text
-Cursor model → pi-cursor-sdk bridge → pi-mcp-adapter → Konnect → KiCad
+Pi model → pi-mcp-adapter → Konnect → KiCad
 ```
 
-The Pi-to-Cursor bridge is local-only, so use the default local Cursor runtime
-for Konnect rather than Cursor Cloud.
+Cursor models additionally use the `pi-cursor-sdk` bridge. That bridge is
+local-only, so use the default local Cursor runtime rather than Cursor Cloud.
+No second MCP extension is needed.
 
 ### Install Konnect
 
@@ -53,9 +54,39 @@ kicad_binary = "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad"
 ipc_address = "ipc:///tmp/kicad/api.sock"
 ```
 
+### Register the MCP server
+
+On Linux, [the managed MCP config](../../linux/mcp.json) is linked to
+`~/.config/mcp/mcp.json`. It launches the binary from KiCad 10's default PCM
+installation directory. The `env` executable forwards the binary path after
+`pi-mcp-adapter` expands `${HOME}` in the argument; no shell wrapper is needed.
+If KiCad uses a custom data directory, override the command in the untracked
+`~/.pi/agent/mcp.json`.
+
+On macOS or Windows, add a `konnect` entry to `~/.config/mcp/mcp.json` using
+the actual installed binary path (merge with any existing servers):
+
+```json
+{
+  "mcpServers": {
+    "konnect": {
+      "command": "/absolute/path/to/konnect"
+    }
+  }
+}
+```
+
+Use `konnect.exe` on Windows, with forward slashes or escaped backslashes in
+the JSON path. Do not run `konnect init` just to register MCP: it installs
+Claude/Codex guidance, not Pi's server configuration.
+
 Restart Pi from the project directory, or run `/reload`, then use `/mcp` to
-confirm that `konnect` was discovered. Most live PCB operations require KiCad
-to be running with the target board open.
+confirm that `konnect` was discovered. Ask the agent to connect and call
+`server_stats` to verify MCP communication, then `list_toolboxes` to discover
+available toolsets. Load only what is needed with `load_toolset`, for example
+`{"name":"pcb_components"}`, then search the refreshed catalog.
+Most live PCB operations require KiCad to be running with the target board
+open. Test with a read-only inspection before requesting any design changes.
 
 `pi-mcp-adapter` keeps Konnect's large tool catalog behind its proxy by default.
 Do not enable all Konnect tools as direct tools; let the agent discover the
