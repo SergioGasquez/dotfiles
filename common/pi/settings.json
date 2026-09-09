@@ -6,17 +6,37 @@
   "skills": [
     "./skills"
   ],
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "medium",
+  "showCacheMissNotices": true,
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 16384,
+    "keepRecentTokens": 10000
+  },
   "enabledModels": [
     "cursor/gpt-5.6-sol@272k:slow",
     "openai-codex/gpt-5.6-sol",
-    "openai-codex/gpt-6-astra"
+    "openai-codex/gpt-6-astra",
+    "cursor/grok-4.6"
   ],
   "hideThinkingBlock": false,
   "transport": "websocket-cached",
   "theme": "dark",
+  "subagents": {
+    "defaultModel": "openai-codex/gpt-5.6-luna",
+    "defaultThinking": "low",
+    "agentOverrides": {
+      "worker": {
+        "model": "openai-codex/gpt-5.6-luna:max"
+      },
+      "reviewer": {
+        "model": "openai-codex/gpt-5.6-luna:max"
+      }
+    }
+  },
   "packages": [
     "npm:pi-cursor-sdk",
-    "npm:pi-mcp-adapter"
+    "npm:pi-mcp-adapter",
+    "npm:pi-subagents"
   ]
 }
