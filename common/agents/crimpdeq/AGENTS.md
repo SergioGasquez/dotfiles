@@ -21,47 +21,48 @@ contains its software, electronics, mechanical design, and documentation.
 
 ## Branch workflow
 
-- For every task, issue, or feature, follow the `branching` skill at
-  `$HOME/.pi/agent/skills/branching/SKILL.md`.
-- In each affected repository, fetch the canonical remote and create a branch from its `main`
-  branch before editing. Use the branch naming convention defined by the skill; never implement
-  the work directly on `main`.
-- For multidisciplinary work, inspect every affected repository and make the necessary coordinated
-  changes on a corresponding branch in each repository.
-- After verifying and committing the changes, push each branch with `git push -u origin HEAD`.
+- For implementation work, follow the `branching` skill at
+  `$HOME/.pi/agent/skills/branching/SKILL.md`. Audits, reviews, discussion, and naming-only requests
+  do not require branch creation, commits, or pushes.
+- Use a task branch in each affected repository, never `main`. New task branches start from the
+  fetched canonical remote's `main`; existing branches for the same task can continue.
+- Implementation requests grant standing permission to verify, commit the scoped changes, and
+  push the task branches with `git push -u origin HEAD`, unless the user requests local-only work.
+  Verify that `origin` is the intended personal repository before publishing. This does not
+  authorize force-pushing, merging, releases, or PR creation.
+- Completion includes the affected project's checks below and fixes to regressions introduced by
+  the change. Report local implementation, validation, commit, and push status separately;
+  unavailable hardware or publication does not block independent local work.
 
 ## Working across the workspace
 
-- The parent directory is a collection of independent repositories and local design work. Enter the
-  affected child directory and inspect its status, branch, remotes, README, and applicable nested
-  `AGENTS.md` before editing. Never assume a command run at the parent covers every project.
-- Preserve unrelated local changes and generated artifacts. Do not move work between repositories
-  or update dependencies, lockfiles, fabrication files, or release assets unless required.
-- Read the affected project's current documentation and source before making revision-specific
-  assumptions. Keep component choices, dimensions, pin assignments, and other revision details out
-  of this workspace-level file.
-- Identify the source of truth before changing an interface:
+- The parent contains independent repositories and local design work; run project commands from
+  the affected child repository, not the workspace root.
+- Do not move work between repositories or update dependencies, lockfiles, fabrication files, or
+  release assets unless required by the task.
+- For revision-specific component choices, dimensions, or pin assignments, use the affected
+  project's current source and documentation; keep those details out of this workspace-level file.
+- Interface sources of truth:
   - PCB electrical and physical design: `crimpdeq-pcb/pcb/crimpdeq/`
   - Enclosure dimensions and placement: `crimpdeq-case/case/`
-  - Platform interface: `crimpdeq-platform/src/crimpdeq_interface.scad`
+  - Platform fit reference: `crimpdeq-platform/crimpdeq_reference.scad`; platform parameters and
+    structural assertions: `crimpdeq-platform/dynamometer_dimensions.scad`
   - User-facing behavior and setup: implementation repositories, reflected in `crimpdeq-book`
 - Keep firmware, app, PCB, case, platform, and book assumptions synchronized when BLE behavior,
   pin assignments, dimensions, controls, calibration, or assembly changes.
 - Derive mechanical interfaces from shared source geometry; do not copy unexplained dimensions
   between the PCB, enclosure, and platform.
-- Treat electrical, RF, fit, strength, calibration, and BLE behavior as unverified until checked on
-  the relevant hardware or printed part. Ask for the required physical setup before claiming it
-  works.
+- Digital checks do not validate electrical, RF, fit, strength, calibration, or BLE behavior on
+  hardware or printed parts. Identify the physical setup and obtain operation confirmation before
+  hardware testing; report physical validation still pending.
 
 ## Verification
 
-- Firmware: format and build with the repository's pinned Rust/ESP toolchain; only flash or monitor
-  hardware after confirming the connected board and requested operation.
-- App: run Dart formatting plus focused `flutter analyze` and `flutter test` checks.
-- PCB: follow `crimpdeq-pcb/AGENTS.md`; use Konnect for KiCad source changes and run ERC, DRC, and
-  the repository verifier.
+- Firmware changes: use the repository's pinned Rust/ESP toolchain for formatting and builds.
+- App code changes: use Dart formatting plus focused `flutter analyze` and `flutter test` checks.
+- KiCad source changes: use `crimpdeq-pcb/AGENTS.md` for Konnect, direct-edit safeguards, ERC,
+  DRC, and the repository verifier.
 - Case: follow `crimpdeq-case/AGENTS.md` and run its collision checks after geometry changes.
-- Platform: run the relevant OpenSCAD assertions/exports and distinguish digital checks from
-  pending physical fit or proof-load validation.
-- Book: run `mdbook build` after documentation changes.
-- Report checks not run and hardware, fabrication, or physical validation still pending.
+- Platform geometry changes: run the relevant OpenSCAD assertions/exports; these do not replace
+  physical fit or proof-load validation.
+- Book documentation changes: run `mdbook build`.

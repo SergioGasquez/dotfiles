@@ -4,6 +4,28 @@ The shared Pi configuration is linked to `~/.pi/agent` through
 [`.mappings`](../../.mappings). Its packages are declared in
 [`settings.json`](settings.json).
 
+## Instructions and skills
+
+[`AGENTS.md`](AGENTS.md) defines shared coding preferences and authority boundaries.
+The [Espressif](../agents/espressif/AGENTS.md) and
+[Crimpdeq](../agents/crimpdeq/AGENTS.md) workspace instructions add domain-specific
+policy. Skills under [`skills/`](skills/) load for branch creation/naming, commit
+messages/commits, or code review—not for unrelated implementation work.
+
+Implementation proceeds through scoped edits and relevant safe validation without
+an automatic first-pass review stop. Reviews and audits remain read-only; drafting
+a commit message does not authorize a commit. Commits and publication require a
+request or explicit workspace authorization: Espressif issue implementation and
+Crimpdeq implementation include committing and pushing personal task branches,
+unless local-only work is requested. PR creation, posted reviews, force-pushes,
+merges, releases, host setup changes, and hardware operations are not implicitly
+authorized by that workflow.
+
+Keep validation commands and domain invariants in the relevant project. Read
+references according to the affected behavior rather than requiring a stack of
+documents for every edit. These policies are shared across models; model selection
+and package-owned delegation controls are unchanged.
+
 ## Extensions
 
 - [`pi-cursor-sdk`](https://github.com/fitchmultz/pi-cursor-sdk) runs Cursor

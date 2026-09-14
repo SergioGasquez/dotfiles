@@ -1,82 +1,27 @@
 ---
 name: branching
-description: Create and manage git branches safely. Use when the user asks to create a branch, prepare branch naming, or update branch workflow instructions.
+description: Create or name a Git branch when requested or required by the workspace workflow.
 ---
 
 # Branching
 
-Use this skill whenever the task involves creating or naming a git branch.
+- Naming-only requests return a name without changing Git state.
+- For branch creation, inspect status, current branch, and remotes. Honor an explicitly requested base or an existing branch for the same task; do not restart ongoing work from the default branch.
+- For new work, use the applicable workspace's canonical remote and base. Otherwise determine the repository's default branch rather than assuming `main` or trusting remote names alone.
+- When branching from a canonical remote ref, fetch that ref first. If fetching fails, report it rather than silently using stale state. An explicitly requested local base does not require a fetch.
+- Preserve unrelated changes. Do not reset, discard, stash, or move them to another task branch without authorization. Ask when their ownership or the intended base is unclear.
+- Confirm and report the resulting branch and base. Branch creation does not authorize committing or pushing.
 
-## Goals
+## Naming
 
-1. Start new work from the correct base branch.
-2. Use clear, predictable branch names.
-3. Avoid branching from stale local state.
+Use `type/short-description`: short, lowercase, and hyphenated.
 
-## General workflow
+Examples: `feat/add-zed-abbreviation`, `fix/use-zeditor-on-linux`,
+`docs/update-branching-skill`, `chore/refresh-shell-config`.
 
-1. Inspect remotes and current branch if needed:
-   - `git remote -v`
-   - `git branch --show-current`
-   - `git status --short`
-2. Identify the correct base branch.
-3. Update refs before creating the branch when cheap and safe.
-4. Create the new branch.
-5. Confirm with `git branch --show-current`.
+## esp-rs
 
-## Branch naming
-
-Prefer Conventional Commit style branch names:
-
-```text
-type/short-description
-```
-
-Examples:
-
-- `feat/add-zed-abbreviation`
-- `fix/use-zeditor-on-linux`
-- `docs/update-branching-skill`
-- `chore/refresh-shell-config`
-
-## esp-rs workflow
-
-When working on an `esp-rs` repository and creating a new branch, always use Conventional Commit style branch names such as:
-
-- `feat/...`
-- `fix/...`
-- `docs/...`
-- `chore/...`
-
-### If working on a fork
-
-1. Fetch `upstream` first.
-2. Create the branch from `upstream/main`, not from the local branch and not from `origin/main`.
-
-Example:
-
-```bash
-git fetch upstream
-git switch -c fix/short-description upstream/main
-```
-
-### If working on the origin repository directly
-
-1. Fetch `origin` first.
-2. Create the branch from `origin/main`, not from the local branch.
-3. Use the same Conventional Commit branch naming system.
-
-Example:
-
-```bash
-git fetch origin
-git switch -c fix/short-description origin/main
-```
-
-## Rules
-
-- Prefer branching from the canonical remote branch instead of local state.
-- If an `upstream` remote exists for fork-based work, treat it as the source of truth.
-- If working directly on the origin repository, treat `origin/main` as the source of truth.
-- Keep branch names short, lowercase, and hyphenated.
-- Avoid vague names like `test`, `stuff`, or `changes`.
+For new work on an esp-rs fork, verify the remotes and fetch the canonical
+`upstream/main`, then create the branch from it. When working directly on the
+canonical repository, use `origin/main`. Follow the workspace's publication
+policy; never infer a push destination from the branch's tracking configuration.
