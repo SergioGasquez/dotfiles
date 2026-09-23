@@ -21,6 +21,7 @@
     "dock": "left"
   },
   "agent": {
+    "enabled": false,
     "dock": "right",
     "favorite_models": [],
     "model_parameters": []
@@ -48,7 +49,10 @@
     "dark": "Zed (Default)"
   },
   "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "buffer_font_family": "Consolas",
+  "buffer_font_fallbacks": ["Courier New"],
+  "buffer_font_size": 14,
+  "buffer_line_height": { "custom": 1.35 },
   "terminal": {
     "font_family": "Hack Nerd Font",
     "font_size": 14,
@@ -64,7 +68,8 @@
   "experimental.theme_overrides": {
     "syntax": {
       "title": {
-        "color": "#5ac1fe",
+        "color": "#569cd6",
+        "font_weight": 700,
       },
     },
   },
@@ -72,10 +77,12 @@
     "VSCode Dark Modern": {
       "syntax": {
         "title": {
-          "color": "#5ac1fe",
+          "color": "#569cd6",
+          "font_weight": 700,
         },
         "title.markup": {
-          "color": "#5ac1fe",
+          "color": "#569cd6",
+          "font_weight": 700,
         },
         "link_text": {
           "color": "#5ac1fe",
