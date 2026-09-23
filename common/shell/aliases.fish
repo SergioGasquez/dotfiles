@@ -65,3 +65,6 @@ abbr -a dp 'docker system prune -a -f && docker system prune --volumes -a -f'
 abbr -a comp 'espup completions fish > ~/.dotfiles/common/shell/espup.fish && espflash completions fish > ~/.dotfiles/common/shell/espflash.fish'
 # Python
 abbr -a pip 'uv pip'
+# Pi
+abbr -a piclaude 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high'
+abbr -a picursor 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-cursor-sdk/dist/index.js --model cursor/gpt-5.6-sol@272k:slow'

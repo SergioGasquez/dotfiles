@@ -45,6 +45,15 @@ pi list
 Restart Pi after installing the packages. Configure a Cursor API key with
 `/login`, then select a `cursor/*` model with `/model`.
 
+The Cursor SDK and Claude bridge package extensions are disabled by default in
+[`settings.json`](settings.json). The shared Fish abbreviations load only the
+needed bridge for each invocation:
+
+```bash
+picursor  # cursor/gpt-5.6-sol@272k:slow
+piclaude  # claude-bridge/claude-opus-5-5 with high thinking
+```
+
 ## KiCad through Konnect
 
 [`Konnect`](https://github.com/mixelpixx/Konnect) is a KiCad 10 plugin and MCP
