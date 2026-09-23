@@ -5,7 +5,7 @@ These instructions apply when working in an `esp-rs` repository, fork, or test p
 ## Repository location and publication
 
 - `esp-rs` repositories are direct children of `$HOME/Documents/Espressif/esp-rs`. Their expected remotes are `origin` for the personal fork and `upstream` for the canonical `esp-rs/<repo>` repository. Verify actual destinations before remote mutations; do not assume test projects use this arrangement.
-- Issue implementation requires a task branch, including dependency-only or lockfile-only changes. Use the `branching` skill for creation or continuation; new esp-rs fork branches start from fetched `upstream/main`. Do not implement on `main`.
+- Issue implementation requires a task branch, including dependency-only or lockfile-only changes. Use the branching reference in the `git` skill for creation or continuation; new esp-rs fork branches start from fetched `upstream/main`. Do not implement on `main`.
 - Issue implementation requests grant standing permission to verify, commit the scoped changes, and push the issue branch to the verified personal `origin`, unless the user requests local-only work. Audits, reviews, discussion, and naming-only requests do not authorize these mutations.
 - Push personal branches with `git push -u origin HEAD`, never an unqualified push. Never push to `upstream/main`. This permission does not authorize force-pushing, merging, releases, or PR creation.
 - Report local implementation, validation, commit, and push status separately, including the issue branch. A local fix is not a pushed or merged fix; a blocked push does not erase completed local work.

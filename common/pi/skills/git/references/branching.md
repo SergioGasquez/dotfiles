@@ -1,8 +1,3 @@
----
-name: branching
-description: Create or name a Git branch when requested or required by the workspace workflow.
----
-
 # Branching
 
 - Naming-only requests return a name without changing Git state.

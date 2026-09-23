@@ -21,8 +21,8 @@ contains its software, electronics, mechanical design, and documentation.
 
 ## Branch workflow
 
-- For implementation work, follow the `branching` skill at
-  `$HOME/.pi/agent/skills/branching/SKILL.md`. Audits, reviews, discussion, and naming-only requests
+- For implementation work, follow the branching workflow in the `git` skill at
+  `$HOME/.pi/agent/skills/git/SKILL.md`. Audits, reviews, discussion, and naming-only requests
   do not require branch creation, commits, or pushes.
 - Use a task branch in each affected repository, never `main`. New task branches start from the
   fetched canonical remote's `main`; existing branches for the same task can continue.

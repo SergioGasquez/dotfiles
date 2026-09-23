@@ -1,8 +1,3 @@
----
-name: code-review
-description: Review a diff, commit, or pull request for actionable defects and risks.
----
-
 # Code Review
 
 Review the requested scope without editing files or publishing comments unless

@@ -9,8 +9,9 @@ The shared Pi configuration is linked to `~/.pi/agent` through
 [`AGENTS.md`](AGENTS.md) defines shared coding preferences and authority boundaries.
 The [Espressif](../agents/espressif/AGENTS.md) and
 [Crimpdeq](../agents/crimpdeq/AGENTS.md) workspace instructions add domain-specific
-policy. Skills under [`skills/`](skills/) load for branch creation/naming, commit
-messages/commits, or code review—not for unrelated implementation work.
+policy. The [`git` skill](skills/git/SKILL.md) routes branch creation/naming,
+commit messages/commits, and code reviews to separate on-demand references—not
+for unrelated implementation work. `/skill:git` loads it explicitly when needed.
 
 Implementation proceeds through scoped edits and relevant safe validation without
 an automatic first-pass review stop. Reviews and audits remain read-only; drafting

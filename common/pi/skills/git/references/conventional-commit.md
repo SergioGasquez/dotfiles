@@ -1,8 +1,3 @@
----
-name: conventional-commit
-description: Draft commit messages or create requested commits using your Conventional Commits conventions.
----
-
 # Conventional Commit
 
 ## Format
