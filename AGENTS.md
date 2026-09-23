@@ -7,6 +7,8 @@ This repository stores personal dotfiles shared across Linux, macOS, and Windows
 - `common/` contains configuration shared across operating systems.
 - `linux/`, `mac-os/`, and `windows/` contain platform-specific configuration and package lists.
 - `.mappings` is the source of truth for links from repository files to their installed locations.
+- For privileged operations, explain the exact action and use inline pkexec with an absolute executable path. Keep sudo on the scripts.
+
 
 ## Working practices
 
