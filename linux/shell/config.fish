@@ -15,11 +15,11 @@ function upup
     yes | pi update --extensions
 end
 # Editor
-set -gx EDITOR "cursor --wait"
-set -gx VISUAL "cursor --wait"
-abbr -a vs 'cursor .'
-abbr -a sandbox 'cursor $HOME/Documents/Espressif/sandbox'
-abbr -a dotfiles 'cursor $HOME/.dotfiles && exit'
+set -gx EDITOR "zeditor --wait"
+set -gx VISUAL "zeditor --wait"
+abbr -a vs 'zeditor .'
+abbr -a sandbox 'zeditor $HOME/Documents/Espressif/sandbox'
+abbr -a dotfiles 'zeditor $HOME/.dotfiles && exit'
 # ESP-RS
 export ESPFLASH_BAUD="921600"
 # Starship

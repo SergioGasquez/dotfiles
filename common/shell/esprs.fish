@@ -44,14 +44,18 @@ function esprs --argument repository_name
         return 1
     end
 
-    echo "Opening the repository with Cursor"
-    if command -sq cursor
-        cursor "$repo_path"
-        if test $status -eq 0
-            exit
-        end
+    echo "Opening the repository with Zed"
+    set -l zed_cmd
+    if command -sq zeditor
+        set zed_cmd zeditor
+    else if command -sq zed
+        set zed_cmd zed
     else
-        echo "Error: cursor is not available in PATH."
+        echo "Error: zeditor or zed is not available in PATH."
         return 1
+    end
+    $zed_cmd "$repo_path"
+    if test $status -eq 0
+        exit
     end
 end

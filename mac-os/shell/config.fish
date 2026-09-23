@@ -17,11 +17,11 @@ function upup
     yes | pi update --extensions
 end
 # Editor
-set -gx EDITOR "cursor --wait"
-set -gx VISUAL "cursor --wait"
-alias vs="cursor ."
-alias sandbox="cursor ~/Documents/Espressif/sandbox"
-alias dotfiles="cursor ~/.dotfiles && exit"
+set -gx EDITOR "zed --wait"
+set -gx VISUAL "zed --wait"
+alias vs="zed ."
+alias sandbox="zed ~/Documents/Espressif/sandbox"
+alias dotfiles="zed ~/.dotfiles && exit"
 ## ESP-RS
 export ESPFLASH_BAUD="921600"
 # Brew

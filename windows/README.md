@@ -9,7 +9,7 @@ Dotfiles for Windows environment.
 ![Terminal](assets/terminal.png)
 
 - IDE:
-  - [Cursor](https://www.cursor.com/) and [Zed](https://zed.dev/) as IDEs
+  - [Zed](https://zed.dev/) as the default IDE, with [Cursor](https://www.cursor.com/) also installed
   - Terminal is also using Starship and PowerShell
 
 ![Cursor and Zed](assets/vscode.png)

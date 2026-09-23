@@ -4,8 +4,6 @@ name = Sergio Gasquez
 email = sergio.gasquez@gmail.com
 [color]
 ui = true
-[core]
-editor = cursor --wait
 [alias]
 a = add --all
 ad = !git commit --amend --no-edit && git push --force
