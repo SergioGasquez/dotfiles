@@ -30,6 +30,7 @@
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
 # Terminal
 "linux/alacritty.toml" = "$HOME/.config/alacritty/alacritty.toml"
+"linux/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
 "linux/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

@@ -176,7 +176,7 @@ pacstrap -K /mnt base base-devel linux linux-firmware \
 - Settings > Keyboard > add the Spanish input source and remove unused ones.
 - Settings > Multitasking > Multi-Monitor > Workspaces on all displays.
 - Settings > Keyboard Shortcuts > set **Switch windows** to `Alt+Tab`.
-- Add `Ctrl+Alt+T` as a shortcut for `alacritty`.
+- Add `Ctrl+Alt+T` as a shortcut for `ghostty`.
 
 #### Bluetooth
 

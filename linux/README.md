@@ -2,11 +2,17 @@
 Dotfiles for Arch Linux environment.
 
 - Terminal:
-  - [Alacritty](https://alacritty.org/) as terminal
+  - [Alacritty](https://alacritty.org/) and [Ghostty](https://ghostty.org/) as terminals
   - [Starship](https://starship.rs/) as prompt
   - Fish as shell
 
 ![Terminal](assets/terminal.png)
+
+Ghostty's config is managed at `~/.config/ghostty/config`, based on
+[davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles/blob/main/terminal/ghostty/config),
+and launches Fish by default with a GTK title bar and window controls.
+After linking with `dot`, install Ghostty with `paru --needed -S ghostty` if
+not installing the full package list.
 
 - IDE:
   - [Cursor](https://www.cursor.com/) and [Zed](https://zed.dev/) as IDEs
