@@ -15,6 +15,7 @@
 # Zed
 "windows/zed/settings.json" = "$APPDATA/Zed/settings.json"
 "common/zed/keymap.json" = "$APPDATA/Zed/keymap.json"
+"common/zed/tasks.json" = "$APPDATA/Zed/tasks.json"
 
 [linux]
 # MCP
@@ -34,6 +35,7 @@
 # Zed
 "linux/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
+"common/zed/tasks.json" = "$HOME/.config/zed/tasks.json"
 # Cursor
 "linux/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"
@@ -51,6 +53,7 @@
 # Zed
 "mac-os/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
+"common/zed/tasks.json" = "$HOME/.config/zed/tasks.json"
 # Cursor
 "mac-os/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/Library/Application Support/Cursor/User/keybindings.json"

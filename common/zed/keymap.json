@@ -15,4 +15,10 @@
       "ctrl-d": "editor::ToggleComments",
     },
   },
+  {
+    "context": "Editor && extension == scad",
+    "bindings": {
+      "f5": ["task::Spawn", { "task_name": "OpenSCAD: Preview" }],
+    },
+  },
 ]

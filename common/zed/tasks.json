@@ -1,0 +1,8 @@
+[
+  {
+    "label": "OpenSCAD: Preview",
+    "command": "openscad \"$ZED_FILE\"",
+    "reveal": "never",
+    "hide": "on_success",
+  },
+]
