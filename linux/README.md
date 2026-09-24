@@ -10,7 +10,9 @@ Dotfiles for Arch Linux environment.
 
 Ghostty's config is managed at `~/.config/ghostty/config`, based on
 [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles/blob/main/terminal/ghostty/config),
-and launches Fish by default with a GTK title bar and window controls.
+and launches Fish by default with a GTK title bar and window controls. New
+Ghostty windows start in the home directory; tabs and splits can still inherit
+their parent directory.
 After linking with `dot`, install Ghostty with `paru --needed -S ghostty` if
 not installing the full package list.
 
