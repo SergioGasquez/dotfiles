@@ -4,6 +4,7 @@
 "common/pi/settings.json" = "$HOME/.pi/agent/settings.json"
 "common/pi/skills" = "$HOME/.pi/agent/skills"
 "common/pi/scripts" = "$HOME/.pi/agent/scripts"
+"common/pi/extensions" = "$HOME/.pi/agent/extensions"
 "common/pi/AGENTS.md" = "$HOME/.pi/agent/AGENTS.md"
 "common/agents/espressif/AGENTS.md" = "$HOME/Documents/Espressif/AGENTS.md"
 "common/agents/crimpdeq/AGENTS.md" = "$HOME/Documents/Crimpdeq/AGENTS.md"

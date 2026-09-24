@@ -33,6 +33,12 @@ and package-owned delegation controls are unchanged.
   models inside Pi and bridges active Pi tools to local Cursor agents.
 - [`pi-mcp-adapter`](https://github.com/nicobailon/pi-mcp-adapter) connects Pi
   to MCP servers through a small, on-demand proxy tool.
+- [`inline-skills.ts`](extensions/inline-skills.ts), from
+  [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), loads a
+  skill when a prompt mentions it as `$name` (for example,
+  `find duckdb posts $social-search`) and autocompletes skill names after `$`.
+  Prompts that mention more than one skill, or start with `/`, are sent unchanged.
+  It is linked to `~/.pi/agent/extensions` and needs no installation.
 
 Install or restore both packages after installing Pi:
 
