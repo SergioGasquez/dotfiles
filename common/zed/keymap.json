@@ -6,6 +6,8 @@
       "ctrl-r": ["projects::OpenRecent", { "create_new_window": false }],
       "cmd-k cmd-o": "workspace::Open",
       "ctrl-k ctrl-o": "workspace::Open",
+      "cmd-shift-s": ["task::Spawn", { "task_name": "Pi: Commit and push staged changes" }],
+      "ctrl-shift-s": ["task::Spawn", { "task_name": "Pi: Commit and push staged changes" }],
     },
   },
   {

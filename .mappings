@@ -3,6 +3,7 @@
 "common/rust/config.toml" = "$HOME/.cargo/config.toml"
 "common/pi/settings.json" = "$HOME/.pi/agent/settings.json"
 "common/pi/skills" = "$HOME/.pi/agent/skills"
+"common/pi/scripts" = "$HOME/.pi/agent/scripts"
 "common/pi/AGENTS.md" = "$HOME/.pi/agent/AGENTS.md"
 "common/agents/espressif/AGENTS.md" = "$HOME/Documents/Espressif/AGENTS.md"
 "common/agents/crimpdeq/AGENTS.md" = "$HOME/Documents/Crimpdeq/AGENTS.md"
@@ -39,6 +40,7 @@
 # Cursor
 "linux/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"
+"common/cursor/tasks.json" = "$HOME/.config/Cursor/User/tasks.json"
 
 [darwin]
 # Fish
@@ -57,3 +59,4 @@
 # Cursor
 "mac-os/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/Library/Application Support/Cursor/User/keybindings.json"
+"common/cursor/tasks.json" = "$HOME/Library/Application Support/Cursor/User/tasks.json"

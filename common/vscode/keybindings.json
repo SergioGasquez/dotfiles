@@ -29,4 +29,15 @@
         "key": "cmd+k cmd+o",
         "command": "workbench.action.files.openFolder"
     },
+    // Commit and push staged changes with Pi
+    {
+        "key": "ctrl+shift+s",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pi: Commit and push staged changes"
+    },
+    {
+        "key": "cmd+shift+s",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Pi: Commit and push staged changes"
+    },
 ]

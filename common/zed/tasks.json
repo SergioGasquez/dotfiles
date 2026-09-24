@@ -5,4 +5,15 @@
     "reveal": "never",
     "hide": "on_success",
   },
+  {
+    "label": "Pi: Commit and push staged changes",
+    "command": "node \"$HOME/.pi/agent/scripts/commit-staged.mjs\"",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "hide": "always",
+    "show_summary": false,
+    "show_command": false,
+  },
 ]

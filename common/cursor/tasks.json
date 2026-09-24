@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pi: Commit and push staged changes",
+      "type": "shell",
+      "command": "node",
+      "args": ["${userHome}/.pi/agent/scripts/commit-staged.mjs"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "never",
+        "revealProblems": "never",
+        "focus": false,
+        "echo": false,
+        "showReuseMessage": false,
+        "close": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

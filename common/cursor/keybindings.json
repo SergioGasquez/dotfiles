@@ -24,5 +24,15 @@
   {
     "key": "ctrl+r",
     "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Pi: Commit and push staged changes"
+  },
+  {
+    "key": "cmd+shift+s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Pi: Commit and push staged changes"
   }
 ]
