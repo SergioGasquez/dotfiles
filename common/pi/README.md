@@ -43,6 +43,14 @@ and package-owned delegation controls are unchanged.
   when an interactive Pi prompt has fully settled (including retries and queued
   follow-ups). It uses `notify-send` on Linux, Notification Center on macOS, and
   a PowerShell balloon notification on Windows. Print and RPC runs do not notify.
+  On macOS, clicking the notification focuses the app running Pi (terminal or
+  IDE) when `terminal-notifier` from [`packages`](../../mac-os/packages) is
+  installed and allowed to notify; otherwise it falls back to a plain `osascript`
+  notification. macOS only asks for permission when the app is launched through
+  LaunchServices, so after installing it run this once and click Allow:
+  ```bash
+  open "$(brew --prefix terminal-notifier)/terminal-notifier.app"
+  ```
   Reload Pi with `/reload` or restart it to enable the extension.
 
 Install or restore both packages after installing Pi:
