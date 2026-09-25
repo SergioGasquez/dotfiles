@@ -51,6 +51,21 @@ and package-owned delegation controls are unchanged.
   ```bash
   open "$(brew --prefix terminal-notifier)/terminal-notifier.app"
   ```
+  On Linux, clicking the notification focuses the window running Pi on GNOME
+  through the [Window Calls](https://github.com/ickyicky/window-calls) Shell
+  extension from [`packages`](../../linux/packages). The extension picks the
+  window owned by one of Pi's parent processes, preferring the one whose title
+  contains the project directory name. GNOME only detects the newly installed
+  extension after logging out and back in; then enable it once:
+  ```bash
+  gsettings set org.gnome.shell disable-user-extensions false
+  gnome-extensions enable window-calls@domandoman.xyz
+  ```
+  Without Window Calls, the notification carries the app's desktop entry,
+  found from the executables of Pi's parent processes or else from the systemd
+  scope the desktop created when launching the app, and `notify-send --wait`
+  keeps it open because GNOME removes it when its sender exits. GNOME then only
+  activates the app on click, which does not raise Zed on GNOME 50.
   Reload Pi with `/reload` or restart it to enable the extension.
 
 Install or restore both packages after installing Pi:
