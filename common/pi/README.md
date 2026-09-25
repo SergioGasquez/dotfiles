@@ -58,7 +58,7 @@ Restart Pi after installing the packages. Configure a Cursor API key with
 
 The Cursor SDK and Claude bridge package extensions are disabled by default in
 [`settings.json`](settings.json). The shared Fish abbreviations load only the
-needed bridge for each invocation:
+needed bridge for each invocation, plus `notify-on-finish.ts`:
 
 ```bash
 picursor  # cursor/gpt-5.6-sol@272k:slow

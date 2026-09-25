@@ -66,5 +66,5 @@ abbr -a comp 'espup completions fish > ~/.dotfiles/common/shell/espup.fish && es
 # Python
 abbr -a pip 'uv pip'
 # Pi
-abbr -a piclaude 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high'
-abbr -a picursor 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-cursor-sdk/dist/index.js --model cursor/gpt-5.6-sol@272k:slow'
+abbr -a piclaude 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --extension ~/.pi/agent/extensions/notify-on-finish.ts --model claude-bridge/claude-opus-5-5 --thinking high'
+abbr -a picursor 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-cursor-sdk/dist/index.js --extension ~/.pi/agent/extensions/notify-on-finish.ts --model cursor/gpt-5.6-sol@272k:slow'
