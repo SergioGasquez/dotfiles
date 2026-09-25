@@ -39,6 +39,11 @@ and package-owned delegation controls are unchanged.
   `find duckdb posts $social-search`) and autocompletes skill names after `$`.
   Prompts that mention more than one skill, or start with `/`, are sent unchanged.
   It is linked to `~/.pi/agent/extensions` and needs no installation.
+- [`notify-on-finish.ts`](extensions/notify-on-finish.ts) sends a desktop notification
+  when an interactive Pi prompt has fully settled (including retries and queued
+  follow-ups). It uses `notify-send` on Linux, Notification Center on macOS, and
+  a PowerShell balloon notification on Windows. Print and RPC runs do not notify.
+  Reload Pi with `/reload` or restart it to enable the extension.
 
 Install or restore both packages after installing Pi:
 
