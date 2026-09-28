@@ -31,6 +31,8 @@
 ## Completions
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
+# probe-rs
+"common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal
 "linux/alacritty.toml" = "$HOME/.config/alacritty/alacritty.toml"
 "linux/ghostty/config" = "$HOME/.config/ghostty/config"
@@ -53,6 +55,8 @@
 ## Completions
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
+# probe-rs
+"common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Zed
 "mac-os/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

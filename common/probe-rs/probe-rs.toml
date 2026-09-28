@@ -1,0 +1,15 @@
+# Remote HIL runners. Each host is an SSH alias defined in ~/.ssh/config, and
+# any required token comes from PROBE_RS_REMOTE_TOKEN, so neither is stored here.
+[presets]
+esp32c6-hil   = { host = "ssh://hil-esp32c6:3000", attach-timeout = "600", chip = "esp32c6" }
+esp32s3-hil   = { host = "ssh://hil-esp32s3:3000", attach-timeout = "600", chip = "esp32s3" }
+esp32c3-hil   = { host = "ssh://hil-esp32c3:3000", attach-timeout = "600", chip = "esp32c3" }
+esp32h2-hil   = { host = "ssh://hil-esp32h2:3000", attach-timeout = "600", chip = "esp32h2" }
+esp32s2-hil   = { host = "ssh://hil-esp32s2:3000", attach-timeout = "600", chip = "esp32s2" }
+esp32-hil     = { host = "ssh://hil-esp32:3000", attach-timeout = "600", chip = "esp32" }
+esp32c2-hil   = { host = "ssh://hil-esp32c2:3000", attach-timeout = "600", chip = "esp32c2" }
+esp32p4-hil   = { host = "ssh://hil-esp32p4:3000", attach-timeout = "600", chip = "esp32p4" }
+esp32c5-hil   = { host = "ssh://hil-esp32c5:3000", attach-timeout = "600", chip = "esp32c5" }
+esp32c61-hil  = { host = "ssh://hil-esp32c61:3000", attach-timeout = "600", chip = "esp32c61" }
+esp32-eth-hil = { host = "ssh://hil-esp32-eth:3000", attach-timeout = "600", chip = "esp32" }
+esp32s31-hil  = { host = "ssh://hil-esp32s31:3000", attach-timeout = "600", chip = "esp32s31" }

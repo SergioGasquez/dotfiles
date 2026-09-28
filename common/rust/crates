@@ -18,6 +18,6 @@ cyme
 mdbook
 mdbook-mermaid
 ldproxy
-probe-rs-tools
+probe-rs-tools --git https://github.com/probe-rs/probe-rs --locked --features remote
 svd2rust
 zoxide
