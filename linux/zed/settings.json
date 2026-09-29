@@ -56,6 +56,7 @@
   "buffer_line_height": { "custom": 1.35 },
   "text_rendering_mode": "grayscale",
   "terminal": {
+    "copy_on_select": true,
     "font_family": "Hack Nerd Font",
     "font_size": 14,
     "shell": {
