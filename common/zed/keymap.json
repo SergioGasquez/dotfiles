@@ -15,6 +15,10 @@
     "bindings": {
       "cmd-d": "editor::ToggleComments",
       "ctrl-d": "editor::ToggleComments",
+      "cmd-shift-up": "editor::AddSelectionAbove",
+      "ctrl-shift-up": "editor::AddSelectionAbove",
+      "cmd-shift-down": "editor::AddSelectionBelow",
+      "ctrl-shift-down": "editor::AddSelectionBelow",
     },
   },
   {
