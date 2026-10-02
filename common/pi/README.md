@@ -27,6 +27,13 @@ references according to the affected behavior rather than requiring a stack of
 documents for every edit. These policies are shared across models; model selection
 and package-owned delegation controls are unchanged.
 
+## Theme
+
+[`themes/dark-code.json`](themes/dark-code.json) is the built-in `dark`
+theme with the inline code, code block, and syntax highlighting colors of the
+pre-OKHSL `dark` theme (Pi 0.60). It is linked to `~/.pi/agent/themes` and
+selected in [`settings.json`](settings.json).
+
 ## Extensions
 
 - [`pi-cursor-sdk`](https://github.com/fitchmultz/pi-cursor-sdk) runs Cursor

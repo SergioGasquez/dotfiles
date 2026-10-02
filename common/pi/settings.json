@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "1.0.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6-sol",
   "enableSkillCommands": true,
@@ -16,7 +16,7 @@
   "enabledModels": [],
   "hideThinkingBlock": false,
   "transport": "websocket-cached",
-  "theme": "dark",
+  "theme": "dark-code",
   "packages": [
     {
       "source": "npm:pi-cursor-sdk",
