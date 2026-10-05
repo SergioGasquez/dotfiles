@@ -93,6 +93,7 @@ needed bridge for each invocation, plus `notify-on-finish.ts`:
 ```bash
 picursor  # cursor/gpt-5.6-sol@272k:slow
 piclaude  # claude-bridge/claude-opus-5-5 with high thinking
+pix       # short form of piclaude
 ```
 
 ## KiCad through Konnect
