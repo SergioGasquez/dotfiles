@@ -1,0 +1,25 @@
+# Match the macOS Fish update workflow. Stop after the first failed step.
+path=("$HOME/.cargo/bin" /opt/homebrew/bin $path)
+
+upup() {
+    yes | brew update || return
+    brew upgrade --yes || return
+    # Homebrew skips auto-updating casks by default; include the installed media apps.
+    local app outdated
+    for app in jellyfin prowlarr radarr sonarr; do
+        if brew list --cask --versions "$app" >/dev/null 2>&1; then
+            outdated=$(brew outdated --cask --greedy --quiet "$app") || return
+            if [[ -n "$outdated" ]]; then
+                brew upgrade --cask --greedy --yes "$app" || return
+            fi
+        fi
+    done
+    yes | cargo install-update -a || return
+    yes | rustup update || return
+    yes | espup update || return
+    yes | pi update || return
+    yes | pi update --extensions || return
+    print -u2 'Not updated: source-installed Spoolman, HaspelSync, and Seerr (manual backup-aware update required).'
+}
+
+alias pix='pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --extension ~/.pi/agent/extensions/notify-on-finish.ts --model claude-bridge/claude-opus-5-5 --thinking high'

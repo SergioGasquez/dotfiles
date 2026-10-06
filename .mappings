@@ -7,6 +7,7 @@
 "common/pi/extensions" = "$HOME/.pi/agent/extensions"
 "common/pi/themes" = "$HOME/.pi/agent/themes"
 "common/pi/AGENTS.md" = "$HOME/.pi/agent/AGENTS.md"
+"mediaserver/pi/skills/media-server-repro" = "$HOME/.agents/skills/media-server-repro"
 "common/agents/espressif/AGENTS.md" = "$HOME/Documents/Espressif/AGENTS.md"
 "common/agents/crimpdeq/AGENTS.md" = "$HOME/Documents/Crimpdeq/AGENTS.md"
 
@@ -47,6 +48,8 @@
 "common/cursor/tasks.json" = "$HOME/.config/Cursor/User/tasks.json"
 
 [darwin]
+# Zsh
+"mediaserver/shell/zshrc" = "$HOME/.zshrc"
 # Fish
 "mac-os/shell/config.fish" = "$HOME/.config/fish/config.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
