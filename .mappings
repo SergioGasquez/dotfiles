@@ -37,7 +37,7 @@
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal
 "linux/alacritty.toml" = "$HOME/.config/alacritty/alacritty.toml"
-"linux/ghostty/config" = "$HOME/.config/ghostty/config"
+"common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
 "linux/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
@@ -62,7 +62,7 @@
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal
-"mac-os/ghostty/config" = "$HOME/.config/ghostty/config"
+"common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
 "mac-os/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

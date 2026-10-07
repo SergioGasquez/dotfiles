@@ -7,8 +7,10 @@ Dotfiles for macOS environment.
 
 ![Terminal](assets/terminal.png)
 
-Ghostty's config is managed at `~/.config/ghostty/config` and mirrors the Linux
-config, launching Homebrew's Fish with native macOS window decorations.
+Ghostty's config is shared with Linux from `common/ghostty/config`, managed at
+`~/.config/ghostty/config`, and uses native macOS window decorations. Ghostty
+launches the login shell, so set Homebrew's Fish as the login shell. The
+Linux-only GTK options in the shared config are ignored on macOS.
 Ghostty's default macOS shortcuts already use `Cmd` (for example `Cmd+C`,
 `Cmd+V`, `Cmd+T`).
 
