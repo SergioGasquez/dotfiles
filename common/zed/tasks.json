@@ -1,9 +1,12 @@
 [
   {
     "label": "OpenSCAD: Preview",
-    "command": "openscad \"$ZED_FILE\"",
+    "command": "if [ \"$(uname)\" = Darwin ]; then open -n -a OpenSCAD --args \"$ZED_FILE\"; else setsid -f openscad \"$ZED_FILE\" </dev/null >/dev/null 2>&1; fi",
+    "shell": { "program": "sh" },
     "reveal": "never",
-    "hide": "on_success",
+    "hide": "always",
+    "show_summary": false,
+    "show_command": false,
   },
   {
     "label": "Pi: Commit and push staged changes",
