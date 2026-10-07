@@ -48,10 +48,12 @@ info\t''
 warn\t''
 error\t''"
 complete -c espup -n "__fish_espup_using_subcommand install" -s a -l name -d 'Xtensa Rust toolchain name' -r
-complete -c espup -n "__fish_espup_using_subcommand install" -s n -l nightly-version -d 'Nightly Rust toolchain version' -r
-complete -c espup -n "__fish_espup_using_subcommand install" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c6,esp32h2,esp32s2,esp32s3,esp32p4,all]' -r
+complete -c espup -n "__fish_espup_using_subcommand install" -s b -l stable-version -d 'Stable Rust toolchain version' -r
+complete -c espup -n "__fish_espup_using_subcommand install" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c5,esp32c6,esp32c61,esp32h2,esp32s2,esp32s3,esp32p4,all]' -r
 complete -c espup -n "__fish_espup_using_subcommand install" -s v -l toolchain-version -d 'Xtensa Rust toolchain version' -r
+complete -c espup -n "__fish_espup_using_subcommand install" -s c -l crosstool-toolchain-version -d 'Crosstool-NG toolchain version, e.g. (14.2.0_20241119)' -r
 complete -c espup -n "__fish_espup_using_subcommand install" -s r -l esp-riscv-gcc -d 'Install Espressif RISC-V toolchain built with croostool-ng'
+complete -c espup -n "__fish_espup_using_subcommand install" -l disable-timeouts -d 'Disables HTTP timeouts for installation downloads and GitHub queries'
 complete -c espup -n "__fish_espup_using_subcommand install" -s e -l extended-llvm -d 'Extends the LLVM installation'
 complete -c espup -n "__fish_espup_using_subcommand install" -s k -l skip-version-parse -d 'Skips parsing Xtensa Rust version'
 complete -c espup -n "__fish_espup_using_subcommand install" -s s -l std -d 'Only install toolchains required for STD applications'
@@ -61,6 +63,7 @@ info\t''
 warn\t''
 error\t''"
 complete -c espup -n "__fish_espup_using_subcommand uninstall" -s a -l name -d 'Xtensa Rust toolchain name' -r
+complete -c espup -n "__fish_espup_using_subcommand uninstall" -s c -l crosstool-toolchain-version -d 'GCC toolchain version' -r
 complete -c espup -n "__fish_espup_using_subcommand uninstall" -s h -l help -d 'Print help'
 complete -c espup -n "__fish_espup_using_subcommand update" -s d -l default-host -d 'Target triple of the host' -r -f -a "x86_64-unknown-linux-gnu\t''
 aarch64-unknown-linux-gnu\t''
@@ -74,10 +77,12 @@ info\t''
 warn\t''
 error\t''"
 complete -c espup -n "__fish_espup_using_subcommand update" -s a -l name -d 'Xtensa Rust toolchain name' -r
-complete -c espup -n "__fish_espup_using_subcommand update" -s n -l nightly-version -d 'Nightly Rust toolchain version' -r
-complete -c espup -n "__fish_espup_using_subcommand update" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c6,esp32h2,esp32s2,esp32s3,esp32p4,all]' -r
+complete -c espup -n "__fish_espup_using_subcommand update" -s b -l stable-version -d 'Stable Rust toolchain version' -r
+complete -c espup -n "__fish_espup_using_subcommand update" -s t -l targets -d 'Comma or space separated list of targets [esp32,esp32c2,esp32c3,esp32c5,esp32c6,esp32c61,esp32h2,esp32s2,esp32s3,esp32p4,all]' -r
 complete -c espup -n "__fish_espup_using_subcommand update" -s v -l toolchain-version -d 'Xtensa Rust toolchain version' -r
+complete -c espup -n "__fish_espup_using_subcommand update" -s c -l crosstool-toolchain-version -d 'Crosstool-NG toolchain version, e.g. (14.2.0_20241119)' -r
 complete -c espup -n "__fish_espup_using_subcommand update" -s r -l esp-riscv-gcc -d 'Install Espressif RISC-V toolchain built with croostool-ng'
+complete -c espup -n "__fish_espup_using_subcommand update" -l disable-timeouts -d 'Disables HTTP timeouts for installation downloads and GitHub queries'
 complete -c espup -n "__fish_espup_using_subcommand update" -s e -l extended-llvm -d 'Extends the LLVM installation'
 complete -c espup -n "__fish_espup_using_subcommand update" -s k -l skip-version-parse -d 'Skips parsing Xtensa Rust version'
 complete -c espup -n "__fish_espup_using_subcommand update" -s s -l std -d 'Only install toolchains required for STD applications'

@@ -17,8 +17,8 @@ end
 # Editor
 set -gx EDITOR "zeditor --wait"
 set -gx VISUAL "zeditor --wait"
-abbr -a vs 'zeditor .'
-abbr -a sandbox 'zeditor $HOME/Documents/Espressif/sandbox'
+abbr -a vs 'zeditor . && exit'
+abbr -a sandbox 'zeditor $HOME/Documents/Espressif/sandbox && exit'
 abbr -a dotfiles 'zeditor $HOME/.dotfiles && exit'
 # ESP-RS
 export ESPFLASH_BAUD="921600"

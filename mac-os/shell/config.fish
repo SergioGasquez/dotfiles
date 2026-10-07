@@ -19,7 +19,7 @@ end
 # Editor
 set -gx EDITOR "zed --wait"
 set -gx VISUAL "zed --wait"
-alias vs="zed ."
+alias vs="zed . && exit"
 alias sandbox="zed ~/Documents/Espressif/sandbox"
 alias dotfiles="zed ~/.dotfiles && exit"
 ## ESP-RS
