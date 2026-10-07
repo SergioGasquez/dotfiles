@@ -2,8 +2,6 @@
 [user]
 name = Sergio Gasquez
 email = sergio.gasquez@gmail.com
-[color]
-ui = true
 [alias]
 a = add --all
 ad = !git commit --amend --no-edit && git push --force
@@ -12,11 +10,10 @@ bd = branch -d
 cm = commit -m
 c = clone --recurse-submodules
 d = diff
-e = edit
 f = fetch
 fu = fetch upstream
 l = pull
-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 o = checkout
 pf = push --force
 pt= push --tags
@@ -35,8 +32,6 @@ td = tag -d
 undo = reset --soft HEAD^
 [init]
 defaultBranch = main
-[push]
-default = simple
 [credential "https://github.com"]
 helper = !gh auth git-credential
 [credential "https://gist.github.com"]
