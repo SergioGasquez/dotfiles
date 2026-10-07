@@ -36,7 +36,6 @@
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal
-"linux/alacritty.toml" = "$HOME/.config/alacritty/alacritty.toml"
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"

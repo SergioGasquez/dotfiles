@@ -2,7 +2,7 @@
 Dotfiles for Arch Linux environment.
 
 - Terminal:
-  - [Alacritty](https://alacritty.org/) and [Ghostty](https://ghostty.org/) as terminals
+  - [Ghostty](https://ghostty.org/) as terminal
   - [Starship](https://starship.rs/) as prompt
   - Fish as shell
 
