@@ -1,5 +1,7 @@
 # ~/.config/fish/config.fish
 # Platform setup is loaded earlier from ~/.config/fish/conf.d/platform.fish
+# No greeting
+set -g fish_greeting
 # Commmon aliases
 . ~/.config/fish/aliases.fish
 
