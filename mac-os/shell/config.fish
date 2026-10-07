@@ -39,4 +39,3 @@ fish_add_path "$HOME/.local/bin"
 zoxide init fish | source
 # Rust
 fish_add_path "$HOME/.cargo/bin"
-true
