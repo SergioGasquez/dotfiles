@@ -43,7 +43,7 @@
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
 "common/zed/tasks.json" = "$HOME/.config/zed/tasks.json"
 # Cursor
-"linux/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
+"common/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"
 "common/cursor/tasks.json" = "$HOME/.config/Cursor/User/tasks.json"
 
@@ -68,6 +68,6 @@
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
 "common/zed/tasks.json" = "$HOME/.config/zed/tasks.json"
 # Cursor
-"mac-os/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
+"common/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/Library/Application Support/Cursor/User/keybindings.json"
 "common/cursor/tasks.json" = "$HOME/Library/Application Support/Cursor/User/tasks.json"
