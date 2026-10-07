@@ -59,7 +59,12 @@ abbr -a cdoc 'cargo doc --open'
 abbr -a cesp 'cargo espflash'
 abbr -a cf 'cargo fmt'
 # Completions
-abbr -a comp 'espup completions fish > ~/.dotfiles/common/shell/espup.fish && espflash completions fish > ~/.dotfiles/common/shell/espflash.fish'
+function comp
+    for tool in espup espflash
+        set -l out ($tool completions fish | string collect); or return
+        printf '%s\n' $out > ~/.dotfiles/common/shell/$tool.fish
+    end
+end
 # Python
 abbr -a pip 'uv pip'
 # Pi
