@@ -26,11 +26,6 @@ alias dotfiles="zed ~/.dotfiles && exit"
 export ESPFLASH_BAUD="921600"
 # Brew
 eval (/opt/homebrew/bin/brew shellenv)
-# SSH
-if not set -q SSH_AUTH_SOCK
-    eval (ssh-agent -c) >/dev/null
-end
-ssh-add $HOME/.ssh/id_ed25519 >/dev/null 2>&1
 # Starship
 starship init fish | source
 # uv
