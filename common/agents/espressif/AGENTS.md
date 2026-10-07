@@ -22,14 +22,13 @@ These instructions apply when working in an `esp-rs` repository, fork, or test p
 - Do not edit changelog files; changelog entries belong in the pull request description when preparing an authorized PR.
 - Preserve stable API compatibility. If a breaking change is required but not authorized, explain its impact and ask before implementing it.
 
+## espflash
+
+- Compare behavior with [esptool](https://github.com/espressif/esptool) and its [chip-specific documentation](https://docs.espressif.com/projects/esptool/en/latest/) when useful, especially for image formats, flashing, reset behavior, and target detection.
+- 
+
 ## Validation and completion
 
 - Implementation completion includes the documented checks for affected crate/chip/feature/toolchain combinations and fixes to regressions introduced by the change. Report unavailable coverage rather than implying exhaustive verification.
 - Hardware is available, but connection and operation are not implicitly authorized. Identify the exact board, chip, connection method, and physical setup; ask the user to connect it and confirm the requested operation. After confirmation, run the appropriate test, flash, or monitoring commands yourself.
 - Complete independent static review and safe build/test work while hardware validation is pending. Treat hardware-dependent behavior as unverified until tested on the relevant device.
-
-## espflash
-
-Compare behavior with [esptool](https://github.com/espressif/esptool) and its
-[chip-specific documentation](https://docs.espressif.com/projects/esptool/en/latest/)
-when useful, especially for image formats, flashing, reset behavior, and target detection.
