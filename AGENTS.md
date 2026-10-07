@@ -12,7 +12,7 @@ This repository stores personal dotfiles shared across Linux, macOS, and Windows
 
 ## Working practices
 
-- Use the relevant platform README for setup, package, or platform behavior changes.
+- Use the relevant platform README for setup, package, or platform behavior changes. Setup steps shared by Linux and macOS live in the root `README.md`.
 - Put cross-platform configuration in `common/` and platform-only behavior in the corresponding OS directory.
 - Do not commit secrets, tokens, credentials, host-specific identifiers, or private paths. Use ignored local overrides for machine-specific shell configuration.
 - Update documentation when setup commands, required packages, mappings, or user-visible behavior change.

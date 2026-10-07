@@ -46,41 +46,4 @@ Run these commands in Bash. The repository is installed at `$HOME/.dotfiles`.
        [ -n "$package" ] && brew install "$package"
    done < packages
    ```
-5. Install the extra crates, preserving any arguments on each line:
-   ```bash
-   while IFS= read -r line; do
-       read -r -a crate_args <<< "$line"
-       cargo install "${crate_args[@]}"
-   done < ../common/rust/crates
-   ```
-6. Install the Espressif Rust toolchains and generate the export file used by
-   Fish:
-   ```bash
-   espup install
-   ```
-7. Install [Pi](https://pi.dev/docs/latest/quickstart#install):
-   ```bash
-   npm install -g --ignore-scripts @earendil-works/pi-coding-agent
-   ```
-8. Regenerate the Fish completions:
-   ```bash
-   espup completions fish > ../common/shell/espup.fish
-   espflash completions fish > ../common/shell/espflash.fish
-   ```
-9. Check that all managed links are correct:
-   ```bash
-   dot -v check
-   ```
-
-## Remote probe-rs
-
-`$HOME/.probe-rs.toml` defines `<chip>-hil` presets that connect to
-`ssh://hil-<chip>:3000`. Keep the private details out of this repository:
-
-- Define each `hil-<chip>` host alias, with its user and jump host, in
-  `~/.ssh/config`.
-- If the runners require a token, set `PROBE_RS_REMOTE_TOKEN` in the ignored
-  `common/shell/espressif.fish`.
-
-Then run `probe-rs <command> --preset esp32c6-hil`, or set
-`PROBE_RS_CONFIG_PRESET` for tools such as `esp-devtool`.
+5. Continue with the [Linux and macOS setup](../README.md#linux-and-macos-setup).
