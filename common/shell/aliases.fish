@@ -64,6 +64,9 @@ function comp
         set -l out ($tool completions fish | string collect); or return
         printf '%s\n' $out > ~/.dotfiles/common/shell/$tool.fish
     end
+    # Make --chip complete chip names
+    set -l out (probe-rs complete install --manual | string replace -r -- ' -l chip -r$' ' -l chip -x -a "(probe-rs complete chip-list \'\')"' | string collect); or return
+    printf '%s\n' $out > ~/.dotfiles/common/shell/probe-rs.fish
 end
 # Python
 abbr -a pip 'uv pip'
