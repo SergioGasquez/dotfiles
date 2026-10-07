@@ -17,7 +17,7 @@
 # Terminal
 "windows/terminal/settings.json" = "$APPDATA/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 # Zed
-"windows/zed/settings.json" = "$APPDATA/Zed/settings.json"
+"common/zed/settings.json" = "$APPDATA/Zed/settings.json"
 "common/zed/keymap.json" = "$APPDATA/Zed/keymap.json"
 "common/zed/tasks.json" = "$APPDATA/Zed/tasks.json"
 
@@ -39,7 +39,7 @@
 "linux/alacritty.toml" = "$HOME/.config/alacritty/alacritty.toml"
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
-"linux/zed/settings.json" = "$HOME/.config/zed/settings.json"
+"common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
 "common/zed/tasks.json" = "$HOME/.config/zed/tasks.json"
 # Cursor
@@ -64,7 +64,7 @@
 # Terminal
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
-"mac-os/zed/settings.json" = "$HOME/.config/zed/settings.json"
+"common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
 "common/zed/tasks.json" = "$HOME/.config/zed/tasks.json"
 # Cursor

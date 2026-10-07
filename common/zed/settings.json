@@ -19,6 +19,7 @@
     "dock": "left"
   },
   "collaboration_panel": {
+    "button": false,
     "dock": "left"
   },
   "agent": {
@@ -59,9 +60,6 @@
     "copy_on_select": true,
     "font_family": "Hack Nerd Font",
     "font_size": 14,
-    "shell": {
-      "program": "/usr/bin/fish",
-    },
   },
   "theme": {
     "mode": "dark",
@@ -93,6 +91,27 @@
         "link_text.markup": {
           "color": "#5ac1fe",
         },
+      },
+    },
+  },
+  "macos": {
+    "terminal": {
+      "shell": {
+        "program": "/opt/homebrew/bin/fish",
+      },
+    },
+  },
+  "linux": {
+    "terminal": {
+      "shell": {
+        "program": "/usr/bin/fish",
+      },
+    },
+  },
+  "windows": {
+    "terminal": {
+      "shell": {
+        "program": "powershell.exe",
       },
     },
   },
