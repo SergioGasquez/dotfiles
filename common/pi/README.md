@@ -38,8 +38,8 @@ selected in [`settings.json`](settings.json).
 
 - [`pi-cursor-sdk`](https://github.com/fitchmultz/pi-cursor-sdk) runs Cursor
   models inside Pi and bridges active Pi tools to local Cursor agents.
-- [`pi-mcp-adapter`](https://github.com/nicobailon/pi-mcp-adapter) connects Pi
-  to MCP servers through a small, on-demand proxy tool.
+- [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge) uses
+  Claude Code, through the Agent SDK, as a Pi model provider.
 - [`inline-skills.ts`](extensions/inline-skills.ts), from
   [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), loads a
   skill when a prompt mentions it as `$name` (for example,
@@ -79,7 +79,7 @@ Install or restore both packages after installing Pi:
 
 ```bash
 pi install npm:pi-cursor-sdk
-pi install npm:pi-mcp-adapter
+pi install npm:pi-claude-bridge
 pi list
 ```
 
@@ -99,7 +99,14 @@ pix       # short form of piclaude
 ## KiCad through Konnect
 
 [`Konnect`](https://github.com/mixelpixx/Konnect) is a KiCad 10 plugin and MCP
-server. It works with any tool-capable model in Pi:
+server. It works with any tool-capable model in Pi through
+[`pi-mcp-adapter`](https://github.com/nicobailon/pi-mcp-adapter), which connects
+Pi to MCP servers through a small, on-demand proxy tool. It is not in the
+default packages, so install it before using Konnect:
+
+```bash
+pi install npm:pi-mcp-adapter
+```
 
 ```text
 Pi model → pi-mcp-adapter → Konnect → KiCad
