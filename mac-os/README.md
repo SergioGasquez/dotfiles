@@ -2,10 +2,15 @@
 Dotfiles for macOS environment.
 
 - Terminal:
-  - [Warp](https://www.warp.dev/) as terminal
+  - [Warp](https://www.warp.dev/) and [Ghostty](https://ghostty.org/) as terminals
   - Fish as shell
 
 ![Terminal](assets/terminal.png)
+
+Ghostty's config is managed at `~/.config/ghostty/config` and mirrors the Linux
+config, launching Homebrew's Fish with native macOS window decorations.
+Ghostty's default macOS shortcuts already use `Cmd` (for example `Cmd+C`,
+`Cmd+V`, `Cmd+T`).
 
 - IDE:
   - [Zed](https://zed.dev/) as the default IDE, with [Cursor](https://www.cursor.com/) also installed
