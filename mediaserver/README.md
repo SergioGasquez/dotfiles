@@ -81,8 +81,8 @@ has not been verified.
 
 ## Updates, backups, and checks
 
-The macOS Zsh configuration in [`shell/zshrc`](shell/zshrc) is mapped to
-`~/.zshrc`. Its `upup` updates Homebrew and explicitly checks the installed
+The macOS Zsh configuration in [`shell/zshrc`](shell/zshrc) is intended for
+`~/.zshrc`; its mapping is commented out in [`.mappings`](../.mappings). Its `upup` updates Homebrew and explicitly checks the installed
 Jellyfin, Sonarr, Radarr, and Prowlarr casks with `--greedy`, in addition to its
 Cargo, Rust, Espressif, and Pi steps. The Fish `upup` in
 [`mac-os/shell/config.fish`](../mac-os/shell/config.fish) runs the ordinary
@@ -104,6 +104,6 @@ for port in 7912 4000 5055; do curl -fsS -o /dev/null -w "$port: %{http_code}\n"
 ```
 
 The [media-server-repro Pi skill](pi/skills/media-server-repro/SKILL.md) can
-create a sanitized inventory bundle; [`.mappings`](../.mappings) installs it
-at `~/.agents/skills/media-server-repro`. Its optional sensitive backup mode
+create a sanitized inventory bundle. Its `~/.agents/skills/media-server-repro`
+mapping is commented out in [`.mappings`](../.mappings). Its optional sensitive backup mode
 requires explicit permission and must never be committed or shared publicly.
