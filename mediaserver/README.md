@@ -85,7 +85,7 @@ The macOS Zsh configuration in [`shell/zshrc`](shell/zshrc) is intended for
 `~/.zshrc`; its mapping is commented out in [`.mappings`](../.mappings). Its `upup` updates Homebrew and explicitly checks the installed
 Jellyfin, Sonarr, Radarr, and Prowlarr casks with `--greedy`, in addition to its
 Cargo, Rust, Espressif, and Pi steps. The Fish `upup` in
-[`mac-os/shell/config.fish`](../mac-os/shell/config.fish) runs the ordinary
+[`mac-os/shell/platform.fish`](../mac-os/shell/platform.fish) runs the ordinary
 Homebrew upgrade, not the extra cask checks. **Neither command updates the
 source-installed Spoolman, HaspelSync, or Seerr.** Zsh prints a warning about
 those three. A reliable updater would fetch/version a new release, back up the

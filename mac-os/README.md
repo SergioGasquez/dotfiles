@@ -80,7 +80,7 @@ Run these commands in Bash. The repository is installed at `$HOME/.dotfiles`.
 - Define each `hil-<chip>` host alias, with its user and jump host, in
   `~/.ssh/config`.
 - If the runners require a token, set `PROBE_RS_REMOTE_TOKEN` in the ignored
-  `mac-os/shell/espressif.fish`.
+  `common/shell/espressif.fish`.
 
 Then run `probe-rs <command> --preset esp32c6-hil`, or set
 `PROBE_RS_CONFIG_PRESET` for tools such as `esp-devtool`.

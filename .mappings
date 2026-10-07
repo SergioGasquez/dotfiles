@@ -25,7 +25,8 @@
 # MCP
 "linux/mcp.json" = "$HOME/.config/mcp/mcp.json"
 # Fish
-"linux/shell/config.fish" = "$HOME/.config/fish/config.fish"
+"common/shell/config.fish" = "$HOME/.config/fish/config.fish"
+"linux/shell/platform.fish" = "$HOME/.config/fish/conf.d/platform.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/espup_env.fish" = "$HOME/.config/fish/conf.d/espup_env.fish"
 "common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
@@ -51,7 +52,8 @@
 # Zsh
 # "mediaserver/shell/zshrc" = "$HOME/.zshrc"
 # Fish
-"mac-os/shell/config.fish" = "$HOME/.config/fish/config.fish"
+"common/shell/config.fish" = "$HOME/.config/fish/config.fish"
+"mac-os/shell/platform.fish" = "$HOME/.config/fish/conf.d/platform.fish"
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/espup_env.fish" = "$HOME/.config/fish/conf.d/espup_env.fish"
 "common/shell/fish_greeting.fish" = "$HOME/.config/fish/functions/fish_greeting.fish"
