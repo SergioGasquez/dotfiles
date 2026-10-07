@@ -7,8 +7,6 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "diff_view_style": "split",
-  "cli_default_open_behavior": "existing_window",
   "title_bar": {
     "show_menus": true,
   },
@@ -24,15 +22,10 @@
   },
   "agent": {
     "enabled": false,
-    "dock": "right",
-    "favorite_models": [],
-    "model_parameters": []
+    "dock": "right"
   },
   "git_panel": {
     "dock": "left"
-  },
-  "git": {
-    "disable_git": false,
   },
   "agent_servers": {
     "pi-acp": {
@@ -44,11 +37,6 @@
   },
   "file_types": {
     "GitHub Actions": [".github/workflows/*.yml", ".github/workflows/*.yaml"],
-  },
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Zed (Default)",
-    "dark": "Zed (Default)"
   },
   "ui_font_size": 16,
   "buffer_font_family": "Consolas",
@@ -67,14 +55,6 @@
     "light": "Ayu Light",
     "dark": "VSCode Dark Modern",
   },
-  "experimental.theme_overrides": {
-    "syntax": {
-      "title": {
-        "color": "#569cd6",
-        "font_weight": 700,
-      },
-    },
-  },
   "theme_overrides": {
     "VSCode Dark Modern": {
       "syntax": {
@@ -92,20 +72,6 @@
         "link_text.markup": {
           "color": "#5ac1fe",
         },
-      },
-    },
-  },
-  "macos": {
-    "terminal": {
-      "shell": {
-        "program": "/opt/homebrew/bin/fish",
-      },
-    },
-  },
-  "linux": {
-    "terminal": {
-      "shell": {
-        "program": "/usr/bin/fish",
       },
     },
   },
