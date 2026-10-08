@@ -20,6 +20,8 @@
 "common/zed/settings.json" = "$APPDATA/Zed/settings.json"
 "common/zed/keymap.json" = "$APPDATA/Zed/keymap.json"
 "common/zed/tasks.json" = "$APPDATA/Zed/tasks.json"
+# VS Code
+"common/vscode/keybindings.json" = "$APPDATA/Code/User/keybindings.json"
 
 [linux]
 # Fish
@@ -46,6 +48,8 @@
 "common/cursor/settings.json" = "$HOME/.config/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/.config/Cursor/User/keybindings.json"
 "common/cursor/tasks.json" = "$HOME/.config/Cursor/User/tasks.json"
+# VS Code
+"common/vscode/keybindings.json" = "$HOME/.config/Code/User/keybindings.json"
 
 [darwin]
 # Zsh
@@ -74,3 +78,5 @@
 "common/cursor/settings.json" = "$HOME/Library/Application Support/Cursor/User/settings.json"
 "common/cursor/keybindings.json" = "$HOME/Library/Application Support/Cursor/User/keybindings.json"
 "common/cursor/tasks.json" = "$HOME/Library/Application Support/Cursor/User/tasks.json"
+# VS Code
+"common/vscode/keybindings.json" = "$HOME/Library/Application Support/Code/User/keybindings.json"

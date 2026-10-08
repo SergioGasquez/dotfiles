@@ -4,7 +4,7 @@
 fish_add_path "$HOME/.cargo/bin" "$HOME/.local/bin"
 # No greeting
 set -g fish_greeting
-# Commmon aliases
+# Common aliases
 . ~/.config/fish/aliases.fish
 
 if test -f $HOME/.dotfiles/common/shell/espressif.fish

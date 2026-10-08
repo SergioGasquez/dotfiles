@@ -19,7 +19,7 @@ abbr -a cdesphal 'cd ~/Documents/Espressif/esp-rs/esp-hal'
 abbr -a cdespflash 'cd ~/Documents/Espressif/esp-rs/espflash'
 abbr -a cdespup 'cd ~/Documents/Espressif/esp-rs/espup'
 abbr -a cdespgenerate 'cd ~/Documents/Espressif/esp-rs/esp-generate'
-abbr -a cdcrimdpeq 'cd ~/Documents/Crimpdeq'
+abbr -a cdcrimpdeq 'cd ~/Documents/Crimpdeq'
 # Git
 abbr -a ga 'git add'
 abbr -a gaa 'git add -A'

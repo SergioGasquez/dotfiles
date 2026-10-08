@@ -19,7 +19,7 @@ contains its software, electronics, mechanical design, and documentation.
 - `crimpdeq-board`: legacy board repository. Confirm that it is the intended target before editing;
   prefer `crimpdeq-pcb` unless directed otherwise.
 - `crimpdeq-platform`: A parametric OpenSCAD platform for isometric finger training for Crimpdeq.
-- `crimpdeq-tscircuit`: tscitcuit implementation of the PCB.
+- `crimpdeq-tscircuit`: tscircuit implementation of the PCB.
 
 ## Branch workflow
 

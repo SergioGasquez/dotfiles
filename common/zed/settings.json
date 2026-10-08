@@ -28,11 +28,6 @@
   "git_panel": {
     "dock": "left"
   },
-  "agent_servers": {
-    "pi-acp": {
-      "type": "registry",
-    },
-  },
   "session": {
     "trust_all_worktrees": true,
   },
