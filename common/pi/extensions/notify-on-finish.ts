@@ -149,20 +149,46 @@ function findHostWindow(project: string): Promise<number | undefined> {
   });
 }
 
+// Collapse text to one line of at most maxBytes UTF-8 bytes, without splitting characters.
+function clip(text: string, maxBytes: number): string {
+  const line = text.replace(/[\s\x00-\x1f\x7f-\x9f]+/g, " ").trim();
+  if (Buffer.byteLength(line) <= maxBytes) return line;
+  let clipped = "";
+  for (const char of line.slice(0, maxBytes)) {
+    if (Buffer.byteLength(`${clipped}${char}…`) > maxBytes) break;
+    clipped += char;
+  }
+  return `${clipped}…`;
+}
+
 export default function (pi: ExtensionAPI): void {
   // macOS bundle ID or Linux desktop entry ID. undefined until looked up; null when no
   // host app was found (e.g. tmux, SSH).
   let hostApp: string | null | undefined;
+  // The prompt that started the current run, as typed.
+  let task: string | undefined;
+
+  // Input while streaming only steers or extends the running task.
+  pi.on("input", (event) => {
+    if (!event.streamingBehavior) task = event.text;
+  });
 
   // Unlike agent_end, this fires only after retries and queued follow-ups finish.
-  pi.on("agent_settled", (_event, ctx) => {
+  pi.on("agent_settled", (event, ctx) => {
     // Background/print invocations (including editor tasks) should not notify.
     if (ctx.mode !== "tui") return;
 
-    const title = `Pi: ${basename(ctx.cwd)}`;
-    const body = "Ready for input";
+    // Ghostty caps titles at 63 bytes and bodies at 255, and drops text cut mid-character.
+    const title = clip(`Pi: ${basename(ctx.cwd)}`, 63);
+    const status = event.aborted ? "Aborted" : "Done";
+    const body = clip(task ? `${status}: ${task}` : status, 255);
+    task = undefined;
 
-    if (process.platform === "darwin") {
+    if (process.env.TERM_PROGRAM === "ghostty" && process.stdout.isTTY) {
+      // Ghostty shows OSC 777 notifications itself, only while the sending terminal is
+      // unfocused, and clicking one focuses that terminal's window, tab, and split.
+      process.stdout.write(`\x1b]777;notify;${title.replaceAll(";", ",")};${body}\x07`);
+    } else if (process.platform === "darwin") {
       hostApp ??= findHostAppBundleId() ?? null;
       const activate = hostApp ? ["-activate", hostApp] : [];
       // osascript notifications cannot focus the host app on click; use them only

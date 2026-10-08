@@ -48,8 +48,14 @@ selected in [`settings.json`](settings.json).
   It is linked to `~/.pi/agent/extensions` and needs no installation.
 - [`notify-on-finish.ts`](extensions/notify-on-finish.ts) sends a desktop notification
   when an interactive Pi prompt has fully settled (including retries and queued
-  follow-ups). It uses `notify-send` on Linux, Notification Center on macOS, and
-  a PowerShell balloon notification on Windows. Print and RPC runs do not notify.
+  follow-ups). The notification shows the project and the prompt that started the
+  run, prefixed with `Done` or `Aborted`. Print and RPC runs do not notify.
+  In Ghostty, Pi sends the notification through the terminal (OSC 777), so Ghostty
+  shows it only while that terminal is unfocused, and clicking it focuses the
+  exact window, tab, and split running Pi, on macOS and Linux.
+  Elsewhere it uses `notify-send` on Linux, Notification Center on macOS, and
+  a PowerShell balloon notification on Windows. Zed cannot select a terminal tab
+  from outside, so clicking only reaches the app (macOS) or window (Linux).
   On macOS, clicking the notification focuses the app running Pi (terminal or
   IDE) when `terminal-notifier` from [`packages`](../../mac-os/packages) is
   installed and allowed to notify; otherwise it falls back to a plain `osascript`
