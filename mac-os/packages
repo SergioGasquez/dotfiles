@@ -18,7 +18,6 @@ google-chrome
 ninja
 node
 obs
-openssl@1.1
 openssl@3
 openvpn
 pkg-config

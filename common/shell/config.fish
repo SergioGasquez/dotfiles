@@ -1,5 +1,7 @@
 # ~/.config/fish/config.fish
 # Platform setup is loaded earlier from ~/.config/fish/conf.d/platform.fish
+# Rust and uv tools, before anything below runs them (e.g. zoxide)
+fish_add_path "$HOME/.cargo/bin" "$HOME/.local/bin"
 # No greeting
 set -g fish_greeting
 # Commmon aliases
@@ -25,7 +27,3 @@ export ESPFLASH_BAUD="921600"
 starship init fish | source
 # Zoxide
 zoxide init fish | source
-# uv
-fish_add_path "$HOME/.local/bin"
-# Rust
-fish_add_path "$HOME/.cargo/bin"

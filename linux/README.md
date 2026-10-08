@@ -44,8 +44,9 @@ in Bash. The repository is installed at `$HOME/.dotfiles`.
    ```bash
    paru --needed -S - < packages
    ```
-4. Remove unwanted packages:
+4. Remove the unwanted packages that are installed (`-R` aborts on any
+   missing target):
    ```bash
-   paru --noconfirm -R - < packages-to-delete
+   comm -12 <(pacman -Qq | sort) <(sort packages-to-delete) | paru --noconfirm -R -
    ```
 5. Continue with the [Linux and macOS setup](../README.md#linux-and-macos-setup).

@@ -15,7 +15,7 @@
 # Prompt
 "windows/shell/Microsoft.PowerShell_profile.ps1" = "$HOME/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
 # Terminal
-"windows/terminal/settings.json" = "$APPDATA/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
+"windows/terminal/settings.json" = "$LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json"
 # Zed
 "common/zed/settings.json" = "$APPDATA/Zed/settings.json"
 "common/zed/keymap.json" = "$APPDATA/Zed/keymap.json"
@@ -33,6 +33,7 @@
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
 "common/shell/pix_completions.fish" = "$HOME/.config/fish/completions/pix.fish"
+"common/shell/probe-rs.fish" = "$HOME/.config/fish/completions/probe-rs.fish"
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal
@@ -60,6 +61,7 @@
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
 "common/shell/pix_completions.fish" = "$HOME/.config/fish/completions/pix.fish"
+"common/shell/probe-rs.fish" = "$HOME/.config/fish/completions/probe-rs.fish"
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal

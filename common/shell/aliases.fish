@@ -46,7 +46,7 @@ abbr -a gsw 'git switch'
 abbr -a gswb 'git switch -c'
 # GitHub CLI
 abbr -a ghr 'gh repo view --web'
-abbr -a ghpr 'gh pr --web'
+abbr -a ghpr 'gh pr view --web'
 abbr -a ghcpr 'gh pr create --web'
 # Rust
 abbr -a c cargo
