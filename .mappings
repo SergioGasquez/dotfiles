@@ -22,8 +22,6 @@
 "common/zed/tasks.json" = "$APPDATA/Zed/tasks.json"
 
 [linux]
-# MCP
-"linux/mcp.json" = "$HOME/.config/mcp/mcp.json"
 # Fish
 "common/shell/config.fish" = "$HOME/.config/fish/config.fish"
 "linux/shell/platform.fish" = "$HOME/.config/fish/conf.d/platform.fish"

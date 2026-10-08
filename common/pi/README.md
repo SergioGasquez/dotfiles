@@ -137,15 +137,8 @@ ipc_address = "ipc:///tmp/kicad/api.sock"
 
 ### Register the MCP server
 
-On Linux, [the managed MCP config](../../linux/mcp.json) is linked to
-`~/.config/mcp/mcp.json`. It launches the binary from KiCad 10's default PCM
-installation directory. The `env` executable forwards the binary path after
-`pi-mcp-adapter` expands `${HOME}` in the argument; no shell wrapper is needed.
-If KiCad uses a custom data directory, override the command in the untracked
-`~/.pi/agent/mcp.json`.
-
-On macOS or Windows, add a `konnect` entry to `~/.config/mcp/mcp.json` using
-the actual installed binary path (merge with any existing servers):
+Add a `konnect` entry to `~/.config/mcp/mcp.json` using the actual installed
+binary path (merge with any existing servers):
 
 ```json
 {
