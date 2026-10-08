@@ -28,9 +28,11 @@
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/espup_env.fish" = "$HOME/.config/fish/conf.d/espup_env.fish"
 "common/shell/esprs.fish" = "$HOME/.config/fish/functions/esprs.fish"
+"common/shell/pix.fish" = "$HOME/.config/fish/functions/pix.fish"
 ## Completions
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
+"common/shell/pix_completions.fish" = "$HOME/.config/fish/completions/pix.fish"
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal
@@ -53,9 +55,11 @@
 "common/shell/aliases.fish" = "$HOME/.config/fish/aliases.fish"
 "common/shell/espup_env.fish" = "$HOME/.config/fish/conf.d/espup_env.fish"
 "common/shell/esprs.fish" = "$HOME/.config/fish/functions/esprs.fish"
+"common/shell/pix.fish" = "$HOME/.config/fish/functions/pix.fish"
 ## Completions
 "common/shell/espup.fish" = "$HOME/.config/fish/completions/espup.fish"
 "common/shell/espflash.fish" ="$HOME/.config/fish/completions/espflash.fish"
+"common/shell/pix_completions.fish" = "$HOME/.config/fish/completions/pix.fish"
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
 # Terminal

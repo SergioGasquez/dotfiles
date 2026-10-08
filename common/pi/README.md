@@ -91,9 +91,12 @@ The Cursor SDK and Claude bridge package extensions are disabled by default in
 needed bridge for each invocation, plus `notify-on-finish.ts`:
 
 ```bash
-picursor  # cursor/gpt-5.6-sol@272k:slow
-piclaude  # claude-bridge/claude-opus-5-5 with high thinking
-pix       # short form of piclaude
+picursor                    # cursor/gpt-5.6-sol@272k:slow
+piclaude                    # claude-bridge/claude-opus-5-5 with high thinking
+pix                         # short form of piclaude
+pix <project> [pi args...]  # run pix inside an esp-rs or Crimpdeq project
+pix -ide [project]          # open the project in Zed and run pix in its terminal
+pixi [project]              # short form of pix -ide
 ```
 
 ## KiCad through Konnect
