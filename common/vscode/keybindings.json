@@ -61,4 +61,9 @@
         "command": "workbench.action.tasks.runTask",
         "args": "Pi: Commit and push staged changes"
     },
+    // Source Control (ctrl+shift+g is the default)
+    {
+        "key": "cmd+shift+g",
+        "command": "workbench.view.scm"
+    },
 ]

@@ -8,6 +8,14 @@
       "ctrl-k ctrl-o": "workspace::Open",
       "cmd-shift-s": ["task::Spawn", { "task_name": "Pi: Commit and push staged changes" }],
       "ctrl-shift-s": ["task::Spawn", { "task_name": "Pi: Commit and push staged changes" }],
+      "cmd-shift-g": "git_panel::ToggleFocus",
+    },
+  },
+  {
+    // Override the default Pane binding (search::SelectPreviousMatch), which shadows Workspace
+    "context": "Pane",
+    "bindings": {
+      "cmd-shift-g": "git_panel::ToggleFocus",
     },
   },
   {

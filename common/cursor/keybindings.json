@@ -54,5 +54,9 @@
     "key": "cmd+shift+s",
     "command": "workbench.action.tasks.runTask",
     "args": "Pi: Commit and push staged changes"
+  },
+  {
+    "key": "cmd+shift+g",
+    "command": "workbench.view.scm"
   }
 ]
