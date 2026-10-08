@@ -1,7 +1,7 @@
 # ~/.config/fish/conf.d/platform.fish
 # Loaded before config.fish, so Homebrew tools are available to the shared config.
 # Brew
-eval (/opt/homebrew/bin/brew shellenv)
+/opt/homebrew/bin/brew shellenv | source
 
 function upup
     yes | brew update; or return

@@ -22,7 +22,7 @@ abbr -a vs "$zed . && exit"
 abbr -a sandbox "$zed \$HOME/Documents/Espressif/sandbox && exit"
 abbr -a dotfiles "$zed \$HOME/.dotfiles && exit"
 # ESP-RS
-export ESPFLASH_BAUD="921600"
+set -gx ESPFLASH_BAUD 921600
 # Starship
 starship init fish | source
 # Zoxide
