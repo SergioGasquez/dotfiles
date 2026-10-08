@@ -36,6 +36,16 @@ contains its software, electronics, mechanical design, and documentation.
   the change. Report local implementation, validation, commit, and push status separately;
   unavailable hardware or publication does not block independent local work.
 
+## Version compatibility
+
+- `crimpdeq-pcb`, `crimpdeq-firmware`, and `crimpdeq-case` are coupled and compatible only within
+  the same major version; for example, `crimpdeq-pcb@v1.0.0` does not work with
+  `crimpdeq-case@v2.0.0`.
+- When working with one version of these projects, use the latest release of the others with the
+  same major version as the reference; for example, `crimpdeq-pcb@v2.0.0` pairs with
+  `crimpdeq-firmware@v2.1.0` when that is the latest `v2` firmware release.
+- `crimpdeq-tscircuit` and `crimpdeq-platform` are excluded from this version coupling.
+
 ## Working across the workspace
 
 - The parent contains independent repositories and local design work; run project commands from
