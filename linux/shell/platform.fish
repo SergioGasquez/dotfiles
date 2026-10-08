@@ -3,7 +3,7 @@
 function upup
     paru -Syu --devel --sudoloop --noconfirm; or return
     paru --clean --sudoloop --noconfirm; or return
-    yes | cargo install-update -a; or return
+    yes | cargo install-update -a -g; or return
     yes | rustup update; or return
     yes | espup update; or return
     yes | pi update; or return
