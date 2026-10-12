@@ -19,7 +19,7 @@
   },
   "collaboration_panel": {
     "button": false,
-    "dock": "left"
+    "dock": "right"
   },
   "agent": {
     "enabled": false,
