@@ -14,7 +14,7 @@
     "keepRecentTokens": 10000
   },
   "enabledModels": [],
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "transport": "websocket-cached",
   "theme": "dark-code",
   "packages": [
