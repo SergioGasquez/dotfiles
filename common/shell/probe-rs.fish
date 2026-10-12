@@ -333,6 +333,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l idf-flash-freq
 80mhz\t''"
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l skip-section -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l log-format -d 'The format string to use when printing defmt encoded log messages from the target' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l zephyr-log-dictionary -d 'Zephyr dictionary logging database (`log_dictionary.json`) to decode Zephyr dictionary-based logs with' -r -F
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l scan-region -d 'Memory region to scan for control block' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l rtt-channel-mode -d 'RTT channel mode to use' -r -f -a "no-block-skip\t'Skip writing the data completely if it doesn\'t fit in its entirety'
@@ -411,6 +412,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l idf-flash-f
 80mhz\t''"
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l skip-section -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l log-format -d 'The format string to use when printing defmt encoded log messages from the target' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l zephyr-log-dictionary -d 'Zephyr dictionary logging database (`log_dictionary.json`) to decode Zephyr dictionary-based logs with' -r -F
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l scan-region -d 'Memory region to scan for control block' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l rtt-channel-mode -d 'RTT channel mode to use' -r -f -a "no-block-skip\t'Skip writing the data completely if it doesn\'t fit in its entirety'
@@ -592,6 +594,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fis
 80mhz\t''"
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l skip-section -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l log-format -d 'The format string to use when printing defmt encoded log messages from the target' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l zephyr-log-dictionary -d 'Zephyr dictionary logging database (`log_dictionary.json`) to decode Zephyr dictionary-based logs with' -r -F
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l scan-region -d 'Memory region to scan for control block' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l rtt-channel-mode -d 'RTT channel mode to use' -r -f -a "no-block-skip\t'Skip writing the data completely if it doesn\'t fit in its entirety'
