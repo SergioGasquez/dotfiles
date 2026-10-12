@@ -13,7 +13,8 @@ Ghostty's config is shared with macOS from `common/ghostty/config`, managed at
 [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles/blob/main/terminal/ghostty/config),
 and uses a GTK title bar and window controls. Ghostty launches the login shell,
 so set Fish with `chsh -s /usr/bin/fish`. New Ghostty windows start in the home
-directory; tabs and splits can still inherit their parent directory.
+directory; tabs and splits can still inherit their parent directory. Press
+`Ctrl+W` to close the current Ghostty tab.
 After linking with `dot`, install Ghostty with `paru --needed -S ghostty` if
 not installing the full package list.
 
