@@ -7,10 +7,6 @@ set -g fish_greeting
 # Common aliases
 . ~/.config/fish/aliases.fish
 
-if test -f $HOME/.dotfiles/common/shell/espressif.fish
-    . $HOME/.dotfiles/common/shell/espressif.fish
-end
-
 # Editor (Arch Linux installs the Zed CLI as zeditor)
 set -l zed zed
 if command -sq zeditor

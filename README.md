@@ -62,8 +62,8 @@ repository root:
 
 - Define each `hil-<chip>` host alias, with its user and jump host, in
   `~/.ssh/config`.
-- If the runners require a token, set `PROBE_RS_REMOTE_TOKEN` in the ignored
-  `common/shell/espressif.fish`.
+- If the runners require a token, set `PROBE_RS_REMOTE_TOKEN` in a local file
+  under `~/.config/fish/conf.d/` that is not tracked by this repository.
 
 Then run `probe-rs <command> --preset esp32c6-hil`, or set
 `PROBE_RS_CONFIG_PRESET` for tools such as `esp-devtool`.

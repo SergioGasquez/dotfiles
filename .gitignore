@@ -1,5 +1,4 @@
 # Private/local shell overrides
-espressif.fish
 *.private.fish
 *.local.fish
 
