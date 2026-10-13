@@ -19,6 +19,8 @@ contains its software, electronics, mechanical design, and documentation.
 - `crimpdeq-board`: legacy board repository. Confirm that it is the intended target before editing;
   prefer `crimpdeq-pcb` unless directed otherwise.
 - `crimpdeq-platform`: A parametric OpenSCAD platform for isometric finger training for Crimpdeq.
+- `crimpdeq-grips`: parametric OpenSCAD finger training grips (Prometheus, Sisyphus) rebuilt from
+  OpenGrips, with a hand measuring page and an mdBook. Its nested `AGENTS.md` defines its checks.
 - `crimpdeq-tscircuit`: tscircuit implementation of the PCB.
 
 ## Branch workflow
@@ -44,7 +46,8 @@ contains its software, electronics, mechanical design, and documentation.
 - When working with one version of these projects, use the latest release of the others with the
   same major version as the reference; for example, `crimpdeq-pcb@v2.0.0` pairs with
   `crimpdeq-firmware@v2.1.0` when that is the latest `v2` firmware release.
-- `crimpdeq-tscircuit` and `crimpdeq-platform` are excluded from this version coupling.
+- `crimpdeq-tscircuit`, `crimpdeq-platform` and `crimpdeq-grips` are excluded from this version
+  coupling.
 
 ## Working across the workspace
 
@@ -75,6 +78,7 @@ contains its software, electronics, mechanical design, and documentation.
 - KiCad source changes: use `crimpdeq-pcb/AGENTS.md` for Konnect, direct-edit safeguards, ERC,
   DRC, and the repository verifier.
 - Case: follow `crimpdeq-case/AGENTS.md` and run its collision checks after geometry changes.
+- Grips changes: follow `crimpdeq-grips/AGENTS.md` (STEP comparison, STL checks, `mdbook build docs`).
 - Platform geometry changes: run the relevant OpenSCAD assertions/exports; these do not replace
   physical fit or proof-load validation.
 - Book documentation changes: run `mdbook build`.
