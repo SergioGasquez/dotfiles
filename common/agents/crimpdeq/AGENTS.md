@@ -40,12 +40,15 @@ contains its software, electronics, mechanical design, and documentation.
 
 ## Pull request review
 
-- After opening a PR, monitor it until Codex posts its review.
+- After opening a PR, monitor it until Codex posts its review and CI finishes.
+- CI should be green and must not be broken by the PR. If a check fails, inspect its logs: fix failures caused by the PR, and report
+  failures that also occur on `main` or are unrelated to the change instead of fixing them.
 - Address each Codex comment that is valid and within scope; reply on the ones left unaddressed
   with the reason.
 - Resolve review threads whose comments are already addressed by the current branch.
 - After pushing fixes, comment `@codex review` on the PR to retrigger the review, then repeat
-  this loop until no addressable comments remain or Codex posts no new comments.
+  this loop until no addressable comments remain or Codex posts no new comments, and CI is not
+  broken by the PR.
 
 ## Version compatibility
 
