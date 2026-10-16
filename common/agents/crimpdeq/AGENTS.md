@@ -38,6 +38,15 @@ contains its software, electronics, mechanical design, and documentation.
   the change. Report local implementation, validation, commit, and push status separately;
   unavailable hardware or publication does not block independent local work.
 
+## Pull request review
+
+- After opening a PR, monitor it until Codex posts its review.
+- Address each Codex comment that is valid and within scope; reply on the ones left unaddressed
+  with the reason.
+- Resolve review threads whose comments are already addressed by the current branch.
+- After pushing fixes, comment `@codex review` on the PR to retrigger the review, then repeat
+  this loop until no addressable comments remain or Codex posts no new comments.
+
 ## Version compatibility
 
 - `crimpdeq-pcb`, `crimpdeq-firmware`, and `crimpdeq-case` are coupled and compatible only within
