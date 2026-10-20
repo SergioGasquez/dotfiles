@@ -2,6 +2,9 @@
 *.private.fish
 *.local.fish
 
+# Locally installed pi extensions
+common/pi/extensions/herdr-agent-state.ts
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
