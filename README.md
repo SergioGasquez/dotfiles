@@ -55,13 +55,24 @@ repository root:
    dot -v check
    ```
 
+### Private hosts
+
+`common/ssh/config` holds only generic SSH settings and includes
+`~/.dotfiles-private/ssh/*`. Host names, users, IPs, and jump hosts live in the
+private `dotfiles-private` repository; SSH ignores the include when that clone is
+missing:
+
+```bash
+gh repo clone SergioGasquez/dotfiles-private "$HOME/.dotfiles-private"
+```
+
 ### Remote probe-rs
 
 `$HOME/.probe-rs.toml` defines `<chip>-hil` presets that connect to
 `ssh://hil-<chip>:3000`. Keep the private details out of this repository:
 
-- Define each `hil-<chip>` host alias, with its user and jump host, in
-  `~/.ssh/config`.
+- Each `hil-<chip>` host alias, with its user and jump host, is defined in
+  `dotfiles-private` (see [Private hosts](#private-hosts)).
 - If the runners require a token, set `PROBE_RS_REMOTE_TOKEN` in a local file
   under `~/.config/fish/conf.d/` that is not tracked by this repository.
 

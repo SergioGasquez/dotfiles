@@ -1,0 +1,15 @@
+# Private hosts live in the dotfiles-private repository
+Include ~/.dotfiles-private/ssh/*
+
+# UseKeychain only exists in the macOS build of OpenSSH
+IgnoreUnknown UseKeychain
+
+Host github.com
+    UseKeychain yes
+    IdentityFile ~/.ssh/gh_id_ed25519
+
+Host *
+    AddKeysToAgent yes
+    ServerAliveInterval 240
+    # Works around connect() failing with "Undefined error: 0" to LAN hosts on macOS without a timeout
+    ConnectTimeout 15

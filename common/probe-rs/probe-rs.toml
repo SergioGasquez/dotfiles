@@ -11,5 +11,5 @@ esp32c2-hil   = { host = "ssh://hil-esp32c2:3000", attach-timeout = "600", chip 
 esp32p4-hil   = { host = "ssh://hil-esp32p4:3000", attach-timeout = "600", chip = "esp32p4" }
 esp32c5-hil   = { host = "ssh://hil-esp32c5:3000", attach-timeout = "600", chip = "esp32c5" }
 esp32c61-hil  = { host = "ssh://hil-esp32c61:3000", attach-timeout = "600", chip = "esp32c61" }
-esp32-eth-hil = { host = "ssh://hil-esp32-eth:3000", attach-timeout = "600", chip = "esp32" }
+esp32h4-hil   = { host = "ssh://hil-esp32h4:3000", attach-timeout = "600", chip = "esp32h4" }
 esp32s31-hil  = { host = "ssh://hil-esp32s31:3000", attach-timeout = "600", chip = "esp32s31" }

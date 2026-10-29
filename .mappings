@@ -38,6 +38,8 @@
 "common/shell/probe-rs.fish" = "$HOME/.config/fish/completions/probe-rs.fish"
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
+# SSH
+"common/ssh/config" = "$HOME/.ssh/config"
 # Terminal
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
@@ -68,6 +70,8 @@
 "common/shell/probe-rs.fish" = "$HOME/.config/fish/completions/probe-rs.fish"
 # probe-rs
 "common/probe-rs/probe-rs.toml" = "$HOME/.probe-rs.toml"
+# SSH
+"common/ssh/config" = "$HOME/.ssh/config"
 # Terminal
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
 # Zed
