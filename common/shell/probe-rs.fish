@@ -87,7 +87,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l preset -d 'A 
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -s v -l verbose -d 'Enumerate all debug ports and components on the target'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand info" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
@@ -99,6 +98,8 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l protocol -d 
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l probe -d 'Use this flag to select a specific probe in the list' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l speed -d 'The protocol speed in kHz' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l attach-timeout -d 'How long to wait for a busy probe, in seconds' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l method -d 'How to reset the target. `pin` fails if `reset_line_connected` is false in the probe settings' -r -f -a "pin\t'Pulse the reset line of the probe'
+core\t'Reset the core through the debug interface'"
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l log-file -d 'Location for log file for probe-rs\'s own debug output' -r -F
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -s r -l report -r -F
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l host -d 'Remote host to connect to' -r
@@ -107,7 +108,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l preset -d 'A
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand reset" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -128,7 +128,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l reset-halt -d 
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand gdb" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -151,7 +150,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l preset -d 'A
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l launch -d 'Launch instead of just attaching. This will reset the target and allow the binary to be flashed, if provided'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l no-catch-reset -d 'Disable reset vector catch if its supported on the target'
@@ -212,7 +210,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l preset -d
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
@@ -265,7 +262,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l preset -d '
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand verify" -l read-flasher-rtt -d 'Whether to read the RTT output from the flash loader, if available'
@@ -285,7 +281,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l preset -d 'A
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand erase" -l read-flasher-rtt -d 'Whether to read the RTT output from the flash loader, if available'
@@ -334,7 +329,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l idf-flash-freq
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l skip-section -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l log-format -d 'The format string to use when printing defmt encoded log messages from the target' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l zephyr-log-dictionary -d 'Zephyr dictionary logging database (`log_dictionary.json`) to decode Zephyr dictionary-based logs with' -r -F
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate. The target serial port is the `serial` channel' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l scan-region -d 'Memory region to scan for control block' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l rtt-channel-mode -d 'RTT channel mode to use' -r -f -a "no-block-skip\t'Skip writing the data completely if it doesn\'t fit in its entirety'
 no-block-trim\t'Write as much as possible of the data and ignore the rest'
@@ -358,12 +353,11 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l list -d 'List 
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l exact -d 'If set, filters are matched exactly rather than by substring'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l ignored -d 'If set, run only ignored tests'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l include-ignored -d 'If set, run ignored and non-ignored tests'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l nocapture
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l show-output -d 'No-op, ignored. libtest-mimic does not currently capture stdout'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l nocapture -d 'Show the output of all tests while they run. By default, only the output of failed tests is shown'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l show-output -d 'No-op, ignored. Flag only exists for CLI compatibility with libtest'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
@@ -413,7 +407,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l idf-flash-f
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l skip-section -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l log-format -d 'The format string to use when printing defmt encoded log messages from the target' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l zephyr-log-dictionary -d 'Zephyr dictionary logging database (`log_dictionary.json`) to decode Zephyr dictionary-based logs with' -r -F
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate. The target serial port is the `serial` channel' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l scan-region -d 'Memory region to scan for control block' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l rtt-channel-mode -d 'RTT channel mode to use' -r -f -a "no-block-skip\t'Skip writing the data completely if it doesn\'t fit in its entirety'
 no-block-trim\t'Write as much as possible of the data and ignore the rest'
@@ -436,7 +430,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l no-catch-hl
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l list-rtt -d 'List RTT channels and exit'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand attach" -l always-print-stacktrace -d 'Always print the stacktrace on ctrl + c'
@@ -459,7 +452,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l preset -d 'A
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand trace" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -478,7 +470,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_se
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand itm; and not __fish_seen_subcommand_from memory swo help" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -548,7 +539,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l preset -
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand benchmark" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -595,7 +585,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fis
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l skip-section -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l log-format -d 'The format string to use when printing defmt encoded log messages from the target' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l zephyr-log-dictionary -d 'Zephyr dictionary logging database (`log_dictionary.json`) to decode Zephyr dictionary-based logs with' -r -F
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate' -r
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l target-output-file -d 'File name to store formatted output at. Different channels can be assigned to different files using channel=file arguments to multiple occurrences (eg. `--target-output-file defmt=out/defmt.txt --target-output-file out/default`). Channel names can be prefixed with `rtt:` or `semihosting:` (eg. `semihosting:stdout`) to disambiguate. The target serial port is the `serial` channel' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l scan-region -d 'Memory region to scan for control block' -r
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l rtt-channel-mode -d 'RTT channel mode to use' -r -f -a "no-block-skip\t'Skip writing the data completely if it doesn\'t fit in its entirety'
 no-block-trim\t'Write as much as possible of the data and ignore the rest'
@@ -620,12 +610,11 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fis
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l exact -d 'If set, filters are matched exactly rather than by substring'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l ignored -d 'If set, run only ignored tests'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l include-ignored -d 'If set, run ignored and non-ignored tests'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l nocapture
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l show-output -d 'No-op, ignored. libtest-mimic does not currently capture stdout'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l nocapture -d 'Show the output of all tests while they run. By default, only the output of failed tests is shown'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l show-output -d 'No-op, ignored. Flag only exists for CLI compatibility with libtest'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
@@ -702,7 +691,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l preset -d 'A 
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand read" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -721,7 +709,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l preset -d 'A
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand write" -s h -l help -d 'Print help (see more with \'--help\')'
@@ -798,7 +785,6 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_su
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -l cycle-power -d 'Whether to cycle usb power before run'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -l non-interactive -d 'Disable interactive probe selection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -l connect-under-reset -d 'Use this flag to assert the nreset & ntrst pins during attaching the probe to the chip'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -l dry-run
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -l allow-erase-all -d 'Use this flag to allow all memory, including security keys and 3rd party firmware, to be erased even when it has read-only protection'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -l log-to-folder -d 'Enable logging of probe-rs\'s own debug data to the default folder. This option is ignored if `--log-file` is specified'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand mi; and __fish_seen_subcommand_from info" -s h -l help -d 'Print help (see more with \'--help\')'

@@ -39,6 +39,7 @@ complete -c espup -n "__fish_espup_using_subcommand completions" -s h -l help -d
 complete -c espup -n "__fish_espup_using_subcommand install" -s d -l default-host -d 'Target triple of the host' -r -f -a "x86_64-unknown-linux-gnu\t''
 aarch64-unknown-linux-gnu\t''
 x86_64-pc-windows-msvc\t''
+aarch64-pc-windows-msvc\t''
 x86_64-pc-windows-gnu\t''
 x86_64-apple-darwin\t''
 aarch64-apple-darwin\t''"
@@ -68,6 +69,7 @@ complete -c espup -n "__fish_espup_using_subcommand uninstall" -s h -l help -d '
 complete -c espup -n "__fish_espup_using_subcommand update" -s d -l default-host -d 'Target triple of the host' -r -f -a "x86_64-unknown-linux-gnu\t''
 aarch64-unknown-linux-gnu\t''
 x86_64-pc-windows-msvc\t''
+aarch64-pc-windows-msvc\t''
 x86_64-pc-windows-gnu\t''
 x86_64-apple-darwin\t''
 aarch64-apple-darwin\t''"
