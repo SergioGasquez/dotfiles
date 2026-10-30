@@ -16,6 +16,7 @@ fish
 fzf
 gcc
 git
+git-delta
 ghostty
 github-cli
 gnome-browser-connector
