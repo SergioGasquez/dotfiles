@@ -35,6 +35,8 @@
     "cmd-/": "app.help",
     "cmd-shift-/": "app.help",
     "cmd-b": "layout.toggle:sidebar",
+    "cmd-shift-e": "zed-tabs.files",
+    "cmd-shift-g": "zed-tabs.changes",
     "cmd-=": "app.zoom_in",
     "cmd-+": "app.zoom_in",
     "cmd--": "app.zoom_out",

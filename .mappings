@@ -43,6 +43,8 @@
 # Terminal
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
 "common/herdr/config.toml" = "$HOME/.config/herdr/config.toml"
+"common/herdr-app/settings.json" = "$HOME/.config/herdr-app/settings.json"
+"linux/herdr-app/keys.json" = "$HOME/.config/herdr-app/keys.json"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

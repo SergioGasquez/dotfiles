@@ -62,10 +62,15 @@ repository root:
 needs-attention notifications through Ghostty for background workspaces. Apply
 edits to a running server with `herdr server reload-config`.
 
-The Herdr app's [`settings.json`](common/herdr-app/settings.json) and, on
-macOS, [`keys.json`](mac-os/herdr-app/keys.json) are managed in
-`~/.config/herdr-app`. The app applies edits at once and writes setting changes
-made in the app, such as zoom, through the links. It notifies by default: it
+The Herdr app's [`settings.json`](common/herdr-app/settings.json) and
+`keys.json` ([macOS](mac-os/herdr-app/keys.json),
+[Linux](linux/herdr-app/keys.json)) are managed in `~/.config/herdr-app`.
+`keys.json` replaces Herdr's default keys, so each platform file holds all of
+them. Like Zed's project and Git panels, `Cmd+Shift+E` / `Cmd+Shift+G`
+(`Ctrl+Shift+E` / `Ctrl+Shift+G` on Linux, where split down moves to
+`Ctrl+Shift+D`) toggle the Files and Changes panels through the `zed-tabs` mod,
+which is not managed here. The app applies edits at once and writes setting
+changes made in the app, such as zoom, through the links. It notifies by default: it
 plays a sound and posts a notification when an agent finishes or needs
 attention while its terminal is not in view.
 
