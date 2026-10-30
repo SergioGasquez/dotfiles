@@ -3,5 +3,6 @@
   "sounds": {
     "enabled": true
   },
-  "font": "Hack Nerd Font"
+  "font": "Hack Nerd Font",
+  "font_size": 12
 }
