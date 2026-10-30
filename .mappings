@@ -45,6 +45,10 @@
 "common/herdr/config.toml" = "$HOME/.config/herdr/config.toml"
 "common/herdr-app/settings.json" = "$HOME/.config/herdr-app/settings.json"
 "linux/herdr-app/keys.json" = "$HOME/.config/herdr-app/keys.json"
+"common/herdr-app/layouts/my-main.json" = "$HOME/.config/herdr-app/layouts/my-main.json"
+"common/herdr-app/mods/zed-tabs" = "$HOME/.config/herdr-app/mods/zed-tabs"
+"common/herdr-app/mods/zed-files" = "$HOME/.config/herdr-app/mods/zed-files"
+"common/herdr-app/mods/split-changes" = "$HOME/.config/herdr-app/mods/split-changes"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
@@ -80,6 +84,10 @@
 "common/herdr/config.toml" = "$HOME/.config/herdr/config.toml"
 "common/herdr-app/settings.json" = "$HOME/.config/herdr-app/settings.json"
 "mac-os/herdr-app/keys.json" = "$HOME/.config/herdr-app/keys.json"
+"common/herdr-app/layouts/my-main.json" = "$HOME/.config/herdr-app/layouts/my-main.json"
+"common/herdr-app/mods/zed-tabs" = "$HOME/.config/herdr-app/mods/zed-tabs"
+"common/herdr-app/mods/zed-files" = "$HOME/.config/herdr-app/mods/zed-files"
+"common/herdr-app/mods/split-changes" = "$HOME/.config/herdr-app/mods/split-changes"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

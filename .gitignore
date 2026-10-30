@@ -5,6 +5,10 @@
 # Locally installed pi extensions
 common/pi/extensions/herdr-agent-state.ts
 
+# Type hints Herdr writes into every mod folder
+common/herdr-app/mods/*/gpui-kit.d.ts
+common/herdr-app/mods/*/jsconfig.json
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
