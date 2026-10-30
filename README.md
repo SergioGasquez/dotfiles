@@ -62,6 +62,13 @@ repository root:
 needs-attention notifications through Ghostty for background workspaces. Apply
 edits to a running server with `herdr server reload-config`.
 
+The Herdr app's [`settings.json`](common/herdr-app/settings.json) and, on
+macOS, [`keys.json`](mac-os/herdr-app/keys.json) are managed in
+`~/.config/herdr-app`. The app applies edits at once and writes setting changes
+made in the app, such as zoom, through the links. It notifies by default: it
+plays a sound and posts a notification when an agent finishes or needs
+attention while its terminal is not in view.
+
 ### Private hosts
 
 `common/ssh/config` holds only generic SSH settings and includes
