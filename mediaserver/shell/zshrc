@@ -22,4 +22,4 @@ upup() {
     print -u2 'Not updated: source-installed Spoolman, HaspelSync, and Seerr (manual backup-aware update required).'
 }
 
-alias pix='pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --extension ~/.pi/agent/extensions/notify-on-finish.ts --model claude-bridge/claude-opus-5-5 --thinking high'
+alias pix='pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high'

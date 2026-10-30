@@ -1,0 +1,6 @@
+onboarding = false
+
+# Notify through Ghostty when an agent in a background workspace finishes or
+# needs attention; clicking the notification focuses the Ghostty window.
+[ui.toast]
+delivery = "terminal"

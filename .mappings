@@ -42,6 +42,7 @@
 "common/ssh/config" = "$HOME/.ssh/config"
 # Terminal
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
+"common/herdr/config.toml" = "$HOME/.config/herdr/config.toml"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
@@ -74,6 +75,7 @@
 "common/ssh/config" = "$HOME/.ssh/config"
 # Terminal
 "common/ghostty/config" = "$HOME/.config/ghostty/config"
+"common/herdr/config.toml" = "$HOME/.config/herdr/config.toml"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

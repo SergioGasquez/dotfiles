@@ -55,6 +55,13 @@ repository root:
    dot -v check
    ```
 
+### herdr
+
+[`common/herdr/config.toml`](common/herdr/config.toml) is managed at
+`~/.config/herdr/config.toml` and makes the herdr TUI send agent finished and
+needs-attention notifications through Ghostty for background workspaces. Apply
+edits to a running server with `herdr server reload-config`.
+
 ### Private hosts
 
 `common/ssh/config` holds only generic SSH settings and includes

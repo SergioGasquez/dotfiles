@@ -70,8 +70,8 @@ end
 # Python
 abbr -a pip 'uv pip'
 # Pi
-abbr -a piclaude 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --extension ~/.pi/agent/extensions/notify-on-finish.ts --model claude-bridge/claude-opus-5-5 --thinking high'
-set -g pix_cmd pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --extension ~/.pi/agent/extensions/notify-on-finish.ts --model claude-bridge/claude-opus-5-5 --thinking high
+abbr -a piclaude 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high'
+set -g pix_cmd pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high
 # `pix` + enter expands to $pix_cmd; `pix <project>` and `pixi` call the pix function (pix.fish)
 function _pix_abbr
     # Space is inserted before expansion runs: keep `pix ` unexpanded so it can take a project
@@ -89,4 +89,4 @@ if set -q ZED_TERM; and status is-interactive; and test "$(cat /tmp/pix-autostar
         commandline -f execute
     end
 end
-abbr -a picursor 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-cursor-sdk/dist/index.js --extension ~/.pi/agent/extensions/notify-on-finish.ts --model cursor/gpt-5.6-sol@272k:slow'
+abbr -a picursor 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-cursor-sdk/dist/index.js --model cursor/gpt-5.6-sol@272k:slow'

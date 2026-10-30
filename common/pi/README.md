@@ -46,40 +46,6 @@ selected in [`settings.json`](settings.json).
   `find duckdb posts $social-search`) and autocompletes skill names after `$`.
   Prompts that mention more than one skill, or start with `/`, are sent unchanged.
   It is linked to `~/.pi/agent/extensions` and needs no installation.
-- [`notify-on-finish.ts`](extensions/notify-on-finish.ts) sends a desktop notification
-  when an interactive Pi prompt has fully settled (including retries and queued
-  follow-ups). The notification shows the project and the prompt that started the
-  run, prefixed with `Done` or `Aborted`. Print and RPC runs do not notify.
-  In Ghostty, Pi sends the notification through the terminal (OSC 777), so Ghostty
-  shows it only while that terminal is unfocused, and clicking it focuses the
-  exact window, tab, and split running Pi, on macOS and Linux.
-  Elsewhere it uses `notify-send` on Linux, Notification Center on macOS, and
-  a PowerShell balloon notification on Windows. Zed cannot select a terminal tab
-  from outside, so clicking only reaches the app (macOS) or window (Linux).
-  On macOS, clicking the notification focuses the app running Pi (terminal or
-  IDE) when `terminal-notifier` from [`packages`](../../mac-os/packages) is
-  installed and allowed to notify; otherwise it falls back to a plain `osascript`
-  notification. macOS only asks for permission when the app is launched through
-  LaunchServices, so after installing it run this once and click Allow:
-  ```bash
-  open "$(brew --prefix terminal-notifier)/terminal-notifier.app"
-  ```
-  On Linux, clicking the notification focuses the window running Pi on GNOME
-  through the [Window Calls](https://github.com/ickyicky/window-calls) Shell
-  extension from [`packages`](../../linux/packages). The extension picks the
-  window owned by one of Pi's parent processes, preferring the one whose title
-  contains the project directory name. GNOME only detects the newly installed
-  extension after logging out and back in; then enable it once:
-  ```bash
-  gsettings set org.gnome.shell disable-user-extensions false
-  gnome-extensions enable window-calls@domandoman.xyz
-  ```
-  Without Window Calls, the notification carries the app's desktop entry,
-  found from the executables of Pi's parent processes or else from the systemd
-  scope the desktop created when launching the app, and `notify-send --wait`
-  keeps it open because GNOME removes it when its sender exits. GNOME then only
-  activates the app on click, which does not raise Zed on GNOME 50.
-  Reload Pi with `/reload` or restart it to enable the extension.
 
 Install or restore both packages after installing Pi:
 
@@ -94,7 +60,7 @@ Restart Pi after installing the packages. Configure a Cursor API key with
 
 The Cursor SDK and Claude bridge package extensions are disabled by default in
 [`settings.json`](settings.json). The shared Fish abbreviations load only the
-needed bridge for each invocation, plus `notify-on-finish.ts`:
+needed bridge for each invocation:
 
 ```bash
 picursor                    # cursor/gpt-5.6-sol@272k:slow
