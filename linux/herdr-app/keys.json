@@ -62,7 +62,7 @@
     "shift-f2": "space.rename"
   },
   "terminal": {
-    "ctrl-backspace": "send:\u0017",
+    "ctrl-backspace": "send:\u001b\u007f",
     "ctrl-left": "send:\u001bb",
     "ctrl-right": "send:\u001bf",
     "ctrl-shift-c": "terminal.copy",

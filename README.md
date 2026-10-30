@@ -69,6 +69,8 @@ The Herdr app's [`settings.json`](common/herdr-app/settings.json) and
 them. Like Zed's project and Git panels, `Cmd+Shift+E` / `Cmd+Shift+G`
 (`Ctrl+Shift+E` / `Ctrl+Shift+G` on Linux, where split down moves to
 `Ctrl+Shift+D`) toggle the Files and Changes panels through the `zed-tabs` mod.
+Terminals use Ghostty's font, Alt+Backspace (`Ctrl+Backspace` on Linux) deletes
+a word as in Ghostty, and `Cmd+K` clears the screen on macOS.
 The app applies edits at once and writes setting changes made in the app, such
 as zoom, through the links.
 
