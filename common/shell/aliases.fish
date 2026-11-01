@@ -70,7 +70,6 @@ end
 # Python
 abbr -a pip 'uv pip'
 # Pi
-abbr -a piclaude 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high'
 set -g pix_cmd pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high
 # `pix` + enter expands to $pix_cmd; `pix <project>` and `pixi` call the pix function (pix.fish)
 function _pix_abbr
