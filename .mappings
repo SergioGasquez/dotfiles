@@ -49,6 +49,7 @@
 "common/herdr-app/mods/zed-tabs" = "$HOME/.config/herdr-app/mods/zed-tabs"
 "common/herdr-app/mods/zed-files" = "$HOME/.config/herdr-app/mods/zed-files"
 "common/herdr-app/mods/split-changes" = "$HOME/.config/herdr-app/mods/split-changes"
+"common/herdr-app/mods/space-folders" = "$HOME/.config/herdr-app/mods/space-folders"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"
@@ -88,6 +89,7 @@
 "common/herdr-app/mods/zed-tabs" = "$HOME/.config/herdr-app/mods/zed-tabs"
 "common/herdr-app/mods/zed-files" = "$HOME/.config/herdr-app/mods/zed-files"
 "common/herdr-app/mods/split-changes" = "$HOME/.config/herdr-app/mods/split-changes"
+"common/herdr-app/mods/space-folders" = "$HOME/.config/herdr-app/mods/space-folders"
 # Zed
 "common/zed/settings.json" = "$HOME/.config/zed/settings.json"
 "common/zed/keymap.json" = "$HOME/.config/zed/keymap.json"

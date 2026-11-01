@@ -84,6 +84,10 @@ mods, so they don't get Herdr's updates to the originals:
 - `split-changes`: the Changes panel with side-by-side diffs that fit the panel;
   drag the divider to resize the sides, double-click it to reset. A diff with
   only additions or only removals shows one column.
+- `space-folders`: the spaces list with folders, copied from
+  [herdr-space-folders](https://github.com/jankeesvw/herdr-space-folders)
+  (`cb83ff4`, built on Herdr's `spaces` 0.1.10). Folders are saved per machine
+  in `~/.config/herdr-space-folders.json`, which is not managed.
 
 Herdr doesn't notice edits made through the linked mod folders; switch to
 another layout and back (`Cmd+Shift+L`, `Ctrl+Shift+L` on Linux) to reload
