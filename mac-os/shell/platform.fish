@@ -4,7 +4,7 @@
 /opt/homebrew/bin/brew shellenv | source
 
 function upup
-    yes | brew update; or return
+    brew update; or return
     brew upgrade --yes; or return
     # Defined by dotfiles-media_server on the media server host.
     if functions -q media_server_update
