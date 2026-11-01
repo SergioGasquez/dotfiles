@@ -6,6 +6,10 @@
 function upup
     yes | brew update; or return
     brew upgrade --yes; or return
+    # Defined by dotfiles-media_server on the media server host.
+    if functions -q media_server_update
+        media_server_update; or return
+    end
     yes | cargo install-update -a -g; or return
     yes | rustup update; or return
     yes | espup update; or return
