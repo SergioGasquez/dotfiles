@@ -4,7 +4,7 @@ name = Sergio Gasquez
 email = sergio.gasquez@gmail.com
 [alias]
 a = add --all
-ad = !git commit --amend --no-edit && git push --force
+ad = !git commit --amend --no-edit && git push --force-with-lease
 b = branch
 bd = branch -d
 cm = commit -m
@@ -15,7 +15,7 @@ fu = fetch upstream
 l = pull
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 o = checkout
-pf = push --force
+pf = push --force-with-lease
 pt= push --tags
 r = remote -v
 ra = remote add
@@ -32,6 +32,14 @@ td = tag -d
 undo = reset --soft HEAD^
 [init]
 defaultBranch = main
+[push]
+autoSetupRemote = true
+[fetch]
+prune = true
+[rebase]
+autoStash = true
+[merge]
+conflictStyle = zdiff3
 [core]
 pager = delta
 [interactive]
