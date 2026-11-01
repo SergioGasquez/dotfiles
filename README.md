@@ -4,7 +4,7 @@ Cozy repository where I store my dotfiles:
 - [macOS](mac-os)
 - [Windows](windows)
 - [Pi coding agent](common/pi)
-- [Media server](mediaserver)
+- [Media server](https://github.com/SergioGasquez/dotfiles-media_server)
 
 Linux and Windows are installed in a dual boot environment, see [Installation Guide](InstallationGuide.md) for instructions.
 
