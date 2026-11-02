@@ -86,7 +86,9 @@ mods, so they don't get Herdr's updates to the originals:
   Files on other machines and files over 400 KB open read-only.
 - `split-changes`: the Changes panel with side-by-side diffs that fit the panel;
   drag the divider to resize the sides, double-click it to reset. A diff with
-  only additions or only removals shows one column.
+  only additions or only removals shows one column. Long lines wrap, and each
+  pair of lines is as tall as its longer side. Double-click a file to edit it in
+  the Files panel.
 - `space-folders`: the spaces list with folders, copied from
   [herdr-space-folders](https://github.com/jankeesvw/herdr-space-folders)
   (`cb83ff4`, built on Herdr's `spaces` 0.1.10). Folders are saved per machine

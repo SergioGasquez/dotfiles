@@ -1,6 +1,6 @@
 import { View, div } from "gpui-kit";
 import { v_flex, h_flex, InputState, Input, Scrollbar, v_virtual_list } from "gpui-base";
-import { spaces, panes, focused, exec, readTextFile, watchFolder, theme, settings } from "herdr";
+import { spaces, panes, focused, exec, readTextFile, watchFolder, theme, settings, setShared, run } from "herdr";
 
 function location() {
   const space = spaces().find((s) => s.active), f = focused();
@@ -13,6 +13,22 @@ const key = () => JSON.stringify(location());
 // the folder watch would see it, and every refresh would start the next one.
 const READ = ["--no-optional-locks", "-c", "core.fsmonitor=false", "-c", "diff.autoRefreshIndex=false"];
 const countLines = (text) => text ? text.split("\n").length - Number(text.endsWith("\n")) : 0;
+// Diff text is monospace at 11px: about 0.62em per character, rounded up so a wrapped
+// line never runs past its side. NUMBER is the line number column and its gap.
+const CHAR = 6.9, NUMBER = 40, ROW = 20;
+
+// Splits text into lines of at most `width` characters, after the last space that fits
+// (past the indentation), or at `width` when there is none.
+function wrap(text, width) {
+  const out = [];
+  while (text.length > width) {
+    const space = text.lastIndexOf(" ", width), indent = text.search(/\S/);
+    const cut = space > indent ? space + 1 : width;
+    out.push(text.slice(0, cut)); text = text.slice(cut);
+  }
+  out.push(text);
+  return out;
+}
 
 // Clone of the shipped changes mod that shows diffs side by side.
 // Numbers each diff line once, so a frame only draws the rows on screen. A row is a
@@ -27,7 +43,7 @@ function diffRows(lines) {
   };
   for (const line of lines) {
     const match = /^@@ -(\d+)(?:,\d+)? \+(\d+)/.exec(line);
-    const kind = line[0], text = line.slice(1) || " ";
+    const kind = line[0], text = line.slice(1).replace(/\t/g, "    ") || " ";
     if (kind === "-") { removed.push({ kind, number: old++, text }); continue; }
     if (kind === "+") { added.push({ kind, number: next++, text }); continue; }
     flush();
@@ -151,6 +167,21 @@ export default class Changes extends View {
     this.only = added && removed ? null : removed ? "left" : "right";
   }
 
+  // Each row's lines wrapped to the characters that fit its side, and the row heights:
+  // a pair is as tall as its longer side. Recomputed when the diff or the widths change.
+  wrapped() {
+    const fit = (px) => this.diffArea > 0 ? Math.max(10, Math.floor((px - NUMBER - 8) / CHAR)) : Infinity;
+    const left = this.only ? this.diffArea : Math.round(this.split * this.diffArea);
+    const chars = { left: fit(left), right: fit(this.only ? this.diffArea : this.diffArea - left - 1) };
+    const id = `${chars.left},${chars.right}`;
+    if (this.wrap?.rows !== this.rows || this.wrap.id !== id) {
+      const lines = this.rows.map((row) => ({ left: row.left ? wrap(row.left.text, chars.left) : [], right: row.right ? wrap(row.right.text, chars.right) : [] }));
+      const sizes = lines.map((l) => ROW * Math.max(1, ...(this.only ? [l[this.only].length] : [l.left.length, l.right.length])));
+      this.wrap = { rows: this.rows, id, lines, sizes };
+    }
+    return this.wrap;
+  }
+
   endDrag(cx) {
     if (!this.dragging) return;
     this.dragging = false;
@@ -170,6 +201,13 @@ export default class Changes extends View {
     cx.notify();
   }
 
+  // Opens a changed file in the zed-files panel, where it can be edited.
+  edit(file) {
+    if (file.status === "D") return;
+    setShared("zed-files.open", { path: `${this.root}/${file.path}`, at: Date.now() });
+    run("layout.select", { stack: "panel-body", child: "files" });
+  }
+
   commit(cx) {
     if (!this.message.trim() || !this.root || this.busy || this.loading || this.context !== key()) return;
     const root = this.root, on = this.on, context = this.context, message = this.message.trim();
@@ -187,20 +225,21 @@ export default class Changes extends View {
     cx.notify();
   }
 
-  diffRow({ kind, text, left, right }, t) {
-    if (kind === "@") return div().w_full().px(12).h(20).flex_none().truncate().bg(t.raised).text_color(t.dim).child(text);
-    if (kind === "") return div().w_full().px(12).h(20).flex_none().truncate().child(text);
-    const side = (line, width) => h_flex().min_w(0).h_full().gap(10).when(width > 0, (e) => e.w(width).flex_none()).when(!(width > 0), (e) => e.flex_1())
+  diffRow({ kind, text, left, right }, lines, t) {
+    if (kind === "@") return div().w_full().px(12).h(ROW).flex_none().truncate().bg(t.raised).text_color(t.dim).child(text);
+    if (kind === "") return div().w_full().px(12).h(ROW).flex_none().truncate().child(text);
+    const side = (line, wrapped, width) => h_flex().min_w(0).h_full().items_start().gap(10).when(width > 0, (e) => e.w(width).flex_none()).when(!(width > 0), (e) => e.flex_1())
       .when(line?.kind === "+", (e) => e.bg(t.ansi2 + "18")).when(line?.kind === "-", (e) => e.bg(t.ansi1 + "18"))
-      .child(div().w(30).flex_none().text_right().text_color(t.dim).child(line ? String(line.number) : ""))
-      .child(div().flex_1().min_w(0).truncate().child(line?.text ?? ""));
-    if (this.only) return h_flex().w_full().h(20).flex_none().child(side(this.only === "left" ? left : right));
-    return h_flex().w_full().h(20).flex_none().child(side(left, Math.round(this.split * this.diffArea))).child(div().w(1).h_full().flex_none().bg(t.border)).child(side(right));
+      .child(h_flex().w(30).h(ROW).flex_none().justify_end().text_color(t.dim).child(line ? String(line.number) : ""))
+      .child(v_flex().flex_1().min_w(0).overflow_hidden().children(wrapped.map((part) => h_flex().h(ROW).flex_none().whitespace_nowrap().child(part))));
+    const height = ROW * Math.max(1, ...(this.only ? [lines[this.only].length] : [lines.left.length, lines.right.length]));
+    if (this.only) return h_flex().w_full().h(height).flex_none().items_start().child(side(this.only === "left" ? left : right, lines[this.only]));
+    return h_flex().w_full().h(height).flex_none().items_start().child(side(left, lines.left, Math.round(this.split * this.diffArea))).child(div().w(1).h_full().flex_none().bg(t.border)).child(side(right, lines.right));
   }
 
   render(cx) {
     if (key() !== this.context) this.refresh(cx);
-    const t = theme(), add = this.files.reduce((n, f) => n + f.add, 0), del = this.files.reduce((n, f) => n + f.del, 0);
+    const t = theme(), wrapped = this.wrapped(), add = this.files.reduce((n, f) => n + f.add, 0), del = this.files.reduce((n, f) => n + f.del, 0);
     const enabled = Boolean(this.message.trim() && this.root && !this.busy && !this.loading);
     return v_flex().id("changes").size_full().min_h(0).rounded(10).overflow_hidden().bg(t.background).border_1().border_color(t.border).text_color(t.foreground).text_size(13).track_focus(this.handle)
       .on_key_down((e, cx) => {
@@ -212,7 +251,7 @@ export default class Changes extends View {
         .child(div().flex_1()).child(div().text_size(11).text_color(t.ansi2).child(`+${add}`)).child(div().text_size(11).text_color(t.ansi1).child(`−${del}`)))
       .child(v_flex().id("changes-list").flex_none().h(Math.min(200, Math.max(44, this.files.length * 28 + 12))).overflow_y_scrollbar().p(6).border_b(1).border_color(t.border).children(this.files.map((f) => {
         const parts = f.path.split("/"), name = parts.pop();
-        return h_flex().id(`change-${f.path}`).h(28).flex_none().px(8).gap(8).items_center().rounded(7).cursor_pointer().when(this.open === f.path, (e) => e.bg(t.selected)).hover((s) => s.bg(t.hover)).on_click((_e, cx) => this.pick(f.path, cx))
+        return h_flex().id(`change-${f.path}`).h(28).flex_none().px(8).gap(8).items_center().rounded(7).cursor_pointer().when(this.open === f.path, (e) => e.bg(t.selected)).hover((s) => s.bg(t.hover)).on_click((e, cx) => e.click_count === 2 ? this.edit(f) : this.pick(f.path, cx))
           .child(div().w(14).text_size(11).text_color(f.status === "A" ? t.ansi2 : f.status === "D" ? t.ansi1 : f.status === "U" ? t.ansi1 : t.blocked).child(f.status))
           .child(h_flex().flex_1().min_w(0).child(div().text_color(t.dim).truncate().child(parts.length ? parts.join("/") + "/" : "")).child(div().max_w(260).min_w(0).truncate().child(name)))
           .when(f.add > 0, (e) => e.child(div().text_size(11).text_color(t.ansi2).child(`+${f.add}`))).when(f.del > 0, (e) => e.child(div().text_size(11).text_color(t.ansi1).child(`−${f.del}`)));
@@ -227,8 +266,8 @@ export default class Changes extends View {
         })
         .on_mouse_up("left", (_e, cx) => this.endDrag(cx))
         .on_hover((hovered, cx) => { if (!hovered) this.endDrag(cx); })
-        .child(v_virtual_list("changes-diff", this.rows.length, 20, (i) => String(i),
-          (range) => this.rows.slice(range.start, range.end).map((row) => this.diffRow(row, t))).size_full())
+        .child(v_virtual_list("changes-diff", this.rows.length, wrapped.sizes, (i) => String(i),
+          (range) => this.rows.slice(range.start, range.end).map((row, i) => this.diffRow(row, wrapped.lines[range.start + i], t))).size_full())
         .child(Scrollbar.vertical("changes-diff").viewport_from_layout().absolute().inset_0())
         .when(this.diffArea > 0 && this.rows.length > 0 && !this.only, (e) => e.child(div().id("changes-split").absolute().top(0).bottom(0)
           .left(Math.round(this.split * this.diffArea) - 3).w(7).cursor_col_resize().hover((s) => s.bg(t.accent + "40")).when(this.dragging, (s) => s.bg(t.accent + "40"))
