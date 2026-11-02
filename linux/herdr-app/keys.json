@@ -68,5 +68,8 @@
     "ctrl-shift-c": "terminal.copy",
     "ctrl-shift-v": "terminal.paste",
     "ctrl-v": "terminal.paste_image"
+  },
+  "mod:zed-files": {
+    "ctrl-s": "zed-files.save"
   }
 }

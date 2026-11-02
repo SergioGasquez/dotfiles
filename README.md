@@ -80,7 +80,10 @@ mods, so they don't get Herdr's updates to the originals:
 
 - `zed-tabs`: the tab bar, plus the `files` and `changes` key commands.
 - `zed-files`: the Files panel with Zed's VSCode Dark Modern syntax colors,
-  rendered Markdown (with a Source switch) and image previews.
+  rendered Markdown (with a Source switch) and image previews. Local text files
+  are editable: `Cmd+S` (`Ctrl+S` on Linux) or Save writes them, and Discard
+  reloads them. A save fails instead of overwriting a file that changed on disk.
+  Files on other machines and files over 400 KB open read-only.
 - `split-changes`: the Changes panel with side-by-side diffs that fit the panel;
   drag the divider to resize the sides, double-click it to reset. A diff with
   only additions or only removals shows one column.

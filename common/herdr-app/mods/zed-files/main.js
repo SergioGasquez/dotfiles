@@ -1,7 +1,9 @@
-// A lazy file browser for the focused pane's folder, with bounded read-only previews.
+// A lazy file browser for the focused pane's folder, with bounded previews that
+// edit local text files: the "zed-files.save" key saves, and Changes opens a file
+// here through shared("zed-files.open").
 import { View, div, svg, image } from "gpui-kit";
 import { v_flex, h_flex, Editor, EditorState, TextView } from "gpui-base";
-import { spaces, panes, focused, exec, readTextFile, watchFolder, theme, settings, window, appHome } from "herdr";
+import { spaces, panes, focused, exec, readTextFile, writeTextFile, watchFolder, theme, settings, window, appHome, shared, nextCommand } from "herdr";
 
 function location() {
   const space = spaces().find(s => s.active), f = focused();
@@ -10,6 +12,13 @@ function location() {
   return { cwd: pane?.cwd || f?.cwd || space?.folder, on };
 }
 const key = () => JSON.stringify(location());
+// The path from folder to an absolute file, with ".." when the file is outside it.
+function relative(folder, file) {
+  const from = folder.split("/").filter(Boolean), to = file.split("/").filter(Boolean);
+  let same = 0;
+  while (same < from.length && from[same] === to[same]) same++;
+  return [...from.slice(same).map(() => ".."), ...to.slice(same)].join("/");
+}
 const LANG = { ts: "js", tsx: "js", mts: "js", cts: "js", jsx: "js", mjs: "js", toml: "yaml", jsonc: "json", svelte: "html", vue: "html" };
 const PER_FOLDER = 500, TOTAL = 5000;
 // Markdown opens rendered (with a Source switch); local images open as pictures.
@@ -41,8 +50,31 @@ async function directory(path, on) {
 export default class Files extends View {
   init(_props, cx) {
     this.entries = new Map(); this.folders = new Set(); this.pending = new Set(); this.marks = {};
+    // shared() persists, so only requests made after this copy started open a file.
+    this.opened = shared("zed-files.open")?.at ?? 0;
     this.refresh(cx);
     cx.timer.every(10000, cx => this.refresh(cx));
+    cx.spawn(async cx => {
+      for (;;) {
+        if (await nextCommand() === "save") this.save(cx);
+        cx.notify();
+      }
+    });
+  }
+
+  save(cx) {
+    if (!this.dirty || this.saving) return;
+    const file = this.file, text = this.code.value();
+    this.saving = true; this.note = null;
+    cx.spawn(async cx => {
+      try {
+        // Rejects when the file changed on disk since it was loaded or last saved.
+        await writeTextFile(`${this.root}/${file}`, text, this.saved);
+        this.saved = text; this.dirty = this.code.value() !== text;
+        if (this.markdown !== null) this.markdown = text;
+      } catch (e) { this.note = String(e).replace(/^Error: `herdr.writeTextFile`: /, ""); }
+      finally { this.saving = false; cx.notify(); }
+    });
   }
 
   watch(root, cx) {
@@ -67,6 +99,8 @@ export default class Files extends View {
     if (this.loading) return;
     const { cwd, on } = location(), context = key();
     if (context !== this.context) {
+      // Unsaved edits keep the open file until they are saved or discarded.
+      if (this.dirty) return;
       this.context = context; this.root = cwd; this.on = on; this.entries = new Map(); this.folders = new Set();
       this.pending = new Set(); this.marks = {}; this.show(null); this.watched = null; this.error = null; this.limited = false;
     }
@@ -117,6 +151,7 @@ export default class Files extends View {
   show(path, cx) {
     this.code?.release(); this.code = null; this.file = path; this.fileError = null;
     this.markdown = null; this.image = null; this.preview = true;
+    this.saved = null; this.dirty = false; this.note = null;
     if (!path || !cx) return;
     const context = this.context, root = this.root, on = this.on;
     const ext = path.includes(".") ? path.split(".").pop().toLowerCase() : "txt";
@@ -140,10 +175,15 @@ export default class Files extends View {
         if (this.file !== path || key() !== context) return;
         if (text === null) { this.fileError = "This file is no longer available"; return; }
         if (text.includes("\0")) { this.fileError = "Binary file · no text preview"; return; }
-        const value = text.length > 400000 ? text.slice(0, 400000) + "\n… (file truncated)" : text;
+        const truncated = text.length > 400000;
+        const value = truncated ? text.slice(0, 400000) + "\n… (file truncated)" : text;
         if (MARKDOWN.has(ext)) this.markdown = value;
-        this.code = EditorState.new({ language: LANG[ext] ?? ext, readonly: true, value,
+        // writeTextFile only writes on this machine, and saving a truncated preview would cut the file.
+        const editable = !on && !truncated;
+        this.saved = editable ? text : null;
+        this.code = EditorState.new({ language: LANG[ext] ?? ext, readonly: !editable, value,
           font_family: settings().font_family, font_size: CODE.font_size, syntax: CODE.syntax });
+        if (editable) this.code.on("change", (_e, cx) => { if (!this.dirty) { this.dirty = true; cx.notify(); } });
       } catch { if (this.file === path && key() === context) this.fileError = "Cannot preview this file (binary, too large, or unreadable)"; }
       finally { cx.notify(); }
     });
@@ -167,14 +207,27 @@ export default class Files extends View {
 
   render(cx) {
     if (key() !== this.context) this.refresh(cx);
+    const request = shared("zed-files.open");
+    if (request?.at > this.opened) {
+      this.opened = request.at;
+      if (this.dirty) this.note = "Save or discard your edits before opening another file";
+      else if (this.root) this.show(relative(this.root, request.path), cx);
+    }
     const t = theme();
+    const action = (id, label, onClick) => div().id(id).px(8).py(2).rounded(6).flex_none().cursor_pointer().text_size(12).text_color(t.muted).hover(s => s.bg(t.hover)).on_click(onClick).child(label);
     return v_flex().id("files").size_full().min_h(0).rounded(10).overflow_hidden().bg(t.background).border_1().border_color(t.border).text_color(t.foreground).text_size(13)
       .child(h_flex().h(42).flex_none().px(14).gap(8).items_center().border_b(1).border_color(t.border)
-        .when(Boolean(this.file), el => el.child(div().id("files-back").w(20).cursor_pointer().text_color(t.muted).on_click((_e, cx) => { this.show(null); cx.notify(); }).child("←")))
+        .when(Boolean(this.file) && !this.dirty, el => el.child(div().id("files-back").w(20).cursor_pointer().text_color(t.muted).on_click((_e, cx) => { this.show(null); cx.notify(); }).child("←")))
         .child(div().font_semibold().child("Files"))
         .child(div().flex_1().min_w(0).truncate().text_right().text_size(12).text_color(t.dim).child(this.file ?? this.root?.split(/[\\/]/).pop() ?? ""))
-        .when(this.markdown !== null, el => el.child(div().id("files-preview").px(8).py(2).rounded(6).flex_none().cursor_pointer().text_size(12).text_color(t.muted).hover(s => s.bg(t.hover))
-          .on_click((_e, cx) => { this.preview = !this.preview; cx.notify(); }).child(this.preview ? "Source" : "Preview"))))
+        .when(Boolean(this.code) && this.saved === null, el => el.child(div().flex_none().text_size(12).text_color(t.dim).child("Read-only")))
+        .when(this.dirty, el => el.child(action("files-discard", "Discard", (_e, cx) => this.show(this.file, cx)))
+          .child(action("files-save", this.saving ? "Saving…" : "Save", (_e, cx) => this.save(cx))))
+        .when(this.markdown !== null, el => el.child(action("files-preview", this.preview ? "Source" : "Preview", (_e, cx) => {
+          if (!this.preview && this.saved !== null) this.markdown = this.code.value();
+          this.preview = !this.preview; cx.notify();
+        }))))
+      .when(Boolean(this.note), el => el.child(div().px(14).py(6).flex_none().text_size(12).text_color(t.ansi1).border_b(1).border_color(t.border).child(this.note)))
       .when(!this.file, el => el.child(v_flex().id("files-tree").flex_1().min_h(0).overflow_y_scrollbar().p(6).children(this.rows("", 0, [], t))
         .when(Boolean(this.error) || !this.entries.get("")?.length, el => el.child(div().p(8).text_size(12).text_color(t.dim).child(this.error || (this.loading ? "Loading files…" : this.root ? "No files" : "No folder"))))
         .when(this.limited, el => el.child(div().p(8).text_size(11).text_color(t.dim).child("File list limited to 500 entries per folder and 5,000 total")))))
