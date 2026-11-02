@@ -4,3 +4,9 @@ onboarding = false
 # needs attention; clicking the notification focuses the Ghostty window.
 [ui.toast]
 delivery = "terminal"
+
+[[keys.command]]
+key = "prefix+alt+o"
+type = "shell"
+command = 'if [ "$(uname)" = Darwin ]; then open "$(pbpaste)"; else xdg-open "$(wl-paste --no-newline)"; fi'
+description = "open selected path"

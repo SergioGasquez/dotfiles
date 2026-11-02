@@ -14,6 +14,10 @@ Linux-only GTK options in the shared config are ignored on macOS.
 Ghostty's default macOS shortcuts already use `Cmd` (for example `Cmd+C`,
 `Cmd+V`, `Cmd+T`).
 
+[herdr](https://herdr.dev/) settings and keybindings are shared with Linux from
+`common/herdr/config.toml`, managed at `~/.config/herdr/config.toml`. Apply
+edits to a running session with `herdr server reload-config`.
+
 - IDE:
   - [Zed](https://zed.dev/) as the default IDE, with [Cursor](https://www.cursor.com/) also installed
   - Terminal is also using Starship and Fish

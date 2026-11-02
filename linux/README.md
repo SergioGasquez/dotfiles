@@ -18,6 +18,10 @@ directory; tabs and splits can still inherit their parent directory. Press
 After linking with `dot`, install Ghostty with `paru --needed -S ghostty` if
 not installing the full package list.
 
+[herdr](https://herdr.dev/) settings and keybindings are shared with macOS from
+`common/herdr/config.toml`, managed at `~/.config/herdr/config.toml`. Apply
+edits to a running session with `herdr server reload-config`.
+
 - IDE:
   - [Zed](https://zed.dev/) as the default IDE, with [Cursor](https://www.cursor.com/) also installed
   - Terminal is also using Starship and Fish
