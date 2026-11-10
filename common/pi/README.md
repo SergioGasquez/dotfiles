@@ -58,14 +58,15 @@ pi list
 Restart Pi after installing the packages. Configure a Cursor API key with
 `/login`, then select a `cursor/*` model with `/model`.
 
-The Cursor SDK and Claude bridge package extensions are disabled by default in
-[`settings.json`](settings.json). The shared Fish abbreviations load only the
-needed bridge for each invocation:
+[`settings.json`](settings.json) loads the Claude bridge and defaults to
+`claude-bridge/claude-opus-5-5` with high thinking, so a plain
+`pi --session <file>` (as Herdr runs to restore a pane) resumes on Claude. The
+Cursor SDK package extension is disabled; `picursor` loads only that bridge:
 
 ```bash
 picursor                    # cursor/gpt-5.6-sol@272k:slow
-pix                         # claude-bridge/claude-opus-5-5 with high thinking
-pix <project> [pi args...]  # run pix inside an esp-rs or Crimpdeq project
+pix                         # pi
+pix <project> [pi args...]  # run pi inside an esp-rs or Crimpdeq project
 pix -ide [project]          # open the project in Zed and run pix in its terminal
 pixi [project]              # short form of pix -ide
 ```

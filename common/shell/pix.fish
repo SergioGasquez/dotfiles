@@ -1,6 +1,6 @@
-# `pix <project> [pi args...]` runs $pix_cmd inside that project
+# `pix <project> [pi args...]` runs pi inside that project
 # `pix -ide [project]` (or `pixi [project]`) opens the project in Zed and runs pix in its first terminal
-function pix --description 'Run pi with Claude in a project directory'
+function pix --description 'Run pi in a project directory'
     argparse -s ide -- $argv; or return
     if set -q argv[1]
         set -l dir (path filter -d ~/Documents/Espressif/esp-rs/$argv[1] ~/Documents/Crimpdeq/$argv[1])
@@ -11,7 +11,7 @@ function pix --description 'Run pi with Claude in a project directory'
         cd $dir[1]; or return
     end
     if not set -q _flag_ide
-        $pix_cmd $argv[2..]
+        pi $argv[2..]
         return
     end
     if set -q argv[2]

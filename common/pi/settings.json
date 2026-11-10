@@ -1,12 +1,12 @@
 {
   "lastChangelogVersion": "1.5.0",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-sol",
+  "defaultProvider": "claude-bridge",
+  "defaultModel": "claude-opus-5-5",
   "enableSkillCommands": true,
   "skills": [
     "./skills"
   ],
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "high",
   "showCacheMissNotices": true,
   "compaction": {
     "enabled": true,
@@ -22,9 +22,6 @@
       "source": "npm:pi-cursor-sdk",
       "extensions": []
     },
-    {
-      "source": "npm:pi-claude-bridge",
-      "extensions": []
-    }
+    "npm:pi-claude-bridge"
   ]
 }

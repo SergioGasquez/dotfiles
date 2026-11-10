@@ -70,14 +70,6 @@ end
 # Python
 abbr -a pip 'uv pip'
 # Pi
-set -g pix_cmd pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-claude-bridge/src/index.ts --model claude-bridge/claude-opus-5-5 --thinking high
-# `pix` + enter expands to $pix_cmd; `pix <project>` and `pixi` call the pix function (pix.fish)
-function _pix_abbr
-    # Space is inserted before expansion runs: keep `pix ` unexpanded so it can take a project
-    string match -q -- '* ' (commandline); and return 1
-    string escape -- $pix_cmd | string join ' '
-end
-abbr -a pix --position command --function _pix_abbr
 abbr -a pixi 'pix -ide'
 # Consume the `pix -ide` marker: type and run pix once the terminal shows its first prompt
 if set -q ZED_TERM; and status is-interactive; and test "$(cat /tmp/pix-autostart 2>/dev/null)" = "$PWD"
