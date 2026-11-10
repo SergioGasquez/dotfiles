@@ -21,6 +21,3 @@ set -gx ESPFLASH_BAUD 921600
 starship init fish | source
 # Zoxide
 zoxide init fish | source
-
-# Pi
-fish_add_path ~/.pi/agent/bin

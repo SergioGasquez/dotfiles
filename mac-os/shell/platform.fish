@@ -13,7 +13,6 @@ function upup
     yes | cargo install-update -a -g; or return
     yes | rustup update; or return
     yes | espup update; or return
-    yes | pi update; or return
-    yes | pi update --extensions; or return
+    yes | pi update --all; or return
     comp
 end
