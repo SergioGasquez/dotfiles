@@ -25,4 +25,4 @@ starship init fish | source
 zoxide init fish | source
 
 # Pi
-fish_add_path "/home/sergio/.pi/agent/bin"
+fish_add_path ~/.pi/agent/bin
