@@ -39,10 +39,15 @@ repository root:
    ```bash
    espup install
    ```
-3. Install [Pi](https://pi.dev/docs/latest/quickstart#install):
+3. Install [Pi](https://pi.dev/docs/latest/quickstart#install) and link it
+   into `~/.local/bin`, so programs that do not read the Fish config (such as
+   `hc` workers) also find it:
    ```bash
-   npm install -g --ignore-scripts @earendil-works/pi-coding-agent
+   curl -fsSL https://pi.dev/install.sh | sh
+   ln -s ~/.pi/agent/bin/pi ~/.local/bin/pi
    ```
+   Do not install a distribution `pi` package alongside it; an older
+   `/usr/bin/pi` shadows this install for those programs.
 4. Regenerate the Fish completions:
    ```bash
    espup completions fish > common/shell/espup.fish
