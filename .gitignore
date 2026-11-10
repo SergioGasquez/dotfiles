@@ -5,6 +5,9 @@
 # Locally installed pi extensions
 common/pi/extensions/herdr-agent-state.ts
 
+# Skills symlinked in by locally installed apps
+common/pi/skills/superwhisper
+
 # Type hints Herdr writes into every mod folder
 common/herdr-app/mods/*/gpui-kit.d.ts
 common/herdr-app/mods/*/jsconfig.json
