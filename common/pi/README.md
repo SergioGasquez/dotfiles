@@ -13,6 +13,14 @@ policy. The [`git` skill](skills/git/SKILL.md) routes branch creation/naming,
 commit messages/commits, and code reviews to separate on-demand references—not
 for unrelated implementation work. `/skill:git` loads it explicitly when needed.
 
+The [`subagents`](skills/subagents/SKILL.md) and [`loop`](skills/loop/SKILL.md)
+skills, from [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles),
+delegate work to Pi workers in persistent `hc` (herdr-core) terminals.
+`subagents` sets the orchestration rules and the model for each role; `loop`
+implements with Opus and reviews with Opus and GPT-6.1 Sol in parallel. Both are
+manual only (`/skill:subagents`, `/skill:loop`) and need `hc`, plus `anthropic`
+and `openai-codex` logins.
+
 Implementation proceeds through scoped edits and relevant safe validation without
 an automatic first-pass review stop. Reviews and audits remain read-only; drafting
 a commit message does not authorize a commit. Commits and publication require a
