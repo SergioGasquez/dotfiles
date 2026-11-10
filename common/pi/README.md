@@ -34,12 +34,22 @@ theme with the inline code, code block, and syntax highlighting colors of the
 pre-OKHSL `dark` theme (Pi 0.60). It is linked to `~/.pi/agent/themes` and
 selected in [`settings.json`](settings.json).
 
+## Model
+
+The default is `anthropic/claude-opus-5-5` with high thinking, through the
+Claude subscription (see `pi-anthropic-auth` below), so a plain
+`pi --session <file>` (as Herdr runs to restore a pane) resumes on Claude.
+
 ## Extensions
 
 - [`pi-cursor-sdk`](https://github.com/fitchmultz/pi-cursor-sdk) runs Cursor
   models inside Pi and bridges active Pi tools to local Cursor agents.
-- [`pi-claude-bridge`](https://github.com/elidickinson/pi-claude-bridge) uses
-  Claude Code, through the Agent SDK, as a Pi model provider.
+- [`pi-anthropic-auth`](https://github.com/gotgenes/pi-anthropic-auth), from
+  [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), makes Pi's
+  built-in `anthropic` provider work with a Claude Pro/Max subscription
+  (OAuth). API-key requests and other providers pass through unchanged. Pi's
+  extra-usage warning for Anthropic OAuth sessions is disabled in
+  [`settings.json`](settings.json).
 - [`inline-skills.ts`](extensions/inline-skills.ts), from
   [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), loads a
   skill when a prompt mentions it as `$name` (for example,
@@ -47,26 +57,18 @@ selected in [`settings.json`](settings.json).
   Prompts that mention more than one skill, or start with `/`, are sent unchanged.
   It is linked to `~/.pi/agent/extensions` and needs no installation.
 
-Install or restore both packages after installing Pi:
+Pi installs missing packages from [`settings.json`](settings.json) on startup;
+`pi list` shows them. Configure a Cursor API key with `/login`, and sign in to
+the Claude subscription with `/login anthropic`.
 
-```bash
-pi install npm:pi-cursor-sdk
-pi install npm:pi-claude-bridge
-pi list
-```
-
-Restart Pi after installing the packages. Configure a Cursor API key with
-`/login`, then select a `cursor/*` model with `/model`.
-
-[`settings.json`](settings.json) loads the Claude bridge and defaults to
-`claude-bridge/claude-opus-5-5` with high thinking, so a plain
-`pi --session <file>` (as Herdr runs to restore a pane) resumes on Claude. The
-Cursor SDK package extension is disabled; `picursor` loads only that bridge:
+The Cursor SDK package extension is disabled by default in
+[`settings.json`](settings.json); `picursor` loads it for that invocation only.
+The shared Fish abbreviations:
 
 ```bash
 picursor                    # cursor/gpt-5.6-sol@272k:slow
-pix                         # pi
-pix <project> [pi args...]  # run pi inside an esp-rs or Crimpdeq project
+pix                         # pi with the default model
+pix <project> [pi args...]  # run pix inside an esp-rs or Crimpdeq project
 pix -ide [project]          # open the project in Zed and run pix in its terminal
 pixi [project]              # short form of pix -ide
 ```

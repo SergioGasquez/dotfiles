@@ -70,6 +70,7 @@ end
 # Python
 abbr -a pip 'uv pip'
 # Pi
+# `pix [project]` and `pixi` call the pix function (pix.fish)
 abbr -a pixi 'pix -ide'
 # Consume the `pix -ide` marker: type and run pix once the terminal shows its first prompt
 if set -q ZED_TERM; and status is-interactive; and test "$(cat /tmp/pix-autostart 2>/dev/null)" = "$PWD"

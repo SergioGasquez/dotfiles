@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "1.5.0",
-  "defaultProvider": "claude-bridge",
+  "lastChangelogVersion": "1.5.2",
+  "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
   "enableSkillCommands": true,
   "skills": [
@@ -17,11 +17,17 @@
   "hideThinkingBlock": false,
   "transport": "websocket-cached",
   "theme": "dark-code",
+  "warnings": {
+    "anthropicExtraUsage": false
+  },
   "packages": [
     {
       "source": "npm:pi-cursor-sdk",
       "extensions": []
     },
-    "npm:pi-claude-bridge"
-  ]
+    "npm:@gotgenes/pi-anthropic-auth"
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@gotgenes/pi-anthropic-auth\",\"scope\":\"user\"}": "3.4.4"
+  }
 }

@@ -1,4 +1,4 @@
-# `pix <project> [pi args...]` runs pi inside that project
+# `pix [project [pi args...]]` runs pi (default model from settings.json) inside that project
 # `pix -ide [project]` (or `pixi [project]`) opens the project in Zed and runs pix in its first terminal
 function pix --description 'Run pi in a project directory'
     argparse -s ide -- $argv; or return
