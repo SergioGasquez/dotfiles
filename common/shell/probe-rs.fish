@@ -160,7 +160,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l no-rtt -d 'D
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l restore-unwritten -d 'Enable this flag to restore all bytes erased in the sector erase but not overwritten by any page'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l preverify -d 'Before flashing, read back all the flashed data to skip flashing if the device is up to date'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l preverify -d 'Before flashing, compare each erase sector with the image, and skip the sectors that are up to date'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l verify -d 'After flashing, read back all the flashed data to verify it has been written correctly'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l chip-erase -d 'Whether to erase the entire chip before downloading'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand debug" -l read-flasher-rtt -d 'Whether to read the RTT output from the flash loader, if available'
@@ -214,7 +214,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l allow-era
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l restore-unwritten -d 'Enable this flag to restore all bytes erased in the sector erase but not overwritten by any page'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l preverify -d 'Before flashing, read back all the flashed data to skip flashing if the device is up to date'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l preverify -d 'Before flashing, compare each erase sector with the image, and skip the sectors that are up to date'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l verify -d 'After flashing, read back all the flashed data to verify it has been written correctly'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l chip-erase -d 'Whether to erase the entire chip before downloading'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand download" -l read-flasher-rtt -d 'Whether to read the RTT output from the flash loader, if available'
@@ -362,7 +362,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l allow-erase-al
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l restore-unwritten -d 'Enable this flag to restore all bytes erased in the sector erase but not overwritten by any page'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l preverify -d 'Before flashing, read back all the flashed data to skip flashing if the device is up to date'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l preverify -d 'Before flashing, compare each erase sector with the image, and skip the sectors that are up to date'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l verify -d 'After flashing, read back all the flashed data to verify it has been written correctly'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l chip-erase -d 'Whether to erase the entire chip before downloading'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand run" -l read-flasher-rtt -d 'Whether to read the RTT output from the flash loader, if available'
@@ -619,7 +619,7 @@ complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fis
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l disable-progressbars
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l disable-double-buffering -d 'Use this flag to disable double-buffering when downloading flash data. If download fails during programming with timeout errors, try this option'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l restore-unwritten -d 'Enable this flag to restore all bytes erased in the sector erase but not overwritten by any page'
-complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l preverify -d 'Before flashing, read back all the flashed data to skip flashing if the device is up to date'
+complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l preverify -d 'Before flashing, compare each erase sector with the image, and skip the sectors that are up to date'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l verify -d 'After flashing, read back all the flashed data to verify it has been written correctly'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l chip-erase -d 'Whether to erase the entire chip before downloading'
 complete -c probe-rs -n "__fish_probe_rs_using_subcommand profile; and not __fish_seen_subcommand_from flat callstack help" -l read-flasher-rtt -d 'Whether to read the RTT output from the flash loader, if available'
