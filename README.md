@@ -62,6 +62,14 @@ repository root:
 needs-attention notifications through Ghostty for background workspaces. Apply
 edits to a running server with `herdr server reload-config`.
 
+Install the Pi integration so Herdr reopens Pi sessions in their panes after a
+server restart or reboot (run `herdr` once after boot to restore). It writes the
+unmanaged, ignored `common/pi/extensions/herdr-agent-state.ts`:
+
+```bash
+herdr integration install pi
+```
+
 The Herdr app's [`settings.json`](common/herdr-app/settings.json) and
 `keys.json` ([macOS](mac-os/herdr-app/keys.json),
 [Linux](linux/herdr-app/keys.json)) are managed in `~/.config/herdr-app`.
