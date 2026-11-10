@@ -21,6 +21,10 @@ implements with Opus and reviews with Opus and GPT-6.1 Sol in parallel. Both are
 manual only (`/skill:subagents`, `/skill:loop`) and need `hc`, plus `anthropic`
 and `openai-codex` logins.
 
+The [`plain-writing`](skills/plain-writing/SKILL.md) skill, from the same repo,
+rewrites prose so a reader without context understands it in one pass.
+`/skill:plain-writing deslopify` rewrites the previous response.
+
 Implementation proceeds through scoped edits and relevant safe validation without
 an automatic first-pass review stop. Reviews and audits remain read-only; drafting
 a commit message does not authorize a commit. Commits and publication require a
@@ -64,6 +68,14 @@ Claude subscription (see `pi-anthropic-auth` below), so a plain
   `find duckdb posts $social-search`) and autocompletes skill names after `$`.
   Prompts that mention more than one skill, or start with `/`, are sent unchanged.
   It is linked to `~/.pi/agent/extensions` and needs no installation.
+- [`session-topic.ts`](extensions/session-topic.ts), from
+  [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), names each
+  new session from its first prompt with one extra request to the current model.
+  The name shows in `/resume` and Herdr; `/name` overrides it.
+- [`pi-web-access`](https://github.com/nicobailon/pi-web-access) adds
+  `web_search`, `fetch_content`, and related tools. It needs no keys: searches go
+  through the Codex subscription when the model is `openai-codex`, and keyless
+  Exa otherwise. Optional keys go in `~/.pi/agent/web-search.json`.
 
 Pi installs missing packages from [`settings.json`](settings.json) on startup;
 `pi list` shows them. Configure a Cursor API key with `/login`, and sign in to
