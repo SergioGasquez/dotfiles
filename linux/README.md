@@ -22,6 +22,17 @@ not installing the full package list.
 `common/herdr/config.toml`, managed at `~/.config/herdr/config.toml`. Apply
 edits to a running session with `herdr server reload-config`.
 
+Install the herdr TUI, then the Herdr app, which also installs herdr-core
+(`hc`). All three go into `~/.local/bin`:
+
+```bash
+curl -fsSL https://herdr.dev/install.sh | sh
+curl -fsSL https://releases.herdr.dev/app/install.sh | sh
+```
+
+`herdr update` updates the TUI and `hc update` updates herdr-core; the app
+keeps herdr-core current, and rerunning its installer updates the app.
+
 - IDE:
   - [Zed](https://zed.dev/) as the default IDE, with [Cursor](https://www.cursor.com/) also installed
   - Terminal is also using Starship and Fish

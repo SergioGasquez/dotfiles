@@ -57,4 +57,5 @@ uv
 vlc-wayland-git
 wget
 wireshark-qt
+wl-clipboard
 zed
