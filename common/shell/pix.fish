@@ -18,8 +18,6 @@ function pix --description 'Run pi in a project directory'
         echo 'pix: -ide takes only a project' >&2
         return 1
     end
-    set -l zed zed
-    command -q zeditor; and set zed zeditor
     echo $PWD >/tmp/pix-autostart
     $zed .
 end

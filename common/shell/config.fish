@@ -8,10 +8,8 @@ set -g fish_greeting
 . ~/.config/fish/aliases.fish
 
 # Editor (Arch Linux installs the Zed CLI as zeditor)
-set -l zed zed
-if command -sq zeditor
-    set zed zeditor
-end
+set -g zed zed
+command -sq zeditor; and set zed zeditor
 set -gx EDITOR "$zed --wait"
 set -gx VISUAL "$zed --wait"
 abbr -a vs "$zed . && exit"

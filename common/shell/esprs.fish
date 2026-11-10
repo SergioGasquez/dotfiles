@@ -45,16 +45,7 @@ function esprs --argument repository_name
     end
 
     echo "Opening the repository with Zed"
-    set -l zed_cmd
-    if command -sq zeditor
-        set zed_cmd zeditor
-    else if command -sq zed
-        set zed_cmd zed
-    else
-        echo "Error: zeditor or zed is not available in PATH."
-        return 1
-    end
-    $zed_cmd "$repo_path"
+    $zed "$repo_path"
     if test $status -eq 0
         exit
     end
