@@ -67,13 +67,20 @@ repository root:
 needs-attention notifications through Ghostty for background workspaces. Apply
 edits to a running server with `herdr server reload-config`.
 
-Install the Pi integration so Herdr reopens Pi sessions in their panes after a
-server restart or reboot (run `herdr` once after boot to restore). It writes the
-unmanaged, ignored `common/pi/extensions/herdr-agent-state.ts`:
+Install the Pi integration so the herdr TUI reopens Pi sessions in their panes
+after a server restart or reboot (run `herdr` once after boot to restore). It
+writes the unmanaged, ignored `common/pi/extensions/herdr-agent-state.ts`:
 
 ```bash
 herdr integration install pi
 ```
+
+The Herdr app reopens Pi sessions after a power off too. Herdr Core restarts
+each pane's lost program as a shell in its last folder, and
+[`config.fish`](common/shell/config.fish) runs `pi --session` there for the
+session that [`herdr-resume.ts`](common/pi/extensions/herdr-resume.ts) recorded
+in `~/.pi/agent/herdr-terminals/<terminal>`. Quitting Pi yourself forgets the
+session; a power off or closed pane does not.
 
 The Herdr app's [`settings.json`](common/herdr-app/settings.json) and
 `keys.json` ([macOS](mac-os/herdr-app/keys.json),

@@ -21,3 +21,17 @@ set -gx ESPFLASH_BAUD 921600
 starship init fish | source
 # Zoxide
 zoxide init fish | source
+# Herdr Core replaces a kept terminal's program lost to a reboot with a shell
+# in its last folder; reopen the Pi session that was open there
+# (common/pi/extensions/herdr-resume.ts). Only that shell's parent is Herdr Core.
+# It runs from the first prompt, so Pi is a normal foreground job.
+if status is-interactive; and set -q HC_TERMINAL_ID
+    set -l pi_session ~/.pi/agent/herdr-terminals/$HC_TERMINAL_ID
+    if test -f $pi_session; and string match -q '*herdr-core' (ps -o comm= -p (string trim (ps -o ppid= -p $fish_pid)))
+        function __resume_pi_session --on-event fish_prompt --inherit-variable pi_session
+            functions -e __resume_pi_session
+            commandline "pi --session "(string escape -- (cat $pi_session))
+            commandline -f execute
+        end
+    end
+end

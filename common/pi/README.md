@@ -72,6 +72,9 @@ Claude subscription (see `pi-anthropic-auth` below), so a plain
   [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), names each
   new session from its first prompt with one extra request to the current model.
   The name shows in `/resume` and Herdr; `/name` overrides it.
+- [`herdr-resume.ts`](extensions/herdr-resume.ts) records the session open in
+  each Herdr terminal so Fish reopens it after a power off (see the root
+  README's herdr section).
 - [`pi-web-access`](https://github.com/nicobailon/pi-web-access) adds
   `web_search`, `fetch_content`, and related tools. It needs no keys: searches go
   through the Codex subscription when the model is `openai-codex`, and keyless
