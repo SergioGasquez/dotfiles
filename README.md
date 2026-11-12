@@ -112,9 +112,10 @@ mods, so they don't get Herdr's updates to the originals:
 - `space-folders`: the spaces list with folders, copied from
   [herdr-space-folders](https://github.com/jankeesvw/herdr-space-folders)
   (`cb83ff4`, built on Herdr's `spaces` 0.1.10). Folders are saved per machine
-  in `~/.config/herdr-space-folders.json`, which is not managed. Folders with
-  the same name on different machines show as one folder, listing each
-  machine's spaces under that machine's name.
+  in `~/.config/herdr-space-folders.json`, which is not managed. Each machine
+  shows its own folders: this computer's folders and spaces come first, then
+  each other machine's under its name, so a folder named alike on two machines
+  shows twice.
 
 Herdr doesn't notice edits made through the linked mod folders; switch to
 another layout and back (`Cmd+Shift+L`, `Ctrl+Shift+L` on Linux) to reload
