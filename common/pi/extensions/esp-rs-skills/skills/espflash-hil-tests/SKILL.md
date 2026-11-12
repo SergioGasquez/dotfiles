@@ -73,9 +73,32 @@ ssh hil-esp32c6 'pgrep -af "[R]unner.Worker"; pgrep -ax "espflash|xtask"; fuser 
   `pgrep` without `-f` matches process names, which it truncates to 15 characters; keep the
   pattern that short.
 - `fuser` only shows your own processes; the runner and `probe-rs serve` run as another user.
-- espflash does not take the probe-rs lock, and remote probe-rs sessions run inside
-  `probe-rs serve`, so they are not visible as processes. An espflash reset breaks a probe-rs
-  session of another user. If an esp-hal HIL job for the chip is in progress, wait.
+- espflash does not take the probe-rs lock. `probe-rs serve` on the host manages the probe, and
+  esp-hal CI and remote probe-rs users connect to it, so it serializes them, but espflash opens the
+  serial port beside it. Their sessions run inside `probe-rs serve`, so they are not visible as
+  processes; an esp-hal CI job only shows as `Runner.Worker` and in `gh run list`. An espflash
+  reset or flash breaks such a session, and its resets drop your port. If an esp-hal HIL job for
+  the chip is in progress, wait.
+
+### Guard every command
+
+The check only covers the moment you run it, and nothing makes a CI job wait for you: the runner
+takes a job as soon as it is idle. Start every remote command that touches the board with this
+guard, so it refuses to start once a CI job is on the board:
+
+```bash
+ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ...'
+```
+
+Exit code 75 means a CI job took the board. CI has priority:
+
+- Stop. Do not retry in a loop and do not fight it for the port.
+- Tell the user which run was on the board (`gh run list` above) and whether your last command
+  overlapped it, so they can decide whether to re-run it. Do not re-run other people's runs or
+  comment on their PRs.
+- Continue when `gh run watch -R <repo> <id>` ends and the check passes again.
+
+A job can still start in the middle of a command, so keep commands short.
 
 ## Build
 
@@ -116,7 +139,7 @@ Commands you run by hand only need the binaries (see below).
 Reset the board like the CI "Prepare device" step, then run the test:
 
 ```bash
-ssh hil-esp32c6 'cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true timeout 20 ../bin/espflash reset --port /dev/serial_ports/usb && sleep 5 && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb ../bin/xtask run-tests board-info --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c6-usb.log 2>&1
+ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true timeout 20 ../bin/espflash reset --port /dev/serial_ports/usb && sleep 5 && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb ../bin/xtask run-tests board-info --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c6-usb.log 2>&1
 rg -a "test passed|failed: |All tests completed" /tmp/espflash-hil-esp32c6-usb.log
 ```
 
@@ -133,8 +156,7 @@ rg -a "test passed|failed: |All tests completed" /tmp/espflash-hil-esp32c6-usb.l
 ## Run espflash commands by hand
 
 Use a rig board to try an espflash change on a chip or port while you develop it. Keep each
-session short: the free-board check only covers the moment you start, and a CI job can start on
-the board at any time.
+session short and guard every command: a CI job can start on the board at any time.
 
 Use a local board instead (with the user's confirmation) for macOS or Windows serial behavior,
 other USB-UART bridges, other flash or PSRAM variants, BOOT/RESET buttons, replugging or power
@@ -152,16 +174,16 @@ flash encryption on a rig board.
    ```
 3. Run commands with `timeout` on the host and the output in a log file:
    ```bash
-   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash board-info --port /dev/serial_ports/usb --non-interactive' > /tmp/espflash-rig.log 2>&1
-   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 120 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
-   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 15 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive --monitor ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
-   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 10 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --non-interactive --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash board-info --port /dev/serial_ports/usb --non-interactive' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 120 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 15 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive --monitor ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 10 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --non-interactive --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
    ```
    A monitor only ends at the timeout, so exit code 124 is expected for `monitor` and
    `flash --monitor`.
 4. Write outputs to `work/` and copy them back:
    ```bash
-   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 60 ~/espflash-hil/bin/espflash read-flash --port /dev/serial_ports/usb --non-interactive 0x10000 0x1000 ~/espflash-hil/work/read.bin' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 60 ~/espflash-hil/bin/espflash read-flash --port /dev/serial_ports/usb --non-interactive 0x10000 0x1000 ~/espflash-hil/work/read.bin' > /tmp/espflash-rig.log 2>&1
    rsync -az hil-esp32c6:espflash-hil/work/read.bin /tmp/
    ```
 
@@ -172,11 +194,11 @@ flash encryption on a rig board.
 - For an interactive monitor, the user runs this in their terminal; Ctrl+R resets the chip and
   Ctrl+C exits:
   ```bash
-  ssh -t hil-esp32c6 '~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb'
+  ssh -t hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb'
   ```
   To test the monitor keys yourself, send them through a forced TTY:
   ```bash
-  (sleep 5; printf '\x12'; sleep 5; printf '\x03') | ssh -tt hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+  (sleep 5; printf '\x12'; sleep 5; printf '\x03') | ssh -tt hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
   ```
   If the monitor prints nothing, reset the chip with Ctrl+R.
 - Leave the board in a state CI can recover from. Do not leave firmware that disables native USB on
@@ -188,8 +210,8 @@ flash encryption on a rig board.
   them one after the other.
 - Run jobs for different boards in parallel, each with its own alias and log file:
   ```bash
-  ssh hil-esp32c6 'cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb ../bin/xtask run-tests flash --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c6-usb.log 2>&1 &
-  ssh hil-esp32c5 'cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/uart ../bin/xtask run-tests flash --chip esp32c5 --timeout 90 --baud 921600 --console uart --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c5-uart.log 2>&1 &
+  ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb ../bin/xtask run-tests flash --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c6-usb.log 2>&1 &
+  ssh hil-esp32c5 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/uart ../bin/xtask run-tests flash --chip esp32c5 --timeout 90 --baud 921600 --console uart --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c5-uart.log 2>&1 &
   wait
   ```
   Check, sync and reset each board first. One build serves every board.
