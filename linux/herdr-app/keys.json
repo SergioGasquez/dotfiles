@@ -56,7 +56,7 @@
     "ctrl-shift-o": "pane.split:right",
     "ctrl-shift-d": "pane.split:down",
     "ctrl-w": "pane.close",
-    "ctrl-shift-w": "tab.close",
+    "ctrl-shift-w": "space.close",
     "ctrl-shift-x": "pane.close",
     "ctrl-shift-z": "pane.zoom",
     "ctrl-shift-l": "layout.switch",
