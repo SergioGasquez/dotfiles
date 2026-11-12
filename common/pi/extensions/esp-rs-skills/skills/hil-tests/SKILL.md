@@ -44,6 +44,21 @@ Using a local board needs the user's confirmation (see the Espressif `AGENTS.md`
 
 Use the board of the chip you need. If no board or preset exists for that chip, ask the user.
 
+## Choose what to run
+
+Run only the tests the change affects:
+
+1. Map the changed code to the `hil-test/src/bin/*` binaries that use it, and to the chips where
+   that code is compiled (its `cfg`s and the binaries' `CHIP_FILTER`).
+2. Start with the narrowest run: one test (`Run one test`) when you are debugging one failure,
+   otherwise the affected configurations on one affected chip.
+3. Widen to more chips or configurations only when the change is chip-specific in a way the first
+   chip does not cover, or when the narrow run passes and the user asked for broader coverage.
+
+Do not run every test binary, every configuration, or every chip unless the user asks. For
+cross-cutting changes (interrupts, DMA, clocks, linker scripts, `esp-metadata`), suggest
+`/hil full` in CI instead of running it on the rig yourself.
+
 ## Check that the rig is free
 
 Other users and CI share the rig boards. Before a run, list the HIL jobs in progress:
