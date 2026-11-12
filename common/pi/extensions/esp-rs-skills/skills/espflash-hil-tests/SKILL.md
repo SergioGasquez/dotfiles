@@ -163,24 +163,28 @@ other USB-UART bridges, other flash or PSRAM variants, BOOT/RESET buttons, replu
 cycles, and `cargo-espflash` (the host has no cargo). Never write eFuses or enable secure boot or
 flash encryption on a rig board.
 
-1. Check that the board is free, build, and copy only the binary:
+1. Check that the board is free, build, and copy only the binary. `rsync` does not create missing
+   parent directories, so create them first:
    ```bash
+   ssh hil-esp32c6 'mkdir -p ~/espflash-hil/bin ~/espflash-hil/work'
    rsync -az target/aarch64-unknown-linux-gnu/release/espflash hil-esp32c6:espflash-hil/bin/
    ```
 2. Copy the firmware you build locally (an ELF or a binary image) to `work/`:
    ```bash
-   ssh hil-esp32c6 'mkdir -p ~/espflash-hil/work'
    rsync -az <local-elf> hil-esp32c6:espflash-hil/work/app.elf
    ```
 3. Run commands with `timeout` on the host and the output in a log file:
    ```bash
    ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash board-info --port /dev/serial_ports/usb --non-interactive' > /tmp/espflash-rig.log 2>&1
    ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 120 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
-   ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 15 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive --monitor ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
    ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 10 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --non-interactive --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
    ```
-   A monitor only ends at the timeout, so exit code 124 is expected for `monitor` and
-   `flash --monitor`.
+   `flash` must exit 0. A monitor only ends at the timeout, so exit code 124 is expected for
+   `monitor`. Flash and monitor in two commands: flashing time grows with the app size and is
+   slow at the default 115200 baud on a `uart` port, so a short monitor timeout can stop the
+   flash. When you test
+   `flash --monitor` itself, give it the flash timeout plus the monitor time, and treat exit 124
+   as a monitor end only if the log contains `Flashing has completed!`.
 4. Write outputs to `work/` and copy them back:
    ```bash
    ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 60 ~/espflash-hil/bin/espflash read-flash --port /dev/serial_ports/usb --non-interactive 0x10000 0x1000 ~/espflash-hil/work/read.bin' > /tmp/espflash-rig.log 2>&1
@@ -198,9 +202,11 @@ flash encryption on a rig board.
   ```
   To test the monitor keys yourself, send them through a forced TTY:
   ```bash
-  (sleep 5; printf '\x12'; sleep 5; printf '\x03') | ssh -tt hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+  (sleep 5; printf '\x12'; sleep 5; printf '\x03') | ssh -tt hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true timeout --foreground 30 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
   ```
-  If the monitor prints nothing, reset the chip with Ctrl+R.
+  `--foreground` keeps the monitor in the terminal's foreground process group. Without it,
+  `timeout` moves the monitor to a background group whenever another command follows it, and the
+  keys do not reach espflash. If the monitor prints nothing, reset the chip with Ctrl+R.
 - Leave the board in a state CI can recover from. Do not leave firmware that disables native USB on
   a chip that has no `uart` port in `.github/hil-targets.json`.
 
