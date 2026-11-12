@@ -1,11 +1,13 @@
 ---
 name: espflash-hil-tests
 description: >
-  Run espflash HIL tests (`xtask run-tests`) on the remote Espressif HIL rig
+  Run espflash HIL tests (`xtask run-tests`) and espflash commands (flash,
+  monitor, board-info, read-flash) on boards of the remote Espressif HIL rig
   over SSH. Use when running, reproducing or debugging espflash hardware tests,
-  or when the user mentions the espflash HIL workflow, a `hil-<chip>` host or
-  `/hil` in espflash. Not for esp-hal HIL tests (`hil-test/`); use the
-  `hil-tests` skill for those.
+  when testing an espflash change on a board while developing it, or when the
+  user mentions the espflash HIL workflow, a `hil-<chip>` host or `/hil` in
+  espflash. Not for esp-hal HIL tests (`hil-test/`); use the `hil-tests` skill
+  for those.
 ---
 
 # Running espflash HIL tests
@@ -88,6 +90,11 @@ docker run --rm --platform linux/arm64 -v "$PWD":/src -v espflash-hil-cargo:/usr
 The binaries are in `target/aarch64-unknown-linux-gnu/release/`. The image's glibc must not be newer
 than the host's (`ssh hil-<chip> 'ldd --version'`); `bookworm` matches.
 
+Use this command for every build, also when you only need `espflash`. Building `-p espflash` alone
+resolves other dependency features, rebuilds them each time you switch, and failed once with
+`can't find crate for nix`. With the same command, a build after a source edit takes about 7 s and
+an unchanged build does nothing.
+
 ## Sync
 
 `xtask` finds the workspace from the current directory and reads `espflash/tests/data` and
@@ -102,6 +109,7 @@ rsync -az target/aarch64-unknown-linux-gnu/release/espflash target/aarch64-unkno
 
 Sync again after every change to the code or the test data. `--delete` also removes the files that
 earlier runs wrote to `espflash/tests/`. Leave `~/espflash-hil/` on the host for the next run.
+Commands you run by hand only need the binaries (see below).
 
 ## Reset and run
 
@@ -121,6 +129,58 @@ rg -a "test passed|failed: |All tests completed" /tmp/espflash-hil-esp32c6-usb.l
   (`espflash reset --port /dev/serial_ports/uart`), wait 2 s for the USB port to appear, and reset
   the USB port again.
 - Add `RUST_LOG=debug` before `../bin/xtask` for espflash debug output, like CI.
+
+## Run espflash commands by hand
+
+Use a rig board to try an espflash change on a chip or port while you develop it. Keep each
+session short: the free-board check only covers the moment you start, and a CI job can start on
+the board at any time.
+
+Use a local board instead (with the user's confirmation) for macOS or Windows serial behavior,
+other USB-UART bridges, other flash or PSRAM variants, BOOT/RESET buttons, replugging or power
+cycles, and `cargo-espflash` (the host has no cargo). Never write eFuses or enable secure boot or
+flash encryption on a rig board.
+
+1. Check that the board is free, build, and copy only the binary:
+   ```bash
+   rsync -az target/aarch64-unknown-linux-gnu/release/espflash hil-esp32c6:espflash-hil/bin/
+   ```
+2. Copy the firmware you build locally (an ELF or a binary image) to `work/`:
+   ```bash
+   ssh hil-esp32c6 'mkdir -p ~/espflash-hil/work'
+   rsync -az <local-elf> hil-esp32c6:espflash-hil/work/app.elf
+   ```
+3. Run commands with `timeout` on the host and the output in a log file:
+   ```bash
+   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash board-info --port /dev/serial_ports/usb --non-interactive' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 120 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 15 ~/espflash-hil/bin/espflash flash --port /dev/serial_ports/usb --non-interactive --monitor ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 10 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --non-interactive --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+   ```
+   A monitor only ends at the timeout, so exit code 124 is expected for `monitor` and
+   `flash --monitor`.
+4. Write outputs to `work/` and copy them back:
+   ```bash
+   ssh hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 60 ~/espflash-hil/bin/espflash read-flash --port /dev/serial_ports/usb --non-interactive 0x10000 0x1000 ~/espflash-hil/work/read.bin' > /tmp/espflash-rig.log 2>&1
+   rsync -az hil-esp32c6:espflash-hil/work/read.bin /tmp/
+   ```
+
+- Always put `timeout` inside the remote command. Without a TTY, killing the local `ssh` does not
+  stop the remote espflash: it keeps the board until it finishes. After an aborted command, check
+  with `pgrep -ax espflash` and stop only your own process:
+  `ssh hil-esp32c6 'pkill -u "$(id -un)" -x espflash'`.
+- For an interactive monitor, the user runs this in their terminal; Ctrl+R resets the chip and
+  Ctrl+C exits:
+  ```bash
+  ssh -t hil-esp32c6 '~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb'
+  ```
+  To test the monitor keys yourself, send them through a forced TTY:
+  ```bash
+  (sleep 5; printf '\x12'; sleep 5; printf '\x03') | ssh -tt hil-esp32c6 'ESPFLASH_SKIP_UPDATE_CHECK=true timeout 30 ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb --elf ~/espflash-hil/work/app.elf' > /tmp/espflash-rig.log 2>&1
+  ```
+  If the monitor prints nothing, reset the chip with Ctrl+R.
+- Leave the board in a state CI can recover from. Do not leave firmware that disables native USB on
+  a chip that has no `uart` port in `.github/hil-targets.json`.
 
 ## Run more than one board
 
