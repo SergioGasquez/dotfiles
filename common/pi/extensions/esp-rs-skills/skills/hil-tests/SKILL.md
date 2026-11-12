@@ -5,8 +5,9 @@ description: >
   to this computer or on the remote Espressif HIL rig through probe-rs presets.
   Use when running, reproducing or debugging HIL tests on hardware, or when the
   user mentions a connected board, the remote rig, the HIL runner or a
-  `<chip>-hil` preset. Not for examples or QA tests (`examples/`): they run with
-  espflash over a local serial port.
+  `<chip>-hil` preset. Not for examples or QA tests (`examples/`), which run with
+  espflash over a local serial port. Not for espflash HIL tests (`xtask
+  run-tests`); use the `espflash-hil-tests` skill for those.
 ---
 
 # Running HIL tests
@@ -70,6 +71,17 @@ gh run list -R esp-rs/espflash --workflow hil.yml --status in_progress --json da
 ```
 
 The run titles list the chips. For a merge queue run, all chips are in use.
+
+esp-hal and espflash CI share one GitHub Actions runner per board, on the host of the preset's SSH
+alias (`hil-<chip>`). Check that runner before a run:
+
+```bash
+ssh hil-esp32 'pgrep -af "[R]unner.Worker"; echo checked'
+```
+
+`Runner.Worker` means a CI job of either repository is running on this board; `Runner.Listener`
+alone means the runner is idle. The `[R]` stops `pgrep -f` from matching the remote `bash -c` that
+runs the check.
 
 - probe-rs locks the probe. If esp-hal CI or another user holds it, `probe-rs` waits up to the
   preset `attach-timeout` (600 s) and then fails. Start your run anyway; expect it to be slow.

@@ -16,7 +16,10 @@ for unrelated implementation work. `/skill:git` loads it explicitly when needed.
 The [`esp-rs-skills`](extensions/esp-rs-skills/index.ts) extension adds skills that
 only load when Pi starts under `~/Documents/Espressif/esp-rs/` (forks and worktrees
 included). Its [`hil-tests`](extensions/esp-rs-skills/skills/hil-tests/SKILL.md)
-skill runs esp-hal HIL tests on the remote rig or a local board.
+skill runs esp-hal HIL tests on the remote rig or a local board. Its
+[`espflash-hil-tests`](extensions/esp-rs-skills/skills/espflash-hil-tests/SKILL.md)
+skill builds espflash for aarch64, copies it to a remote rig host over SSH, and runs
+`xtask run-tests` there.
 
 The [`subagents`](skills/subagents/SKILL.md) and [`loop`](skills/loop/SKILL.md)
 skills, from [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles),
