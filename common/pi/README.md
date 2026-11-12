@@ -13,6 +13,11 @@ policy. The [`git` skill](skills/git/SKILL.md) routes branch creation/naming,
 commit messages/commits, and code reviews to separate on-demand references—not
 for unrelated implementation work. `/skill:git` loads it explicitly when needed.
 
+The [`esp-rs-skills`](extensions/esp-rs-skills/index.ts) extension adds skills that
+only load when Pi starts under `~/Documents/Espressif/esp-rs/` (forks and worktrees
+included). Its [`hil-tests`](extensions/esp-rs-skills/skills/hil-tests/SKILL.md)
+skill runs esp-hal HIL tests on the remote rig or a local board.
+
 The [`subagents`](skills/subagents/SKILL.md) and [`loop`](skills/loop/SKILL.md)
 skills, from [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles),
 delegate work to Pi workers in persistent `hc` (herdr-core) terminals.
@@ -31,8 +36,8 @@ a commit message does not authorize a commit. Commits and publication require a
 request or explicit workspace authorization: Espressif issue implementation and
 Crimpdeq implementation include committing and pushing personal task branches,
 unless local-only work is requested. PR creation, posted reviews, force-pushes,
-merges, releases, host setup changes, and hardware operations are not implicitly
-authorized by that workflow.
+merges, releases, host setup changes, and local hardware operations are not
+implicitly authorized by that workflow; Espressif remote HIL rig runs are.
 
 Keep validation commands and domain invariants in the relevant project. Read
 references according to the affected behavior rather than requiring a stack of

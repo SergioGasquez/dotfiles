@@ -40,5 +40,6 @@ These instructions apply when working in an `esp-rs` repository, fork, or test p
 ## Validation and completion
 
 - Implementation completion includes the documented checks for affected crate/chip/feature/toolchain combinations and fixes to regressions introduced by the change. Report unavailable coverage rather than implying exhaustive verification.
-- Hardware is available, but connection and operation are not implicitly authorized. Identify the exact board, chip, connection method, and physical setup; ask the user to connect it and confirm the requested operation. After confirmation, run the appropriate test, flash, or monitoring commands yourself.
+- Runs on the remote Espressif HIL rig through `<chip>-hil` probe-rs presets are authorized without confirmation; follow the `hil-tests` skill.
+- Local hardware is available, but connection and operation are not implicitly authorized. Identify the exact board, chip, connection method, and physical setup; ask the user to connect it and confirm the requested operation. After confirmation, run the appropriate test, flash, or monitoring commands yourself.
 - Complete independent static review and safe build/test work while hardware validation is pending. Treat hardware-dependent behavior as unverified until tested on the relevant device.
