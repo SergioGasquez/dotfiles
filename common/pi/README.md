@@ -54,8 +54,6 @@ Claude subscription (see `pi-anthropic-auth` below), so a plain
 
 ## Extensions
 
-- [`pi-cursor-sdk`](https://github.com/fitchmultz/pi-cursor-sdk) runs Cursor
-  models inside Pi and bridges active Pi tools to local Cursor agents.
 - [`pi-anthropic-auth`](https://github.com/gotgenes/pi-anthropic-auth), from
   [davidgasquez/dotfiles](https://github.com/davidgasquez/dotfiles), makes Pi's
   built-in `anthropic` provider work with a Claude Pro/Max subscription
@@ -81,15 +79,12 @@ Claude subscription (see `pi-anthropic-auth` below), so a plain
   Exa otherwise. Optional keys go in `~/.pi/agent/web-search.json`.
 
 Pi installs missing packages from [`settings.json`](settings.json) on startup;
-`pi list` shows them. Configure a Cursor API key with `/login`, and sign in to
-the Claude subscription with `/login anthropic`.
+`pi list` shows them. Sign in to the Claude subscription with
+`/login anthropic`.
 
-The Cursor SDK package extension is disabled by default in
-[`settings.json`](settings.json); `picursor` loads it for that invocation only.
 The shared Fish abbreviations:
 
 ```bash
-picursor                    # cursor/gpt-5.6-sol@272k:slow
 pix                         # pi with the default model
 pix <project> [pi args...]  # run pix inside an esp-rs or Crimpdeq project
 pix -ide [project]          # open the project in Zed and run pix in its terminal
@@ -111,10 +106,6 @@ pi install npm:pi-mcp-adapter
 ```text
 Pi model → pi-mcp-adapter → Konnect → KiCad
 ```
-
-Cursor models additionally use the `pi-cursor-sdk` bridge. That bridge is
-local-only, so use the default local Cursor runtime rather than Cursor Cloud.
-No second MCP extension is needed.
 
 ### Install Konnect
 

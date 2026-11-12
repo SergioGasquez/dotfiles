@@ -81,4 +81,3 @@ if set -q ZED_TERM; and status is-interactive; and test "$(cat /tmp/pix-autostar
         commandline -f execute
     end
 end
-abbr -a picursor 'pi --no-extensions --extension ~/.pi/agent/npm/node_modules/pi-cursor-sdk/dist/index.js --model cursor/gpt-5.6-sol@272k:slow'

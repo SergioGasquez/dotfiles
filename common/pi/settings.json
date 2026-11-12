@@ -21,10 +21,6 @@
     "anthropicExtraUsage": false
   },
   "packages": [
-    {
-      "source": "npm:pi-cursor-sdk",
-      "extensions": []
-    },
     "npm:@gotgenes/pi-anthropic-auth",
     "npm:pi-web-access"
   ],
