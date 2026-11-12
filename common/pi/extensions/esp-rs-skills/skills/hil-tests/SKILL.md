@@ -70,9 +70,9 @@ The run titles list the chips. For a merge queue run, all chips are in use.
 PROBE_RS_CONFIG_PRESET=esp32-hil cargo xtask test esp32 spi_stable
 ```
 
-The last argument is a test configuration: the binary name, or the binary name plus the label from
-its `//% CHIP_FILTER(<label>)` or `//% ENV(<label>)` line, for example `alloc_psram_llff`. See
-`xtask/README.md` for the annotations.
+The last argument is a test configuration: the binary name, or `<binary>_<label>` with the label
+from a `//% CHIP_FILTER(<label>)`, `//% FEATURES(<label>)` or `//% ENV(<label>)` line, for example
+`spi_stable` or `alloc_psram_llff`. See `xtask/README.md` for the annotations.
 
 ## Run one test (faster)
 
