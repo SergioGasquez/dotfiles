@@ -80,7 +80,9 @@ each pane's lost program as a shell in its last folder, and
 [`config.fish`](common/shell/config.fish) runs `pi --session` there for the
 session that [`herdr-resume.ts`](common/pi/extensions/herdr-resume.ts) recorded
 in `~/.pi/agent/herdr-terminals/<terminal>`. Quitting Pi yourself forgets the
-session; a power off or closed pane does not.
+session; a power off or closed pane does not. Inside Herdr terminals,
+`config.fish` also sets `PI_PROGRAM_STATUS=1`, so a Pi resumed at boot
+reports its status and shows in the agents panel.
 
 The Herdr app's [`settings.json`](common/herdr-app/settings.json) and
 `keys.json` ([macOS](mac-os/herdr-app/keys.json),

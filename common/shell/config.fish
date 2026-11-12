@@ -26,6 +26,10 @@ zoxide init fish | source
 # (common/pi/extensions/herdr-resume.ts). Only that shell's parent is Herdr Core.
 # It runs from the first prompt, so Pi is a normal foreground job.
 if status is-interactive; and set -q HC_TERMINAL_ID
+    # Herdr Core supports OSC 7501, but a Pi started before Herdr can answer
+    # Pi's one-time support query (e.g. resumed at boot) never reports status
+    # and stays out of the agents panel; skip the query.
+    set -gx PI_PROGRAM_STATUS 1
     set -l pi_session ~/.pi/agent/herdr-terminals/$HC_TERMINAL_ID
     if test -f $pi_session; and string match -q '*herdr-core' (ps -o comm= -p (string trim (ps -o ppid= -p $fish_pid)))
         function __resume_pi_session --on-event fish_prompt --inherit-variable pi_session
