@@ -41,7 +41,8 @@ Run only the tests the change affects:
    in `DIRECT_BOOT_CHIPS`; `partition-table` (`offline`) runs only by name.
 2. Map the change to chips and ports with `.github/hil-targets.json`. Pass the port as `--console`
    (`usb` or `uart`) and in `ESPFLASH_PORT=/dev/serial_ports/<port>`. Add the target's
-   `extraArgs` (`--extended` on `esp32c6` `uart`) only with `all`; named tests ignore it.
+   `extraArgs` (`--extended` on `esp32c6` `uart`) only with `all`; named tests ignore it (named
+   `list-ports` always runs its extended checks).
 3. Start with one test on one chip and one port. Widen to `all`, more ports or more chips only when
    the change is chip- or port-specific in a way the first run does not cover, or when the narrow
    run passes and the user asked for broader coverage.
@@ -103,8 +104,8 @@ A job can still start in the middle of a command, so keep commands short.
 ## Build
 
 CI builds with `cross build --release --target aarch64-unknown-linux-gnu -p espflash -p xtask`.
-On an Apple Silicon Mac, `cross` 0.2.5 needs an x86_64 Linux toolchain; build in a native arm64
-Rust container instead (Docker must be running):
+On Linux x86_64, use that command. On an Apple Silicon Mac, `cross` 0.2.5 needs an x86_64 Linux
+toolchain; build in a native arm64 Rust container instead (Docker must be running):
 
 ```bash
 docker run --rm --platform linux/arm64 -v "$PWD":/src -v espflash-hil-cargo:/usr/local/cargo/registry -w /src rust:1-bookworm cargo build --release --target aarch64-unknown-linux-gnu -p espflash -p xtask
@@ -126,7 +127,7 @@ an unchanged build does nothing.
 
 ```bash
 ssh hil-esp32c6 'mkdir -p ~/espflash-hil/src ~/espflash-hil/bin'
-rsync -az --delete --exclude .git --exclude target ./ hil-esp32c6:espflash-hil/src/
+rsync -az --delete --exclude /.git --exclude /target ./ hil-esp32c6:espflash-hil/src/
 rsync -az target/aarch64-unknown-linux-gnu/release/espflash target/aarch64-unknown-linux-gnu/release/xtask hil-esp32c6:espflash-hil/bin/
 ```
 
@@ -139,7 +140,7 @@ Commands you run by hand only need the binaries (see below).
 Reset the board like the CI "Prepare device" step, then run the test:
 
 ```bash
-ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true timeout 20 ../bin/espflash reset --port /dev/serial_ports/usb && sleep 5 && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb ../bin/xtask run-tests board-info --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c6-usb.log 2>&1
+ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true timeout 20 ../bin/espflash reset --port /dev/serial_ports/usb && sleep 5 && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb timeout 300 ../bin/xtask run-tests board-info --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash' > /tmp/espflash-hil-esp32c6-usb.log 2>&1
 rg -a "test passed|failed: |All tests completed" /tmp/espflash-hil-esp32c6-usb.log
 ```
 
@@ -147,10 +148,15 @@ rg -a "test passed|failed: |All tests completed" /tmp/espflash-hil-esp32c6-usb.l
   failure. Negative tests print `Error:` and `panicked at` lines while they pass, so do not search
   for those. UART logs can contain NUL bytes, so `rg` needs `-a`.
 - A named test takes seconds (`board-info` about 5 s, `flash` 20 to 30 s). `all` takes minutes; CI
-  gives a board job 30 minutes. Give the shell command a matching timeout.
+  gives a board job 30 minutes. Wrap `xtask` in `timeout` on the host, `timeout 300` for a named
+  test and `timeout 1800` for `all`, and give the local shell command a longer timeout. Exit code
+  124 means the remote `timeout` stopped the run.
 - If the USB reset fails and the board has `/dev/serial_ports/uart`, reset through UART
   (`espflash reset --port /dev/serial_ports/uart`), wait 2 s for the USB port to appear, and reset
   the USB port again.
+- On `esp32` (FT2232H board), a probe-rs session can leave the JTAG pins driving MTDI high, so the
+  flash stops responding and reset or flash fails. CI fixes this with `usbreset`, which you must not
+  run; report it as the likely cause.
 - Add `RUST_LOG=debug` before `../bin/xtask` for espflash debug output, like CI.
 
 ## Run espflash commands by hand
@@ -192,13 +198,14 @@ flash encryption on a rig board.
    ```
 
 - Always put `timeout` inside the remote command. Without a TTY, killing the local `ssh` does not
-  stop the remote espflash: it keeps the board until it finishes. After an aborted command, check
-  with `pgrep -ax espflash` and stop only your own process:
-  `ssh hil-esp32c6 'pkill -u "$(id -un)" -x espflash'`.
+  stop the remote `espflash` or `xtask`: it keeps the board until it finishes, and `xtask` keeps
+  starting the next test. After an aborted command, check with `pgrep -ax "espflash|xtask"` and
+  stop only your own processes, `xtask` first:
+  `ssh hil-esp32c6 'pkill -u "$(id -un)" -x xtask; pkill -u "$(id -un)" -x espflash'`.
 - For an interactive monitor, the user runs this in their terminal; Ctrl+R resets the chip and
   Ctrl+C exits:
   ```bash
-  ssh -t hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb'
+  ssh -t hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; ESPFLASH_SKIP_UPDATE_CHECK=true ~/espflash-hil/bin/espflash monitor --port /dev/serial_ports/usb'
   ```
   To test the monitor keys yourself, send them through a forced TTY:
   ```bash
@@ -216,8 +223,8 @@ flash encryption on a rig board.
   them one after the other.
 - Run jobs for different boards in parallel, each with its own alias and log file:
   ```bash
-  ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb ../bin/xtask run-tests flash --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c6-usb.log 2>&1 &
-  ssh hil-esp32c5 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/uart ../bin/xtask run-tests flash --chip esp32c5 --timeout 90 --baud 921600 --console uart --espflash ../bin/espflash --no-build' > /tmp/espflash-hil-esp32c5-uart.log 2>&1 &
+  ssh hil-esp32c6 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/usb timeout 300 ../bin/xtask run-tests flash --chip esp32c6 --timeout 90 --baud 921600 --console usb --espflash ../bin/espflash' > /tmp/espflash-hil-esp32c6-usb.log 2>&1 &
+  ssh hil-esp32c5 'pgrep -f "[R]unner.Worker" >/dev/null && { echo "CI job on this board" >&2; exit 75; }; cd ~/espflash-hil/src && ESPFLASH_SKIP_UPDATE_CHECK=true ESPFLASH_PORT=/dev/serial_ports/uart timeout 300 ../bin/xtask run-tests flash --chip esp32c5 --timeout 90 --baud 921600 --console uart --espflash ../bin/espflash' > /tmp/espflash-hil-esp32c5-uart.log 2>&1 &
   wait
   ```
   Check, sync and reset each board first. One build serves every board.
