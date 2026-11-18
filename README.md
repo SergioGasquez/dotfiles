@@ -148,8 +148,8 @@ gh repo clone SergioGasquez/dotfiles-private "$HOME/.dotfiles-private"
 
 - Each `hil-<chip>` host alias, with its user and jump host, is defined in
   `dotfiles-private` (see [Private hosts](#private-hosts)).
-- If the runners require a token, set `PROBE_RS_REMOTE_TOKEN` in a local file
-  under `~/.config/fish/conf.d/` that is not tracked by this repository.
+- `PROBE_RS_REMOTE_TOKEN` is set in `dotfiles-private/shell/env.fish`;
+  `config.fish` sources every `~/.dotfiles-private/shell/*.fish`.
 
 Then run `probe-rs <command> --preset esp32c6-hil`, or set
 `PROBE_RS_CONFIG_PRESET` for tools such as `esp-devtool`.

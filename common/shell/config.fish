@@ -17,6 +17,11 @@ abbr -a sandbox "$zed \$HOME/Documents/Espressif/sandbox && exit"
 abbr -a dotfiles "$zed \$HOME/.dotfiles && exit"
 # ESP-RS
 set -gx ESPFLASH_BAUD 921600
+# Private environment (e.g. PROBE_RS_REMOTE_TOKEN) from the dotfiles-private
+# clone; the glob matches nothing when it is missing
+for private_env in ~/.dotfiles-private/shell/*.fish
+    source $private_env
+end
 # Starship
 starship init fish | source
 # Zoxide
